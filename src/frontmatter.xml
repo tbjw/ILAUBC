@@ -85,6 +85,13 @@ the license is included in gfdl.xml.
         <institution>Georgia Institute of Technology</institution>
         <email>	larry.rolen@math.gatech.edu</email>
       </contributor>
+
+      <contributor xml:id="tbjw">
+        <personname>Ben Williams</personname>
+        <department>Department of Mathematics</department>
+        <institution>University of British Columbia</institution>
+        <email>tbjw@math.ubc.ca</email>
+      </contributor>
     </contributors>
 
     <p>
@@ -109,6 +116,17 @@ the license is included in gfdl.xml.
 
   </preface>
 
+  <preface>
+    <title>History of the UBC edition</title>
+    <p>
+      <ul>
+	<li>The Georgia Tech/Duke edition was published in 2019, by Dan Margalit and Joseph Rabinoff, with contributions
+	from Larry Rolen.</li>
+	<li>The UBC edition was published in 2020, modifications to the sections on Vectors having been made by Ben Williams.</li>
+      </ul>
+    </p>
+  </preface>
+  
   <preface>
     <title>Variants of this textbook</title>
 
