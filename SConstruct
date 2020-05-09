@@ -26,8 +26,8 @@ AddOption('--delete-cache',
 AddOption('--theme',
           dest='theme',
           type='string', nargs=1, action='store',
-          default='gt',
-          help='Choose the theme to use (gt or duke)')
+          default='ubc',
+          help='Choose the theme to use (ubc, gt or duke)')
 
 AddOption('--variant',
           dest='variant',
