@@ -24,14 +24,13 @@ the license is included in gfdl.xml.
   <subsection>
     <title>Vectors in <m>\R^n</m></title>
 
-    <p>We have been drawing points in <m>\R^n</m> as dots in the line, plane, space, etc.  We can also draw them as <em>arrows</em>.  Since we have two geometric interpretations in mind, we now discuss the relationship between the two points of view.</p>
 
-    <definition hide-type="true">
-      <title>Points and Vectors</title>
-      <idx><h>Point</h></idx>
-      <idx><h>Vector</h><h>definition of</h></idx>
-      <statement>
-        <p>Again, a <term>point</term> in <m>\R^n</m> is drawn as a dot.
+    <p>The elements of <m>\R^n</m> are lists of <m>n</m> numbers. When <m>n</m> is 2 or 3, we can represent these lists geometrically
+    in two ways.</p>
+
+    <p> <idx><h>Point</h></idx>
+    You are probably familiar with the idea of specifying a point in 2- or 3-dimensional space by using
+    coordinates.
         <latex-code>
               <![CDATA[
     \begin{tikzpicture}[scale=1, every pin/.style={whitebg, thin border}]
@@ -44,7 +43,18 @@ the license is included in gfdl.xml.
     \end{tikzpicture}
               ]]>
         </latex-code>
-        A <term>vector</term> is a point in <m>\R^n</m>, drawn as an arrow.
+	In principle, we can think of an element of <m>\R^n</m> as specifying a point in a higher dimensional space. For
+	instance, <m>(3,1,0,1,-2)</m> specifies a point in <m>5</m>-dimensional space. We can't draw this, though.
+    </p>
+
+    <p><idx><h>Origin</h></idx>The point corresponding to the <m>n</m>-tuple <m>(0,0, \dots, 0)</m> is special. We call it the
+    <em>origin.</em></p>
+
+    <definition hide-type="true">
+      <title>Vectors and Points</title>
+      <idx><h>Vector</h><h>definition of</h></idx>
+      <statement><p>
+	 A <term>vector</term> is an element of <m>\R^n</m>, especially when drawn as an arrow.
         <latex-code>
               <![CDATA[
     \begin{tikzpicture}[scale=1, every pin/.style={whitebg, thin border}]
@@ -54,13 +64,13 @@ the license is included in gfdl.xml.
   \end{tikzpicture}
               ]]>
         </latex-code>
-        </p>
-      </statement>
+     </p></statement>
     </definition>
 
-    <p>The difference is purely psychological: <em>points and vectors are both just lists of numbers</em>.</p>
+    <p>The difference is purely psychological: <em>points and vectors are both just representations of lists of
+    numbers</em>.</p>
 
-    <example hide-type="true">
+     <example hide-type="true">
       <title>Interactive: A vector in <m>\R^3</m>, by coordinates</title>
       <figure>
         <caption>A vector in <m>\R^3</m>, and its coordinates.  Drag the arrow head and tail.</caption>
@@ -68,36 +78,41 @@ the license is included in gfdl.xml.
       </figure>
     </example>
 
-    <p>When we think of a point in <m>\R^n</m> as a vector, we will usually write it vertically, like a matrix with one column:
-    <me>v = \vec{1 3}.</me>
-    We will also write <m>0</m> for the zero vector.
-    <notation><usage>{1\choose 2}</usage><description>A vector</description></notation>
-    <notation><usage>0</usage><description>The zero vector</description></notation>
-    </p>
+    <p>Geometrically (in 2- or 3-dimensional space) a vector is determined by its direction
+    and its length.</p>
 
-    <p>Why make the distinction between points and vectors?  A vector need not start at the origin: <em>it can be located anywhere</em>! In other words, an arrow is determined by its length and its direction, not by its location.  For instance, these arrows all represent the vector <m>\color{seq-green}\vec{1 2}</m>.
-    <latex-code>
-          <![CDATA[
-\begin{tikzpicture}
-  \draw[help lines] (-1,-1) grid (4, 4);
-  \draw[thick vector, seq-green] (0,1) -- (1,3);
-  \draw[thick vector, seq-green] (1,1) -- (2,3);
-  \draw[thick vector, seq-green] (2,0) -- (3,2);
-\end{tikzpicture}
-          ]]>
-    </latex-code></p>
-
-    <bluebox>
-      <p>Unless otherwise specified, we will assume that all vectors start at the origin.
+    <example hide-type="false">  
+    <p>For instance, these three vectors are
+    all different.
+      <latex-code>
+        <![CDATA[
+		 \begin{tikzpicture}
+		 % \draw[help lines] (-1,-1) grid (4, 4);
+		 \draw[thick vector, seq-red] (1,1) -- (2,3);
+		 \draw[thick vector, seq-blue] (0,0) -- (4,2);
+		 \draw[thick vector, seq-brown] (1,0) -- (3,1);
+		 \end{tikzpicture}
+        ]]>
+      </latex-code></p>
+      <p>
+	On the other hand, the vectors shown below are all equal, and have coordinates<m>\color{seq-green}\vec{1 2}</m>.
+	<latex-code>
+	  <![CDATA[
+		   \begin{tikzpicture}
+		   \draw[help lines] (-1,-1) grid (4, 4);
+		   \draw[thick vector, seq-green] (0,1) -- (1,3);
+		   \draw[thick vector, seq-green] (1,1) -- (2,3);
+		   \draw[thick vector, seq-green] (2,0) -- (3,2);
+		   \end{tikzpicture}
+	  ]]>
+	</latex-code>
       </p>
-    </bluebox>
+    </example>
+      
+      <p> Many physical quantities have a <em>direction</em> and <em>magnitude</em>. Common examples include velocity,
+      momentum, acceleration and force. The language of vectors is good for describing such quantities.</p>      
 
-    <p>Vectors makes sense in the real world: many physical quantities, such as velocity, are represented as vectors.  But it makes more sense to think of the velocity of a car as being located at the car.</p>
-
-    <remark>
-      <p>Some authors use boldface letters to represent vectors, as in <q><m>\mathbf v</m></q>, or use arrows, as in <q><m>\oldvec v</m></q>.  As it is usually clear from context if a letter represents a vector, we do not decorate vectors in this way.</p>
-    </remark>
-
+      
     <note xml:id="vectors-diff-pts">
       <p>
       Another way to think about a vector is as a <em>difference</em> between two
@@ -115,8 +130,49 @@ the license is included in gfdl.xml.
   \end{tikzpicture}
           ]]>
     </latex-code></p></note>
+      
+    <definition hide-type="true">
+      <title>Based vectors</title><idx><h>Vector</h><h>based</h></idx>
+      <statement><p>When a vector <m>v</m> is considered as an arrow from the origin to a point <m>p</m>, we say
+      <m>v</m> is <em>based</em>. In this case, the coordinates of <m>v</m> and <m>p</m> are the same.</p>
+      </statement>
+    </definition>
+
+    <example><p>In this example, the two vectors and the point all correspond to the coordinates
+    <m>(1,3)</m>. The vectors are equal, but one is based while the other is not.
+      <latex-code>
+          <![CDATA[
+  \begin{tikzpicture}[whitebg nodes, thin border nodes]
+  \draw[help lines] (0,0) grid (4,4);
+  \draw[->] (0,0) -- (4,0);
+  \draw[->] (0,0) -- (0,4);
+  \point(o) at (0,0);
+  \point["${(1,3)}$" {right, text=seq-green}, seq-green] (y) at (1,3);
+  \draw[vector, seq-blue] (o)
+  -- node[below right=1pt] {${1\choose 3}$} (y);
+  \draw[vector, seq-red] (2,1)--(3,4);
+  \end{tikzpicture}
+          ]]>
+    </latex-code></p>
+    </example>
+
+    <p>Even though we can't draw elements of <m>\R^4, \R^5, \ldots</m> geometrically, we will still refer to them as
+    <em>points</em> or <em>vectors</em>. We have to rely more on algebra than on geometric intuition when we work
+    with vectors with more than <m>3</m> coordinates.</p>
+
+    <p>When we think of an element in <m>\R^n</m> as a vector, we will usually write it vertically, like a matrix with one column:
+    <me>v = \vec{1 3}.</me>
+    We will also write <m>0</m> for the zero vector.
+    <notation><usage>{1\choose 2}</usage><description>A vector</description></notation>
+    <notation><usage>0</usage><description>The zero vector</description></notation>
+    </p>
+
+    <remark>
+      <p>Some authors use boldface letters to represent vectors, as in <q><m>\mathbf v</m></q>, or use arrows, as in <q><m>\oldvec v</m></q>.  As it is usually clear from context if a letter represents a vector, we do not decorate vectors in this way.</p>
+    </remark>
 
   </subsection>
+
 
   <subsection>
     <title>Vector Algebra and Geometry</title>
