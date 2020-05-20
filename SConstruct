@@ -131,8 +131,7 @@ for fname in ['manifest.json', 'google9ccfcae89045309c.html']:
                 Copy('$TARGET', '$SOURCE'))
 
 images = \
-    env.Command('$BUILD_DIR/images', 'static/images',
-                Copy('$TARGET', '$SOURCE'))
+    env.Command('$BUILD_DIR/images', 'static/images', Copy('$TARGET', '$SOURCE'))
 env.AddPostAction(images, 'cp $BASE_DIR/static/theme-$THEME/* $BUILD_DIR/images')
 
 
