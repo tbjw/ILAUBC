@@ -13,6 +13,7 @@ the license is included in gfdl.xml.
     <title>Back Matter</title> <!-- mostly for HTML sectioning -->
 
     <xi:include href="./cplx-nums.xml" />
+    <xi:include href="./sets.xml" />
 
     <appendix>
         <title>Notation</title>
