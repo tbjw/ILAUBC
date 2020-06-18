@@ -70,4 +70,33 @@ the license is included in gfdl.xml.
   </p>
 
   <p>
+    Here are some more pieces of set notation that you are likely to encounter:
+    <ul>
+      <li>Intersection: If <m>A</m> and <m>B</m> are two sets, then <m>A \cap B</m>, the <term>intersection</term> of
+      <m>A</m> and <m>B</m> is the set that contains exactly the elements that are in <m>A</m> and also in
+      <m>B</m>. </li>
+       <li>Union: If <m>A</m> and <m>B</m> are two sets, then <m>A \cup B</m>, the <term>union</term> of
+      <m>A</m> and <m>B</m> is the set that contains all the elements that are in <m>A</m> or in <m>B</m> (or
+       both). </li>
+        <li>Difference: If <m>A</m> and <m>B</m> are two sets, then <m>A \setminus B</m> (or sometimes <m>A - B</m>),
+	the <term>set difference</term> of
+      <m>A</m> and <m>B</m> is the set that contains all the elements that are in <m>A</m> but not in
+	<m>B</m>. Sometimes people prefer to require <m>B \subseteq A</m> before writing down <m>A \setminus B</m>, but
+	it's not necessary. The following is always true: <m> A \setminus B = A \setminus (A \cap B) </m>. </li>
+    </ul>
+  </p>
+
+  <p>In this course, a <term>list</term> consists of finitely many entries listed in an order. We will use parentheses <m>(\dots)</m>
+  to denote lists, but other notations are possible. The ordering is an
+  important part of a list, which is very different from the case of a list. Two lists are equal if and only if they
+  contain the same number of terms, and the terms in each position are the same. For instance
+  <me> (1,2,3) \neq (3,2,1)</me>
+  and
+  <me> (1,2,3) \neq (1,2,3,0) </me>
+  and
+  <me> (1,1,2,2,3,3) \neq (1,2,3,1,2,3) </me>
+  Each list has an <term>underlying set</term>, consisting of the entries of the list, but now forgetting the order and
+  not caring about multiple entries. The examples above show that two lists can be different, even if their underlying
+  sets are the same.
+  </p>
 </appendix>
