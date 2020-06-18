@@ -16,7 +16,7 @@ the license is included in gfdl.xml.
     <ol>
       <li>Understand the equivalence between a system of linear equations and a vector equation.</li>
       <li>Learn the definition of <m>\Span\{x_1,x_2,\ldots,x_k\}</m>, and how to draw pictures of spans.</li>
-      <li><em>Recipe:</em> solve a vector equation using augmented matrices / decide if a vector is in a span.</li>
+     <!-- <li><em>Recipe:</em> solve a vector equation using augmented matrices / decide if a vector is in a span.</li> -->
       <li><em>Pictures:</em> an inconsistent system of equations, a consistent system of equations, spans in <m>\R^2</m> and <m>\R^3</m>.</li>
       <li><em>Vocabulary word:</em> <term>vector equation</term>.</li>
       <li><em>Essential vocabulary word:</em> <term>span</term>.</li>
@@ -51,8 +51,74 @@ the license is included in gfdl.xml.
       </p>
     </bluebox>
     <p>For example the vector equation above is asking if the vector <m>(8,16,3)</m> is a linear combination of the vectors <m>(1,2,6)</m> and <m>(-1,2,-1)</m>.</p>
+
+    <example xml:id="vector-equation-example-unique">
+      <statement>
+        <p>Consider the vector equation <me>x\vec{1 1 1 2} + y \vec{0 1 1 0} + z \vec{0 0 1 -1} = \vec{3 -2 4 0}.</me> Can you
+	find all solutions to this equation? That is, all possible values for numbers <m>x, y, z</m> that make the
+	equation true?
+        </p>
+      </statement>
+      <solution>
+	<p> The vector equation is the same as
+	<me>\vec{x x+y x+y+z 2x-z} = \vec{3 -2 4 0}.</me>
+	  We can rewrite the vector equation as four equations that each must be true at the same time:
+	  <me> x = 3, \qquad x+y=-2, \qquad x+y+z = 4, \qquad 2x-z=0.</me>
+	  So we deduce that <m>x=3</m> must be true from the first equation, then <m>y= -2 -3 = -5</m> from the second
+	  and so <m>z=4-3+5=6</m> from the third. The values  <m> x = 3,\, y=-5,\, z=6</m> make the fourth equation work
+	  out as well. There is a unique solution: <m> x = 3,\, y=-5,\, z=6</m>.
+	</p>
+	<p> We can also use vector notation to write this solution as 
+	<me>\vec{x y z} = \vec{3 -5 6}.</me>
+	</p>
+      </solution>
+    </example>
+
+      <example xml:id="vector-equation-example-not-unique">
+      <statement>
+        <p>Consider the vector equation <me>x\vec{1 1 1} + y \vec{0 -1 -1} + z \vec{2 0 0} = \vec{3 1 1}.</me>
+	Does this vector equation have a solution? Does it have more than one solution?
+        </p>
+      </statement>
+      <solution>
+	<p> This vector equation has infinitely many solutions. We will solve equations like this more systematically
+	later. For now, let's content ourselves with the observation that no matter what value of <m>z</m> we choose,
+	setting <m>x=3-2z</m> and <m>y=2-2z</m> yields a solution, because
+	<me> (3-2z) \vec{1 1 1} + ( 2-2z) \vec{0 -1 -1} + z \vec{2 0 0} = \vec{3-2z+2z 3-2z-(2-2z) 3-2z-(2-2z)} = \vec{3
+	1 1}</me>
+	</p>
+	<p>For now, this might look a bit like magic. But you can try for yourself what happens if you set
+	<m>z=0</m>, <m>x=3</m> and <m>y=2</m> or <m>z=1</m>, <m>x=1</m> and <m>y=0</m>.
+	</p>
+      </solution>
+      </example>
+
+      <specialcase xml:id="vector-equation-example-inconsistent">
+              <p>Consider the vector equation <me>x\vec{1 1 1} + y \vec{0 -1 -1} + z \vec{2 0 0} = \vec{1 3 1}.</me>
+	Does this vector equation have a solution? Does it have more than one solution?
+        </p> 
+	<p> This vector equation does not have any solution. We could write it as three separate equations:
+	<me>x+2z=1, \qquad x-y=3, \qquad x-y=1,</me>
+	which all have to be true at the same time for a solution <m>x, y, z</m>.
+	The second equation says <m>x-y=3</m> and the third says <m>x-y=1</m>. These two statements cannot be true at
+	the same time, no matter what values of <m>x</m> and <m>y</m> we choose. So there can be no solution to the
+	vector equation.
+	</p>
+       </specialcase>
+
+        <essential xml:id="dimension-consistent-inconsistent">
+	  <idx><h>Consistent</h><h>definition of</h></idx>
+	  <idx><h>Inconsistent</h><h>definition of</h></idx>
+      <statement>
+        <p>If one or more solutions exist for an equation or a system of equations, it is said to be
+	<term>consistent</term>. If an equation or system of equations does not have any solution, it is said to be <term>inconsistent</term>.
+        </p>
+      </statement>
+    </essential>
     
-    <p>The thing we really care about is solving systems of linear equations, not solving vector equations.  The whole point of vector equations is that they give us a different, and more geometric, way of viewing systems of linear equations.</p>
+<!--    <p>The thing we really care about is solving systems of linear equations, not solving vector equations.  The
+     whole point of vector equations is that they give us a different, and more geometric, way of viewing systems of
+     linear equations.</p> -->
 
     
     
@@ -141,7 +207,7 @@ the license is included in gfdl.xml.
   <subsection>
     <title>Spans</title>
 
-    <p>It will be important to know what are <em>all</em> linear combinations of a set of vectors <m>v_1,v_2,\ldots,v_k</m> in <m>\R^n</m>.  In other words, we would like to understand the set of all vectors <m>b</m> in <m>\R^n</m> such that the vector equation (in the unknowns <m>x_1,x_2,\ldots,x_k</m>)
+    <p>It will be useful to know what are <em>all</em> linear combinations of a set of vectors <m>v_1,v_2,\ldots,v_k</m> in <m>\R^n</m>.  In other words, we would like to understand the set of all vectors <m>b</m> in <m>\R^n</m> such that the vector equation (in the unknowns <m>x_1,x_2,\ldots,x_k</m>)
     <me>x_1v_1 + x_2v_2 + \cdots + x_kv_k = b</me>
     has a solution (i.e. is consistent).
     </p>
@@ -165,13 +231,13 @@ the license is included in gfdl.xml.
       <title>Set Builder Notation</title>
       <idx><h>Set builder notation</h></idx>
       <idx><h>Subset</h><h>set builder notation</h></idx>
-      <p>The notation
+      <p>You should read the notation
       <notation><usage>\{x\mid\text{condition}\}</usage><description>Set builder notation</description></notation>
       <me>\bigl\{x_1v_1 + x_2v_2 + \cdots + x_kv_k \mid x_1,x_2,\ldots,x_k \text{ in }\R\bigr\}</me>
-      reads as: <q>the set of all things of the form <m>x_1v_1 + x_2v_2 + \cdots + x_kv_k</m> such that <m>x_1,x_2,\ldots,x_k</m> are in <m>\R</m>.</q>  The vertical line is <q>such that</q>; everything to the left of it is <q>the set of all things of this form</q>, and everything to the right is the condition that those things must satisfy to be in the set.  Specifying a set in this way is called <term>set builder notation</term>.
+      as: <q>the set of all things of the form <m>x_1v_1 + x_2v_2 + \cdots + x_kv_k</m> such that <m>x_1,x_2,\ldots,x_k</m> are in <m>\R</m>.</q>  The vertical line is <q>such that</q>; everything to the left of it is <q>the set of all things of this form</q>, and everything to the right is the condition that those things must satisfy to be in the set.  Specifying a set in this way is called <term>set builder notation</term>.
       </p>
 
-      <p>All mathematical notation is only shorthand: any sequence of symbols must translate into a usual sentence.</p>
+      <p>All mathematical notation is only shorthand: any sequence of symbols must translate into an ordinary sentence.</p>
     </note>
 
     <note hide-type="true">
