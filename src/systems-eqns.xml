@@ -14,88 +14,94 @@ the license is included in gfdl.xml.
 
   <objectives>
     <ol>
-      <li>Understand the definition of <m>\R^n</m>, and what it means to use <m>\R^n</m> to label points on a geometric object.</li>
+      <li>Fill in</li>
       <li><em>Pictures:</em> solutions of systems of linear equations, parameterized solution sets.</li>
       <li><em>Vocabulary words:</em> <term>consistent</term>, <term>inconsistent</term>, <term>solution set</term>.</li>
     </ol>
   </objectives>
 
-  <introduction>
-    <p>During the first half of this textbook, we will be primarily concerned with understanding the solutions of systems of linear equations.</p>
-
-    <definition>
-      <idx><h>Linear equation</h><h>definition of</h></idx>
-      <statement>
-        <p>An equation in the unknowns <m>x,y,z,\ldots</m> is called <term>linear</term> if both sides of the equation are a sum of (constant) multiples of <m>x,y,z,\ldots</m>, plus an optional constant.</p>
-      </statement>
-    </definition>
-
-    <p>For instance,
-    <me>
-      \begin{split}
-      3x + 4y &amp;= 2z \\
-      -x - z &amp;= 100
-      \end{split}
-    </me>
-    are linear equations, but
-    <me>
-      \begin{split}
-      3x + yz &amp;= 3 \\
-      \sin(x) - \cos(y) &amp;= 2
-      \end{split}
-    </me>
-    are not.</p>
-
-    <p>We will usually move the unknowns to the left side of the equation, and move the constants to the right.
-    </p>
-
-    <p>A <term>system</term> of linear equations is a collection of several linear equations, like
-      <men xml:id="systems-eqns-example">
-        \syseq{x + 2y + 3z = 6;
-        2x - 3y + 2z = 14;
-        3x + y - z = -2\rlap.
-      }</men>
-      <idx><h>Linear equation</h><h>system of</h><see>System of linear equations</see></idx>
-      <idx><h>System of linear equations</h><h>definition of</h></idx>
-    </p>
-
-    <definition xml:id="systems-eqns-soln-sets">
-      <title>Solution sets</title>
-      <statement>
-        <p>
-          <ul>
-            <li>A <term>solution</term> of a system of equations is a list of numbers <m>x, y, z, \ldots</m> that make all of the equations true simultaneously.</li>
-            <li>The <term>solution set</term> of a system of equations is the collection of all solutions.</li>
-            <li><term>Solving</term> the system means finding all solutions with formulas involving some number of parameters.</li>
-          </ul>
-          <idx><h>System of linear equations</h><h>solution of</h></idx>
-          <idx><h>Solution</h><see>System of linear equations</see></idx>
-          <idx><h>Solution set</h><h>definition of</h></idx>
-        </p>
-      </statement>
-    </definition>
+  <subsection>
+    <title>Vector equations are systems of linear equations</title>
 
     <p>
-      A system of linear equations need not have a solution.  For example, there do not exist numbers <m>x</m> and <m>y</m> making the following two equations true simultaneously:
-      <me>
-        \syseq{x + 2y = 3 ; x + 2y = -3\rlap.}
+    This means forming the augmented matrix
+    <me>\def\r{\color{seq-red}}\def\g{\color{seq-green}}\def\b{\color{seq-blue}}
+    \amat{\r1 \g-1 \b8; \r2 \g-2 \b16; \r6 \g-1 \b3}</me>
+    and row reducing.  Note that <em>the columns of the augmented matrix are the vectors from the original vector equation</em>, so it is not actually necessary to write the system of equations: one can go directly from the vector equation to the augmented matrix by <q>smooshing the vectors together</q>.  In the following <xref ref="vectors-example-consistent"/> we carry out the row reduction and find the solution.
+    </p>
+    
+        <example xml:id="vectors-example-consistent">
+      <statement>
+        <p>Is <m>\vec{ 8 16 3}</m> a linear combination of <m>\vec{1 2 6}</m> and <m>\vec{-1 -2 -1}</m>?
+        </p>
+      </statement>
+      <solution>
+      <p>As discussed above, this question boils down to a row reduction:
+      <me>\amat{1 -1 8; 2 -2 16; 6 -1 3}
+      \quad\xrightarrow{\text{RREF}}\quad
+      \amat{1 0 -1; 0 1 -9; 0 0 0}.
       </me>
-      In this case, the solution set is <em>empty</em>.  As this is a rather important property of a system of equations, it has its own name.
+      From this we see that the equation is consistent, and the solution is <m>x=-1</m> and <m>y=-9</m>.  We conclude that  <m>\vec{ 8 16 3}</m> is indeed a linear combination of <m>\vec{1 2 6}</m> and <m>\vec{-1 -2 -1}</m>, with coefficients <m>-1</m> and <m>-9</m>:
+      <me>-\vec{1 2 6} -9\vec{-1 -2 -1} = \vec{8 16 3}.
+      </me>
+      </p>
+      </solution>
+    </example>
+
+
+
+    <bluebox>
+      <title>Recipe: Solving a vector equation</title>
+      <idx><h>Vector equation</h><h>solving</h></idx>
+      <p>In general, the vector equation
+      <me>x_1v_1 + x_2v_2 + \cdots + x_kv_k = b</me>
+      where <m>v_1,v_2,\ldots,v_k,\,b</m> are vectors in <m>\R^n</m> and <m>x_1,x_2,\ldots,x_k</m> are unknown scalars, has the same solution set as the linear system with augmented matrix
+      <me>\amat[c]{| | ,{} , | |; v_1 v_2 \cdots, v_k b; | | ,{} , | |}</me>
+      whose columns are the <m>v_i</m><rsq/>s and the <m>b</m><rsq/>s.
+      </p>
+    </bluebox>
+
+    <p>Now we have <em>three</em> equivalent ways of thinking about a linear system:
+      <ol>
+        <li>As a system of equations:
+        <me>\syseq{2x_1 + 3x_2 - 2x_3 = 7; x_1 - x_2 - 3x_3 = 5}
+        </me>
+        </li>
+        <li>As an augmented matrix:
+        <me>\amat{2 3 -2 7; 1 -1 -3 5}</me>
+        </li>
+        <li>As a vector equation (<m>x_1v_1 + x_2v_2 + \cdots + x_nv_n = b</m>):
+        <me>x_1\vec{2 1} + x_2\vec{3 -1} + x_3\vec{-2 -3} = \vec{7 5}</me>
+        </li>
+      </ol>
+    The third is geometric in nature: it lends itself to drawing pictures.  
     </p>
 
-    <definition>
-      <idx><h>System of linear equations</h><h>inconsistent</h></idx>
-      <idx><h>System of linear equations</h><h>consistent</h></idx>
-      <idx><h>Consistent</h><see>System of linear equations</see></idx>
-      <idx><h>Inconsistent</h><see>System of linear equations</see></idx>
-      <statement>
-        <p>A system of equations is called <term>inconsistent</term> if it has no solutions.  It is called <term>consistent</term> otherwise.</p>
-      </statement>
-    </definition>
+    
+    <note hide-type="true">
+      <title>Three characterizations of consistency</title>
+      <idx><h>System of linear equations</h><h>consistent</h><h>span criterion</h></idx>
+      <p>Now we have three equivalent ways of making the same statement:
+      <ol>
+        <li>A vector <m>b</m> is in the span of <m>v_1,v_2,\ldots,v_k</m>.</li>
+        <li>The vector equation
+        <me>x_1v_1 + x_2v_2 + \cdots + x_kv_k = b</me>
+        has a solution.
+        </li>
+        <li>The linear system with augmented matrix
+        <me>\amat[c]{| | ,{} , | |; v_1 v_2 \cdots, v_k b; | | ,{} , | |}</me>
+        is consistent.
+        </li>
+      </ol>
+      </p>
+    </note>
 
-    <p>A solution of a system of equations in <m>n</m> variables is a list of <m>n</m> numbers.  For example, <m>(x,y,z) = (1,-2,3)</m> is a solution of <xref ref="systems-eqns-example"/>.  As we will be studying solutions of systems of equations throughout this text, now is a good time to fix our notions regarding lists of numbers.</p>
+    <p><term>Equivalent</term> means that, for any given list of vectors <m>v_1,v_2,\ldots,v_k,\,b</m>, either all three statements are true, or all three statements are false.</p>
+    
+  </subsection>
+  
 
-  </introduction>
+  
 
   <subsection xml:id="subsection-Rn">
     <title>Line, Plane, Space, Etc.</title>

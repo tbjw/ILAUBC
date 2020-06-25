@@ -26,31 +26,111 @@ the license is included in gfdl.xml.
   <subsection>
     <title>Vectors in <m>\R^n</m></title>
 
+       <p>
+      <notation><usage>0</usage><description>The number zero</description></notation>
+      We use <m>\R</m>
+      <idx><h>Real numbers <m>\R</m></h></idx>
+      <notation><usage>\R</usage><description>The real numbers</description></notation>
+      to denote the set of all real numbers, i.e., the number
+      line.  This contains numbers like <m>0, \frac 32, -\pi, 104, \ldots</m>
+    </p>
 
+    <definition>
+      <idx><h>Real <m>n</m>-space</h></idx>
+      <idx><h>Real <m>n</m>-space</h><h>point of</h></idx>
+      <notation>
+        <usage>\R^n</usage>
+        <description>Real <m>n</m>-space</description>
+      </notation>
+      <statement>
+        <p>Let <m>n</m> be a positive whole number.  We define
+        <me>\R^n = \text{all ordered $n$-tuples of real numbers }(x_1,x_2,x_3,\ldots,x_n).</me>
+        An <m>n</m>-tuple of real numbers is called a <term>point</term> of <m>\R^n</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>In other words, <m>\R^n</m> is just the set of all (ordered) lists of <m>n</m> real numbers.  We will draw pictures of <m>\R^n</m> in a moment, but keep in mind that <em>this is the definition</em>.  For example, <m>(0, \frac 32, -\pi)</m> and <m>(1,-2,3)</m> are points of <m>\R^3</m>.</p>
+
+    <specialcase>
+      <title>The number line</title>
+      <idx><h>Real numbers <m>\R</m></h></idx>
+      <idx><h>Line</h><h>number line</h></idx>
+      <p>When <m>n=1</m>, we just get <m>\R</m> back: <m>\R^1=\R</m>.  Geometrically, this is the number line.
+      <latex-code>
+    \begin{tikzpicture}
+      \draw [&lt;-&gt;, thick] (-3.5,0) -- (3.5,0);
+      \foreach \x in {-3,...,3}
+         \draw[thin] (\x,-.1) -- (\x,0.1) node[anchor=south] {$\x$};
+    \end{tikzpicture}
+      </latex-code>
+      </p>
+    </specialcase>
+  
+
+    <p><idx><h>Origin</h></idx>In any <m>\R^n</m>, the point corresponding to the <m>n</m>-tuple <m>(0,0, \dots, 0)</m> is special. We call it the
+    <em>origin.</em></p>
+    </subsection>
+  
+  <subsection>
+    <title>Vectors and geometry</title>
     <p>The elements of <m>\R^n</m> are lists of <m>n</m> numbers. When <m>n</m> is 2 or 3, we can represent these lists geometrically
     in two ways.</p>
 
-    <p> <idx><h>Point</h></idx>
-    You are probably familiar with the idea of specifying a point in 2- or 3-dimensional space by using
-    coordinates.
-        <latex-code>
-              <![CDATA[
-    \begin{tikzpicture}[scale=1, every pin/.style={whitebg, thin border}]
-    \draw[grid lines] (-1,-1) grid (4, 4);
-    \draw[->, thick] (-1,0) -- (4,0);
-    \draw[->, thick] (0,-1) -- (0,4);
-    \point[seq-blue, pin={
-      [pin edge={seq-blue}, text=seq-blue]
-      -85:the point $(1,3)$}] (x) at (1,3);
+     <specialcase>
+      <title>The Euclidean plane</title>
+      <idx><h>Plane</h><h><m>xy</m>-plane</h></idx>
+      <p>When <m>n=2</m>, we can think of <m>\R^2</m> as the <m>xy</m>-plane.  We can do so because every point on the plane can be represented by an ordered pair of real numbers, namely, its <m>x</m>- and <m>y</m>-coordinates.
+      <latex-code>
+        <![CDATA[
+    \begin{tikzpicture}[every node/.append style={whitebg, thin border},
+        every label/.append style={text=seq-blue}, scale=1]
+      \draw[help lines] (-4, -4) grid (4, 4);
+      \draw[->, thick] (-4,0) -- (4,0);
+      \draw[->, thick] (0,-4) -- (0,4);
+      \point[seq-blue, "{$(1,2)$}" above right] at (1,2);
+      \point[seq-blue, "{$(0,-3)$}" above right] at (0,-3);
     \end{tikzpicture}
-              ]]>
-        </latex-code>
-	In principle, we can think of an element of <m>\R^n</m> as specifying a point in a higher dimensional space. For
-	instance, <m>(3,1,0,1,-2)</m> specifies a point in <m>5</m>-dimensional space. We can't draw this, though.
-    </p>
+            ]]>
+      </latex-code>
+      </p>
+     </specialcase>
 
-    <p><idx><h>Origin</h></idx>The point corresponding to the <m>n</m>-tuple <m>(0,0, \dots, 0)</m> is special. We call it the
-    <em>origin.</em></p>
+     
+    <specialcase>
+      <title>3-Space</title>
+      <idx><h>Space</h><h><m>\R^3</m></h></idx>
+      <p>When <m>n=3</m>, we can think of <m>\R^3</m> as the <em>space</em> we (appear to) live in.  We can do so because every point in space can be represented by an ordered triple of real numebrs, namely, its <m>x</m>-, <m>y</m>-, and <m>z</m>-coordinates.
+      <latex-code><![CDATA[
+    \begin{tikzpicture}[myxyz, scale=.75,
+        every label/.append style={text=seq-blue}]
+      \begin{scope}[transformxy]
+        \draw[help lines] (-4, -4) grid (4, 4);
+      \end{scope}
+      \draw[->, thick] (-4,0,0) -- (4,0,0);
+      \draw[->, thick] (0,-4,0) -- (0,4,0);
+      \draw[->, thick] (0,0,0) -- (0,0,4);
+      \draw[thick] (0,0,-4) -- (0,0,-2);
+      \draw[thick,gray] (0,0,-2) -- (0,0,0);
+      \draw[thin, densely dotted] (1,-1,3) -- (1,-1,0);
+      \point[seq-blue, "${(1,-1,3)}$" above] at (1,-1,3);
+      \draw[thin, densely dotted] (-2,2,2) -- (-2,2,0);
+      \point[seq-blue, "${(-2,2,2)}$" above] at (-2,2,2);
+    \end{tikzpicture}
+            ]]>
+      </latex-code>
+      </p>
+    </specialcase>
+
+    <example hide-type="true">
+      <title>Interactive: Points in 3-Space</title>
+      <figure>
+        <caption>A point in 3-space, and its coordinates.  Click and drag the point, or move the sliders.</caption>
+        <mathbox source="demos/point.html" height="400px"/>
+      </figure>
+    </example>
+
+  
 
     <definition hide-type="true">
       <title>Vectors and Points</title>
@@ -162,18 +242,175 @@ the license is included in gfdl.xml.
     <em>points</em> or <em>vectors</em>. We have to rely more on algebra than on geometric intuition when we work
     with vectors with more than <m>3</m> coordinates.</p>
 
-    <p>When we think of an element in <m>\R^n</m> as a vector, we will usually write it vertically, like a matrix with one column:
+    <p>When we think of an element in <m>\R^n</m> as a vector, we will usually write it vertically:
     <me>v = \vec{1 3}.</me>
-    We will also write <m>0</m> for the zero vector.
+    This is called <term>column vector</term> notation. You can also call the notation <m>(1, 3)</m> <term>row
+    vector</term> notation, even though it is the same as ordinary point notation.    
+    </p>
+    <p>
+    We will write <m>0</m> for the zero vector.
     <notation><usage>{1\choose 2}</usage><description>A vector</description></notation>
     <notation><usage>0</usage><description>The zero vector</description></notation>
     </p>
+
+    <!--    <example> -->
+    <!--   <p> -->
+    <!-- 	Here are some examples of vectors <me> v_1 = \vec{1 2 3}, \quad v_2 =\vec{1.5 2 -3.2 0}, \quad v_3 = -->
+    <!-- 	\vec{\sqrt{2} \sqrt{2}}. </me> Here <m>v_1</m> is a <m>3</m>-vector and is in <m>\R^3</m>. The vector <m>v_2</m> -->
+    <!-- 	is a <m>4</m>-vector, and is in <m>\R^4</m>. Even though the last entry is <m>0</m>, <m>v_2</m> is not said to -->
+    <!-- 	be in <m>\R^3</m> (it has the wrong number of elements). The vector <m>v_3</m> is in <m>\R^2</m> . -->
+    <!--   </p> -->
+    <!-- </example> -->
 
     <remark>
       <p>Some authors use boldface letters to represent vectors, as in <q><m>\mathbf v</m></q>, or use arrows, as in <q><m>\oldvec v</m></q>.  As it is usually clear from context if a letter represents a vector, we do not decorate vectors in this way.</p>
     </remark>
 
+     
+   
+
+    <p>So what is <m>\R^4</m>?  or <m>\R^5</m>?  or <m>\R^n</m>?
+    These are harder to visualize, so you have to go back to the definition: <m>\R^n</m> is the set of all ordered <m>n</m>-tuples of real numbers <m>(x_1,x_2,x_3,\ldots,x_n)</m>.</p>
+
+    <p>They are still <q>geometric</q> spaces, in the sense that our intuition for <m>\R^2</m> and <m>\R^3</m> often extends to <m>\R^n</m>.</p>
+
+    <p>We will make definitions and state theorems that apply to any <m>\R^n</m>, but we will only draw pictures for <m>\R^2</m> and <m>\R^3</m>.</p>
+
+    <p>The power of using these spaces is the ability to <em>label</em> various objects of interest, such as geometric objects and solutions of systems of equations, by the points of <m>\R^n</m>.</p>
+
+    <example>
+      <title>Color Space</title>
+      <idx><h>Space</h><h>color space</h></idx>
+      <idx><h>Color space</h></idx>
+      <p>All colors you can see can be described by three quantities: the amount of red, green, and blue light in that color.  (Humans are <url href="https://en.wikipedia.org/wiki/Trichromacy">trichromatic</url>.)  Therefore, we can use the points of <m>\R^3</m> to <em>label</em> all colors: for instance, the point <m>(.2, .4, .9)</m> labels the color with <m>20\%</m> red, <m>40\%</m> green, and <m>90\%</m> blue intensity.
+      <latex-code><![CDATA[
+\begin{tikzpicture}[x={(1cm,0cm)}, y={(-.5cm,-.3cm)}, z={(0cm,1cm)}, scale=1,
+    every node/.append style={transform shape}]
+  \def\divisions{10}
+
+  \def\colorsquare{
+    \foreach \x in {0,...,\divisions} {
+      \pgfmathtruncatemacro{\px}{\x*100/\divisions}
+      \colorlet{B}[HTML]{BR!\px!BL}
+      \colorlet{T}[HTML]{TR!\px!TL}
+      \foreach \y in {0,...,\divisions} {
+        \pgfmathtruncatemacro{\py}{\y*100/\divisions}
+        \fill[T!\py!B, resetxy]
+          ({(\x+.025)/(\divisions+1)},{(\y+.025)/(\divisions+1)})
+          rectangle
+          ({(\x+.975)/(\divisions+1)},{(\y+.975)/(\divisions+1)});
+      }
+    }
+  }
+
+  \begin{scope}[scale=5]
+    \transformxy[1]
+    \definecolor{BL}{HTML}{0000FF}
+    \definecolor{BR}{HTML}{FF00FF}
+    \definecolor{TL}{HTML}{00FFFF}
+    \definecolor{TR}{HTML}{FFFFFF}
+    \colorsquare
+  \end{scope}
+
+  \begin{scope}[scale=5]
+    \transformxz[1]
+    \definecolor{BL}{HTML}{00FF00}
+    \definecolor{BR}{HTML}{FFFF00}
+    \definecolor{TL}{HTML}{00FFFF}
+    \definecolor{TR}{HTML}{FFFFFF}
+    \colorsquare
+    \draw[->, thick, resetxy] (0,-.1) -- (1,-.1)
+      node[midway,below,scale=.2] {red};
+    \draw[->, thick, resetxy] (-.1,0) -- (-.1,1)
+      node[midway,above,scale=.2,rotate=90] {blue};
+  \end{scope}
+
+  \begin{scope}[scale=5]
+    \transformyz[1]
+    \definecolor{BL}{HTML}{FF0000}
+    \definecolor{BR}{HTML}{FFFF00}
+    \definecolor{TL}{HTML}{FF00FF}
+    \definecolor{TR}{HTML}{FFFFFF}
+    \draw[->, thick, resetxy] (-.1,-.1) -- (.9,-.1)
+      node[midway,below,scale=.2,xscale=-1] {green};
+    \colorsquare
+  \end{scope}
+
+\end{tikzpicture}
+]]>
+      </latex-code>
+      </p>
+    </example>
+
+    <example xml:id="systems-eqns-R4">
+      <title>Traffic Flow</title>
+      <p>In the <xref ref="overview" text="title">Overview</xref>, we could have used <m>\R^4</m> to <em>label</em> the amount of traffic <m>(x,y,z,w)</m> passing through four streets.  In other words, if there are <m>10,5,3,11</m> cars per hour passing through roads <m>x,y,z,w</m>, respectively, then this can be recorded by the point <m>(10,5,3,11)</m> in <m>\R^4</m>.  This is useful from a psychological standpoint: instead of having four numbers, we are now dealing with just <em>one</em> piece of data.
+      <latex-code>
+      <![CDATA[
+\tikzset{
+  mid arrow/.style={
+    postaction={
+      decoration={
+        markings,
+        mark=at position #1 with {\arrow{Stealth[scale=1.25]}},
+      },
+      decorate
+    },
+  },
+  rmid arrow/.style={
+    postaction={
+      decoration={
+        markings,
+        mark=at position #1 with {\arrowreversed{Stealth[scale=1.25]}},
+      },
+      decorate
+    }
+  },
+  mid arrow/.default={0.5},
+  rmid arrow/.default={0.5},
+}
+
+  \begin{tikzpicture}[scale=1, thick,
+      every node/.style={inner sep=3pt, label distance=1mm}]
+    \point[scale=1.5] (A) at (-1,1);
+    \point[scale=1.5] (B) at (1,1);
+    \point[scale=1.5] (C) at (1,-1);
+    \point[scale=1.5] (D) at (-1,-1);
+    \draw[mid arrow] (A.center) to["$x$"] (B.center);
+    \draw[mid arrow] (B.center) to["$y$"] (C.center);
+    \draw[mid arrow] (C.center) to["$z$"] (D.center);
+    \draw[mid arrow] (D.center) to["$w$"] (A.center);
+    \draw[rmid arrow=.3] (A.center) to +(-1,0);
+    \draw[mid arrow=.7] (A.center) to +(0,1);
+    \draw[mid arrow=.7] (B.center) to +(1,0);
+    \draw[rmid arrow=.3] (B.center) to +(0,1);
+    \draw[rmid arrow=.3] (C.center) to +(1,0);
+    \draw[mid arrow=.7] (C.center) to +(0,-1);
+    \draw[mid arrow=.7] (D.center) to +(-1,0);
+    \draw[rmid arrow=.3] (D.center) to +(0,-1);
+  \end{tikzpicture}
+            ]]>
+      </latex-code>
+      </p>
+    </example>
+
+    <example>
+      <title>QR Codes</title>
+      <idx><h>QR codes</h></idx>
+      <p>
+        A <url href="https://en.wikipedia.org/wiki/QR_code">QR code</url> is a method of storing data in a grid of black and white squares in a way that computers can easily read.  A typical QR code is a <m>29 \times 29</m> grid.  Reading each line left-to-right and reading the lines top-to-bottom (like you read a book) we can think of such a QR code as a sequence of <m>29 \times 29 = 841</m> digits, each digit being 1 (for white) or 0 (for black).  In such a way, the entire QR code can be regarded as a point in <m>\R^{841}</m>.  As in the previous <xref ref="systems-eqns-R4"/>, it is very useful from a psychological perspective to view a QR code as a <em>single</em> piece of data in this way.
+</p>
+      <figure>
+        <caption>The QR code for this textbook is a <m>29\times29</m> array of black/white squares.</caption>
+        <image source="images/qrcode.png" width="50%"/>
+      </figure>
+    </example>
+
+    <p>In the above examples, it was useful from a psychological perspective to replace a list of four numbers (representing traffic flow) or of 841 numbers (representing a QR code) by a single piece of data: a point in some <m>\R^n</m>.  This is a powerful concept;   starting in <xref ref="spans"/>, we will almost exclusively record solutions of systems of linear equations in this way.</p>
   </subsection>
+
+
+
 
 
   <subsection>
@@ -185,7 +422,7 @@ the license is included in gfdl.xml.
       <title>Vector addition and scalar multiplication</title>
       <statement>
         <p><ul>
-          <li>We can add two vectors together:
+          <li>We can add two vectors together provided they have the same number of entries:
           <me>\vec{ a b c} + \vec{ x y z} = \vec{ a+x b+y c+z}.</me>
           <idx><h>Vector</h><h>addition</h></idx>
           </li>
@@ -196,7 +433,7 @@ the license is included in gfdl.xml.
           We call <m>c</m> a <term>scalar</term> to distinguish it from a vector.  If <m>v</m> is a vector and <m>c</m> is a scalar, then <m>cv</m> is called a <term>scalar multiple</term> of <m>v</m>.
           </li>
         </ul>
-        Addition and scalar multiplication work in the same way for vectors of length <m>n</m>.</p>
+        Addition and scalar multiplication work in the same way for vectors in <m>\R^n</m>.</p>
       </statement>
     </definition>
 
@@ -450,5 +687,7 @@ the license is included in gfdl.xml.
     </example>
 
   </subsection>
+
+ 
 
 </section>

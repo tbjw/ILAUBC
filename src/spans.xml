@@ -114,7 +114,10 @@ the license is included in gfdl.xml.
 	<term>consistent</term>. If an equation or system of equations does not have any solution, it is said to be <term>inconsistent</term>.
         </p>
       </statement>
-    </essential>
+	</essential>
+
+	<p>The above <xref ref="vectors-defn-span"/> is the first of several <em>essential definitions</em> that we will see in this textbook.  They are essential in that they form the essence of the subject of linear algebra: learning linear algebra means (in part) learning these definitions.  All of the definitions are important, but it is essential that you learn and understand the definitions marked as such.
+    </p>
     
 <!--    <p>The thing we really care about is solving systems of linear equations, not solving vector equations.  The
      whole point of vector equations is that they give us a different, and more geometric, way of viewing systems of
@@ -143,65 +146,6 @@ the license is included in gfdl.xml.
  
 
 
-    <p>In order to actually solve the vector equation
-    <me>x\textcolor{seq-red}{\vec{1 2 6}}
-    + y \textcolor{seq-green}{\vec{-1 -2 -1}}
-    = \textcolor{seq-blue}{\vec{8 16 3}},</me>
-    one has to solve the system of linear equations
-    <me>\spalignsysdelims\{.\syseq{x - y = 8; 2x - 2y = 16; 6x - y = 3\rlap.}</me>
-    This means forming the augmented matrix
-    <me>\def\r{\color{seq-red}}\def\g{\color{seq-green}}\def\b{\color{seq-blue}}
-    \amat{\r1 \g-1 \b8; \r2 \g-2 \b16; \r6 \g-1 \b3}</me>
-    and row reducing.  Note that <em>the columns of the augmented matrix are the vectors from the original vector equation</em>, so it is not actually necessary to write the system of equations: one can go directly from the vector equation to the augmented matrix by <q>smooshing the vectors together</q>.  In the following <xref ref="vectors-example-consistent"/> we carry out the row reduction and find the solution.
-    </p>
-    
-        <example xml:id="vectors-example-consistent">
-      <statement>
-        <p>Is <m>\vec{ 8 16 3}</m> a linear combination of <m>\vec{1 2 6}</m> and <m>\vec{-1 -2 -1}</m>?
-        </p>
-      </statement>
-      <solution>
-      <p>As discussed above, this question boils down to a row reduction:
-      <me>\amat{1 -1 8; 2 -2 16; 6 -1 3}
-      \quad\xrightarrow{\text{RREF}}\quad
-      \amat{1 0 -1; 0 1 -9; 0 0 0}.
-      </me>
-      From this we see that the equation is consistent, and the solution is <m>x=-1</m> and <m>y=-9</m>.  We conclude that  <m>\vec{ 8 16 3}</m> is indeed a linear combination of <m>\vec{1 2 6}</m> and <m>\vec{-1 -2 -1}</m>, with coefficients <m>-1</m> and <m>-9</m>:
-      <me>-\vec{1 2 6} -9\vec{-1 -2 -1} = \vec{8 16 3}.
-      </me>
-      </p>
-      </solution>
-    </example>
-
-
-
-    <bluebox>
-      <title>Recipe: Solving a vector equation</title>
-      <idx><h>Vector equation</h><h>solving</h></idx>
-      <p>In general, the vector equation
-      <me>x_1v_1 + x_2v_2 + \cdots + x_kv_k = b</me>
-      where <m>v_1,v_2,\ldots,v_k,\,b</m> are vectors in <m>\R^n</m> and <m>x_1,x_2,\ldots,x_k</m> are unknown scalars, has the same solution set as the linear system with augmented matrix
-      <me>\amat[c]{| | ,{} , | |; v_1 v_2 \cdots, v_k b; | | ,{} , | |}</me>
-      whose columns are the <m>v_i</m><rsq/>s and the <m>b</m><rsq/>s.
-      </p>
-    </bluebox>
-
-    <p>Now we have <em>three</em> equivalent ways of thinking about a linear system:
-      <ol>
-        <li>As a system of equations:
-        <me>\syseq{2x_1 + 3x_2 - 2x_3 = 7; x_1 - x_2 - 3x_3 = 5}
-        </me>
-        </li>
-        <li>As an augmented matrix:
-        <me>\amat{2 3 -2 7; 1 -1 -3 5}</me>
-        </li>
-        <li>As a vector equation (<m>x_1v_1 + x_2v_2 + \cdots + x_nv_n = b</m>):
-        <me>x_1\vec{2 1} + x_2\vec{3 -1} + x_3\vec{-2 -3} = \vec{7 5}</me>
-        </li>
-      </ol>
-    The third is geometric in nature: it lends itself to drawing pictures.  
-    </p>
-
   </subsection>
 
   <subsection>
@@ -224,9 +168,6 @@ the license is included in gfdl.xml.
       </statement>
     </essential>
 
-    <p>The above <xref ref="vectors-defn-span"/> is the first of several <em>essential definitions</em> that we will see in this textbook.  They are essential in that they form the essence of the subject of linear algebra: learning linear algebra means (in part) learning these definitions.  All of the definitions are important, but it is essential that you learn and understand the definitions marked as such.
-    </p>
-
     <note hide-type="true" xml:id="set-builder-notation">
       <title>Set Builder Notation</title>
       <idx><h>Set builder notation</h></idx>
@@ -241,24 +182,17 @@ the license is included in gfdl.xml.
     </note>
 
     <note hide-type="true">
-      <title>Three characterizations of consistency</title>
-      <idx><h>System of linear equations</h><h>consistent</h><h>span criterion</h></idx>
-      <p>Now we have three equivalent ways of making the same statement:
+      <title>Consistency and span</title>
+      <p>Here are two ways of saying the same thing:
       <ol>
-        <li>A vector <m>b</m> is in the span of <m>v_1,v_2,\ldots,v_k</m>.</li>
+	<li>A vector <m>b</m> is in the span of <m>v_1,v_2,\ldots,v_k</m>.</li>
         <li>The vector equation
         <me>x_1v_1 + x_2v_2 + \cdots + x_kv_k = b</me>
-        has a solution.
-        </li>
-        <li>The linear system with augmented matrix
-        <me>\amat[c]{| | ,{} , | |; v_1 v_2 \cdots, v_k b; | | ,{} , | |}</me>
-        is consistent.
+        is consistent, i.e., it has at least one solution.
         </li>
       </ol>
       </p>
     </note>
-
-    <p><term>Equivalent</term> means that, for any given list of vectors <m>v_1,v_2,\ldots,v_k,\,b</m>, either all three statements are true, or all three statements are false.</p>
 
     <figure xml:id="vectors-fig-inconsistent">
       <caption>This is a picture of an <em>inconsistent</em> linear system: the vector <m>w</m> on the right-hand side of the equation <m>x_1v_1 + x_2v_2 = w</m> is not in the span of <m>v_1,v_2</m>.  Convince yourself of this by trying to solve the equation
