@@ -2,6 +2,7 @@
 
 <!--********************************************************************
 Copyright 2019 Dan Margalit and Joseph Rabinoff
+Copyright 2020 Ben Williams
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -27,9 +28,8 @@ the license is included in gfdl.xml.
     <title>Vector Equations</title>
 
     <p>
-      <idx><h>Vector equation</h><h>equivalence with system of equations</h></idx>
       An equation involving vectors with <m>n</m> coordinates is the same as <m>n</m> equations involving only numbers.  For example, the equation
-    <me>x\vec{1 2 6} + y \vec{-1 -2 -1} = \vec{8 16 3}</me>
+    <men xml:id="vector-equation-first">x\vec{1 2 6} + y \vec{-1 -2 -1} = \vec{8 16 3}</men>
     simplifies to
     <me>\vec{ x 2x 6x} + \vec{-y -2y -y} = \vec{8 16 3}
 \sptxt{or}
@@ -107,8 +107,8 @@ the license is included in gfdl.xml.
        </specialcase>
 
         <essential xml:id="dimension-consistent-inconsistent">
-	  <idx><h>Consistent</h><h>definition of</h></idx>
-	  <idx><h>Inconsistent</h><h>definition of</h></idx>
+	  <idx><h>Consistent</h><h>Vector equation</h></idx>
+	  <idx><h>Inconsistent</h><h>Vector equation</h></idx>
       <statement>
         <p>If one or more solutions exist for an equation or a system of equations, it is said to be
 	<term>consistent</term>. If an equation or system of equations does not have any solution, it is said to be <term>inconsistent</term>.
@@ -128,8 +128,8 @@ the license is included in gfdl.xml.
 
     <note hide-type="true">
       <title>A Picture of a Consistent System</title>
-      <idx><h>Vector equation</h><h>consistent</h><see>System of linear equations, consistent</see></idx>
-      <idx><h>Vector equation</h><h>inconsistent</h><see>System of linear equations, inconsistent</see></idx>
+      <!-- <idx><h>Vector equation</h><h>consistent</h><see>System of linear equations, consistent</see></idx> -->
+      <!-- <idx><h>Vector equation</h><h>inconsistent</h><see>System of linear equations, inconsistent</see></idx> -->
       <idx><h>System of linear equations</h><h>consistent</h><h>picture of</h></idx>
       <p>Below we will show that the above system of equations  is consistent.  Equivalently, this means that the above vector equation  has a solution.  In other words, there is a linear combination of <m>(1,2,6)</m> and <m>(-1,2,-1)</m> that equals <m>(8,16,3)</m>.  We can visualize the last statement geometrically.  Therefore, the following <xref ref="vectors-figure-consistent"/> gives a <em>picture of a consistent system of equations</em>.  Compare with <xref ref="vectors-fig-inconsistent"/> below, which shows a picture of an inconsistent system.
       </p>
@@ -181,8 +181,10 @@ the license is included in gfdl.xml.
       <p>All mathematical notation is only shorthand: any sequence of symbols must translate into an ordinary sentence.</p>
     </note>
 
-    <note hide-type="true">
+    <note hide-type="false" xml:id="spans-and-consistency">
       <title>Consistency and span</title>
+      <idx><h>Span</h><h>Interpretation in terms of consistency</h>
+      </idx>
       <p>Here are two ways of saying the same thing:
       <ol>
 	<li>A vector <m>b</m> is in the span of <m>v_1,v_2,\ldots,v_k</m>.</li>
@@ -192,6 +194,10 @@ the license is included in gfdl.xml.
         </li>
       </ol>
       </p>
+
+      <p>Later, in <xref ref="vector-in-span-algorithm"/> we will develop a procedure for answering the question “is <m>b</m> in the span of <m>v_1, v_2, \ldots,
+      v_k</m>?” in every circumstance. This will be a byproduct of developing a process to find all the solutions of
+      vector equations.</p>
     </note>
 
     <figure xml:id="vectors-fig-inconsistent">
@@ -202,6 +208,43 @@ the license is included in gfdl.xml.
       <mathbox source="demos/spans.html?v1=1,2,6&amp;v2=-1,-2,-1&amp;target=2,-2,0&amp;range=8&amp;camera=3,.5,1.5" height="500px"/>
     </figure>
 
+    <example>
+      <statement>
+	<p> Is <m>\vec{3 1 1}</m> in <m>\Span\left\{ \vec{1 0 0}, \vec{0 1 1} \right\}</m>?
+	</p>
+      </statement>
+      <solution>
+	<p>This question is asking whether we can find scalars <m>x_1</m> and <m>x_2</m> that make the equation
+	<me> \vec{3 1 1} = x_1\vec{1 0 0} + x_2\vec{1 1 1} </me>
+	hold. We can rearrange this to give
+	<me> \vec{3 1 1} = \vec{x_1+x_2 0+x_2 0+x_2},</me>
+	which we can rewrite this vector equation as three ordinary equations
+	<me> \syseq{x_1+x_2=3; x_2=1; x_2=1\rlap.}</me>
+	If we set <m>x_1=2</m> and <m>x_2=1</m>, then the equations are true. Therefore we can write
+	<me> \vec{3 1 1} = 2 \vec{1 0 0} + \vec{1 1 1}.</me>
+	This shows that <m>\vec{3 1 1}</m> is in <m>\Span\left\{ \vec{1 0 0}, \vec{0 1 1} \right\}</m>.
+	</p>
+      </solution>
+    </example>
+
+      <example>
+      <statement>
+	<p> Is <m>\vec{3 1 0}</m> in <m>\Span\left\{ \vec{1 0 0}, \vec{0 1 1} \right\}</m>?
+	</p>
+      </statement>
+      <solution>
+	<p>This question is very similar to the last one. Can find scalars <m>x_1</m> and <m>x_2</m> that make the equation
+	<me> \vec{3 1 0} = x_1\vec{1 0 0} + x_2\vec{1 1 1} </me>
+	hold. We can rearrange this to give
+	<me> \vec{3 1 0} = \vec{x_1+x_2 0+x_2 0+x_2},</me>
+	which we can rewrite this vector equation as three ordinary equations
+	<me> \syseq{x_1+x_2=3; x_2=1; x_2=0\rlap.}</me>
+	The last two equations here contradict each other. They cannot both be true at the same time. This shows that
+	 <m>\vec{3 1 0}</m> is not in <m>\Span\left\{ \vec{1 0 0}, \vec{0 1 1} \right\}</m>.
+	</p>
+      </solution>
+    </example>
+    
     <paragraphs>
       <title>Pictures of Spans</title>
       <idx><h>Span</h><h>pictures of</h></idx>

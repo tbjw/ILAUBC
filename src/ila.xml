@@ -2,6 +2,7 @@
 
 <!--********************************************************************
 Copyright 2019 Dan Margalit and Joseph Rabinoff
+Copyright 2020 Ben Williams
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
@@ -21,23 +22,47 @@ Free Documentation License"
   <book xml:id="index">
 
     <restrict-version versions="default">
-      <title>Interactive Linear Algebra</title>
-    </restrict-version>
-    <restrict-version versions="1553">
-      <title>Interactive Linear Algebra [1553]</title>
+      <title>Interactive Linear Algebra [UBC]</title>
     </restrict-version>
 
     <!-- Title Page, Preface, etc. -->
     <xi:include href="./frontmatter.xml" />
-
+    
     <!-- Chapters -->
     <chapter xml:id="chap-vectors">
       <title>Vectors: Algebra and Geometry</title>
 
       <introduction>
-	<note type-name="Primary Goal">
-	  <p>Learn what vectors are, and how to do algebra and geometry with vectors</p>
-	</note>
+	<note type-name="Primary Goals"> 
+          <p> The language of <term>vectors</term> is convenient for doing linear algebra. In this chapter, you should learn:
+            <ol>
+              <li>What vectors are, and how to do algebra and geometry with vectors;</li>
+              <li> What it means to be a <term>linear combination</term> of given vectors;</li>
+	       <li>The concept of the <term>span</term> of some vectors, i.e., the set of all linear combinations of these vectors.</li>
+            </ol>
+          </p>
+        </note>
+
+	 <p> Linear algebra is the study of one or more <term>linear equations</term>, that is, equations that look like
+	  <me>2x+3y+5z=1</me>.
+	  The basic case of one linear equation in one variable, such as <m>2x=5</m>, is not very interesting. We know that
+	  there is a unique solution, and we know how to find it: <m>x=2.5</m>. The complications in linear algebra
+	  arise because we consider several simultaneous equations in several variables, for instance
+	  <me>
+          \syseq{
+    3x_1 + 4x_2 + 10x_3 + 19x_4 - 2x_5 - 3x_6 = 141;
+    7x_1 + 2x_2 - 13x_3 - 7x_4 + 21x_5 + 8x_6 = 2567;
+    -x_1 + 9x_2 + \frac 32x_3 + x_4 + 14x_5 + 27x_6 = 26;
+    \frac 12x_1 + 4x_2 + 10x_3 + 11x_4 + 2x_5 + x_6 = -15\rlap.
+  }
+          </me>
+	 </p>
+	 <p> In order to discuss systems of equations like this, it will be convenient for us to have notation for
+	 keeping track of multiple numbers at once. <term>Vectors</term> provide us with this notation. In the case of
+	 vectors with  2 or
+	 3 entries, there is a strong connection between vector algebra and geometry. This can be very helpful to
+	 us as we develop an intuition for vector algebra, even when there are more than 3 entries.
+	 </p>
       </introduction>
       <xi:include href="./vectors.xml" />
       <xi:include href="./spans.xml" />
@@ -64,13 +89,19 @@ Free Documentation License"
         </p>
 
         <p>
-          In <xref ref="systems-of-eqns"/>, we will introduce <em>systems of linear equations</em>, the class of equations whose study forms the subject of linear algebra.  In <xref ref="row-reduction"/>, will present a procedure, called <em>row reduction</em>, for finding all solutions of a system of linear equations.  In <xref ref="parametric-form"/>, you will see hnow to express all solutions of a system of linear equations in a unique way using the <em>parametric form</em> of the general solution.
+          In <xref ref="systems-of-linear-equations"/>, we will introduce <em>systems of linear equations</em>, the
+          class of equations whose study forms the subject of linear algebra.  In <xref ref="row-reduction"/>, will
+          present a procedure, called <em>row reduction</em>, for finding all solutions of a system of linear equations.
+          In <xref ref="parametric-form"/>, you will see how to express all solutions of a system of linear equations
+          in a unique way using the <em>parametric form</em> of the general solution. Finally, in <xref
+          ref="matrix-equations"/>, we will learn how to write a system of linear equations succinctly as a matrix
+          equation, which looks like <m>Ax=b</m>, where <m>A</m> is an <m>m \times n</m> matrix, <m>b</m> is a vector in
+          <m>\R^m</m> and <m>x</m> is a variable vector in <m>\R^n</m>.
         </p>
       </introduction>
 
+      <xi:include href="./systems-of-linear-equations.xml" />
       <xi:include href="./row-reduction.xml" />
-      <xi:include href="./systems-eqns.xml" />
-
       <xi:include href="./parametric-form.xml" />
       <xi:include href="./matrixeq.xml" />
 	<!--  <xi:include href="./ch2exercises.xml" /> -->
@@ -81,7 +112,7 @@ Free Documentation License"
 
       <introduction>
         <note type-name="Primary Goals">
-          <p>We have already discussed systems of linear equations and how this is related to matrices.  In this chapter we will learn how to write a system of linear equations succinctly as a matrix equation, which looks like <m>Ax=b</m>, where <m>A</m> is an <m>m \times n</m> matrix, <m>b</m> is a vector in <m>\R^m</m> and <m>x</m> is a variable vector in <m>\R^n</m>.  As we will see, this is a powerful perspective.  We will study two related questions:
+          <p> We will study two related questions:
             <ol>
               <li>What is the set of solutions to <m>Ax=b</m>?</li>
               <li>What is the set of <m>b</m> so that <m>Ax=b</m> is consistent?</li>
@@ -111,9 +142,6 @@ Free Documentation License"
           etc.  We will use these concepts to give a precise geometric description of the solution set of any system of equations (<xref ref="solution-sets"/>).  We will also learn how to express systems of equations more simply using matrix equations (<xref ref="matrix-equations"/>).
         </p>
       </introduction>
-
-      <!-- <xi:include href="./vectors.xml" />
-      <xi:include href="./spans.xml" /> -->
       <xi:include href="./solnsets.xml" />
       <xi:include href="./linindep.xml" />
       <xi:include href="./subspaces.xml" />

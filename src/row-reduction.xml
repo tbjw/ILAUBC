@@ -2,6 +2,7 @@
 
 <!--********************************************************************
 Copyright 2019 Dan Margalit and Joseph Rabinoff
+Copyright 2020 Ben Williams
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -10,7 +11,7 @@ the license is included in gfdl.xml.
 *********************************************************************-->
 
 <section xml:id="row-reduction">
-  <title>Row Reduction</title>
+  <title>Row reduction</title>
 
   <objectives>
     <ol>
@@ -23,92 +24,7 @@ the license is included in gfdl.xml.
     </ol>
   </objectives>
 
-  
-  <introduction>
-    <p>During the first half of this textbook, we will be primarily concerned with understanding the solutions of systems of linear equations.</p>
 
-    <definition>
-      <idx><h>Linear equation</h><h>definition of</h></idx>
-      <statement>
-        <p>An equation in the unknowns <m>x,y,z,\ldots</m> is called <term>linear</term> if both sides of the equation are a sum of (constant) multiples of <m>x,y,z,\ldots</m>, plus an optional constant.</p>
-      </statement>
-    </definition>
-
-    <p>For instance,
-    <me>
-      \begin{split}
-      3x + 4y &amp;= 2z \\
-      -x - z &amp;= 100
-      \end{split}
-    </me>
-    are linear equations, but
-    <me>
-      \begin{split}
-      3x + yz &amp;= 3 \\
-      \sin(x) - \cos(y) &amp;= 2
-      \end{split}
-    </me>
-    are not.</p>
-
-    <p>We will usually move the unknowns to the left side of the equation, and move the constants to the right.
-    </p>
-
-    <p>A <term>system</term> of linear equations is a collection of several linear equations, like
-      <men xml:id="systems-eqns-example">
-        \syseq{x + 2y + 3z = 6;
-        2x - 3y + 2z = 14;
-        3x + y - z = -2\rlap.
-      }</men>
-      <idx><h>Linear equation</h><h>system of</h><see>System of linear equations</see></idx>
-      <idx><h>System of linear equations</h><h>definition of</h></idx>
-    </p>
-
-    <definition xml:id="systems-eqns-soln-sets">
-      <title>Solution sets</title>
-      <statement>
-        <p>
-          <ul>
-            <li>A <term>solution</term> of a system of equations is a list of numbers <m>x, y, z, \ldots</m> that make all of the equations true simultaneously.</li>
-            <li>The <term>solution set</term> of a system of equations is the collection of all solutions.</li>
-            <li><term>Solving</term> the system means finding all solutions with formulas involving some number of parameters.</li>
-          </ul>
-          <idx><h>System of linear equations</h><h>solution of</h></idx>
-          <idx><h>Solution</h><see>System of linear equations</see></idx>
-          <idx><h>Solution set</h><h>definition of</h></idx>
-        </p>
-      </statement>
-    </definition>
-
-    <p> In the previous chapter, we encountered vector equations. It turns out that vector equations are simply systems
-    of linear equations in different notation. 
-    </p>
-    
-    <p>In order to solve the vector equation
-    <me>x\textcolor{seq-red}{\vec{1 2 6}}
-    + y \textcolor{seq-green}{\vec{-1 -2 -1}}
-    = \textcolor{seq-blue}{\vec{8 16 3}},</me>
-    one has to solve the system of linear equations
-    <me>\spalignsysdelims\{.\syseq{x - y = 8; 2x - 2y = 16; 6x - y = 3\rlap.}</me> </p>
-
-    <p>
-      A system of linear equations need not have a solution.  For example, there do not exist numbers <m>x</m> and <m>y</m> making the following two equations true simultaneously:
-      <me>
-        \syseq{x + 2y = 3 ; x + 2y = -3\rlap.}
-      </me>
-      In this case, the solution set is <em>empty</em>. 
-    </p>
-
-    <definition>
-      <idx><h>System of linear equations</h><h>inconsistent</h></idx>
-      <idx><h>System of linear equations</h><h>consistent</h></idx>
-      <idx><h>Consistent</h><see>System of linear equations</see></idx>
-      <idx><h>Inconsistent</h><see>System of linear equations</see></idx>
-      <statement>
-        <p>A system of equations is called <term>inconsistent</term> if it has no solutions. It is called
-	<term>consistent</term> if it has at least one solution.</p>
-      </statement>
-    </definition>
-  </introduction>
 
   <subsection xml:id="row-reduction-elimination">
     <title>The Elimination Method</title>
@@ -230,7 +146,28 @@ the license is included in gfdl.xml.
     </me>
     <idx><h>Matrix</h><h>definition of</h></idx>
     <idx><h>Matrix</h><h>augmented</h></idx>
-    This is called an <term>augmented matrix</term>.  The word <q>augmented</q> refers to the vertical line, which we draw to remind ourselves where the equals sign belongs; a <term>matrix</term> is a grid of numbers without the vertical line.  In this notation, our three valid ways of manipulating our equations become <term>row operations</term>:
+    This is called an <term>augmented matrix</term>.  The word <q>augmented</q> refers to the vertical line, which we
+    draw to remind ourselves where the equals sign belongs; a <term>matrix</term> is a grid of numbers without the
+    vertical line.</p>
+
+</paragraphs>
+  <paragraphs> <title>Augmented Matrices from Vector Equations</title>
+  <p>We already saw that systems of linear equations and vector equations are the same thing.</p>
+
+  <p>If you have a vector equation, such as the equation in <xref ref="vector-equation-first"/>,
+      <me>x\vec{1 2 6} + y \vec{-1 -2 -1} = \vec{8 16 3}</me>
+      then converting it to augmented matrix form is very easy. You can just read off directly that the augmented
+      martrix is
+      <me>\amat{1 -1  8; 2 -2 16; 6 -1 3}.</me>
+      </p>
+<p>      That is to say, the columns of the augmented matrix are exactly the column-vectors appearing in the
+equation. The column of constants in the equation, on the right of the “<m>=</m>” sign, becomes the augmentation column of
+the matrix.</p>
+    </paragraphs>
+    <paragraphs>
+      <title>Row Operations</title>
+
+    <p> In augmented matrix notation, our three valid ways of manipulating our equations become <term>row operations</term>:
     <idx><h>Row operations</h></idx>
     <ul>
       <li><alert>Scaling:</alert> multiply all entries in a row by a nonzero number.
@@ -386,7 +323,7 @@ the license is included in gfdl.xml.
       </solution>
     </example>
 
-    <bluebox><p>The process of doing row operations to a matrix does not change the solution set of the corresponding linear equations!</p></bluebox>
+    <bluebox><p>The process of doing row operations to a matrix does not change the solution set of the corresponding linear equations.</p></bluebox>
 
     <p>Indeed, the whole point of doing these operations is to solve the equations using the elimination method.</p>
 
@@ -398,8 +335,6 @@ the license is included in gfdl.xml.
     </definition>
 
     <p>So the linear equations of row-equivalent matrices have the <em>same solution set</em>.</p>
-
-
 
     <example>
       <title>An Inconsistent System</title>
@@ -449,10 +384,12 @@ the license is included in gfdl.xml.
         </p>
       </solution>
     </example>
-
   </paragraphs>
+  
 
-  </subsection>
+</subsection>
+
+
 
   <subsection xml:id="row-reduction-echelon-forms">
     <title>Echelon Forms</title>
@@ -1051,9 +988,9 @@ the license is included in gfdl.xml.
         <example xml:id="row-reduction-eg-inconsistent">
           <title>An Inconsistent System</title>
           <statement>
-            <p>Solve the linear system
+            <p>Solve the vector equation
             <me>
-              \syseq{2x + 10y = -1; 3x + 15y = 2}
+	      x\vec{2 3} + y\vec{10 15} = \vec {-1 2}.
             </me>
             using row reduction.
             </p>
@@ -1088,6 +1025,7 @@ the license is included in gfdl.xml.
                 \syseq{x + 5y = 0; \. \+ 0 = 1\rlap.}
               </me>
             </p>
+	    <p>This means that there are no values of <m>x</m> and <m>y</m> making the original equation true.</p>
           </solution>
         </example>
 
@@ -1176,7 +1114,29 @@ the license is included in gfdl.xml.
         </p>
       </solution>
     </example>
+      </subsection>
 
-  </subsection>
+    <subsection xml:id="vector-in-span-algorithm">
+      <title>Telling when a Vector is in a Span
+      </title>
+      <idx><h>Span</h><h>Determining when a Vector is in a</h></idx>
+      <p>
+	Suppose <m>v</m> is a vector in <m>\R^n</m> and <m>b_1, b_2, \ldots, b_m</m> are also vectors in
+	<m>\R^n</m>. Because the question <me>\text{``is $v$ in the span of $b_1, b_2, \ldots, b_m$"?}</me>is the same
+	as asking
+	<me>\text{``is the vector equation $x_1b_1+x_2b_2+\ldots+x_mb_m = v$ consistent"?}</me>
+	we now have a procedure for telling if <m>v</m> is in the span of <m>b_1, b_2, \ldots, b_m</m>.
+      </p>
+      <bluebox>
+	<p>
+	  <ul>
+	    <li>Write the vector equation <m>x_1b_1+x_2b_2+\ldots+x_mb_m = v</m> in augmented matrix form, </li>
+	    <li>Row reduce the augmented matrix to determine whether the equation is consistent or not,</li>
+	    <li>If the equation is consistent, then <m>v</m> is in the span of <m>b_1, b_2, \ldots, b_m</m>, otherwise
+	    it is not.</li>
+	  </ul>
+	</p>
+      </bluebox>
+    </subsection>
 
 </section>
