@@ -23,10 +23,10 @@ the license is included in gfdl.xml.
         <notation-list />
     </appendix>
 
-    <appendix>
-        <title>Hints and Solutions to Selected Exercises</title>
-        <solution-list />
-    </appendix>
+  <!-- <appendix> -->
+  <!--       <title>Hints and Solutions to Selected Exercises</title> -->
+  <!--       <solution-list /> -->
+  <!--   </appendix> -->
 
     <!-- GFDL License text -->
     <xi:include href="./gfdl.xml" />
