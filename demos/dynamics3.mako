@@ -96,7 +96,7 @@ vectorIn[1] /= 10
 vectorIn[2] /= 10
 
 
-######################################################################
+################################################################
 # * Create view and controller
 
 {basis1, basis2, type, typeOpts, axisColors, eigenStrs} = matrixInfo matrix
@@ -131,13 +131,10 @@ dynView.setCoords v1p, v2p, v3p
 controller.addView dynView
 controller.loadDynamics type, typeOpts
 
-#
-######################################################################
+##########################################################
 # * Create demo
 
-params =
-    Multiply:      null
-    "Un-multiply": null
+params = 
     "Test vector": urlParams.get 'vec', 'bool', true
     "Show path":   urlParams.get 'path', 'bool', true
 
@@ -150,13 +147,14 @@ window.demo = demo = dynamicsDemo controller,
     eigenz:       eigenz
     eigenStr:     eigenStr
     vectorIn:     vectorIn
+    axes:         true
 
 gui = new dat.GUI autoPlace: false
 # params["Multiply"] = controller.step
 # gui.add(params, "Multiply")
 # params["Un-multiply"] = controller.unStep
 # gui.add(params, "Un-multiply")
-gui.add(params, "Test vector").onFinishChange demo.toggleVector
+# gui.add(params, "Test vector").onFinishChange demo.toggleVector
 gui.add(params, "Show path").onFinishChange demo.togglePath
 document.getElementById('gui-container').appendChild gui.domElement
 

@@ -1536,6 +1536,8 @@ matrixInfo = (matrix) ->
 # * Demo
 
 dynamicsDemo = (controller, opts) ->
+    axes       = opts.axes ? false
+    grid       = opts.grid ? false
     dynView    = opts.dynView
     params     = opts.params
     eigenStr   = opts.eigenStr
@@ -1550,7 +1552,8 @@ dynamicsDemo = (controller, opts) ->
     dragHook   = opts.dragHook   ? () ->
 
     vectorIn  = opts.vectorIn?.slice() ? [.5, 0, 0]
-    vectorOut = [0, 0, 0]
+    vectorsOut=[vectorIn]
+    vectorsOut.push([0,0,0]) for i in [0..5]
 
     demo = window.demo = new (if size == 3 then Demo else Demo2D) {
         mathbox:
@@ -1560,8 +1563,8 @@ dynamicsDemo = (controller, opts) ->
     }, () ->
         view = @view
             viewRange: [[-1, 1], [-1, 1], [-1, 1]]
-            axes:      false
-            grid:      false
+            axes:      axes
+            grid:      grid
         clipCube = @clipCube view,
             draw:   size == 3
             hilite: false
@@ -1593,21 +1596,21 @@ dynamicsDemo = (controller, opts) ->
 
         updateCaption = () =>
             vin  = vectorIn.slice  0, size
-            vout = vectorOut.slice 0, size
+            vout = vectorsOut[1].slice 0, size
             str = '\\qquad ' + matName +
                   @texVector((x*10 for x in vin), color: vecColor) +
                   " = " +
-                  @texVector((x*10 for x in vout), color: vecColor.darken(.1))
+                  @texVector((x*10 for x in vout), color: vecColor.darken(-.1))
             katex.render str, multElt
 
-        ##################################################
+  ##################################################
         # Test vector
         viewT = dynView.view
 
-        labeled = @labeledVectors view,
-            vectors:       [vectorIn, vectorOut]
-            colors:        [vecColor, vecColor.darken(.1)]
-            labels:        [vecName, matName + vecName]
+        labeled = @labeledPoints view,
+            points:        [vectorsOut[0], vectorsOut[1], vectorsOut[2], vectorsOut[3], vectorsOut[4]]
+            colors:        [vecColor, vecColor.darken(-.1),  vecColor.darken(-.2), vecColor.darken(-.3), vecColor.darken(-.3)]
+            labels:        [vecName, matName + vecName, matName+"²"+vecName, matName+"³"+vecName, ""]
             live:          true
             zeroPoints:    false
             zeroThreshold: 0.3
@@ -1629,7 +1632,7 @@ dynamicsDemo = (controller, opts) ->
                     vec.copy snapped
 
         drag = @draggable view,
-            points: [vectorIn]
+            points: [vectorsOut[0]]
             onDrag: snap
             postDrag: () ->
                 computeOut()
@@ -1638,12 +1641,21 @@ dynamicsDemo = (controller, opts) ->
 
         computeOut = () ->
             return unless params["Test vector"]
-            [vectorOut[0], vectorOut[1], vectorOut[2]] = vectorIn
-            dynView.matrixOrigCoords.applyToVector3Array vectorOut
+
+
+            [vectorsOut[1][0], vectorsOut[1][1], vectorsOut[1][2]] = vectorsOut[0]
+            dynView.matrixOrigCoords.applyToVector3Array vectorsOut[1]
+            [vectorsOut[2][0], vectorsOut[2][1], vectorsOut[2][2]] = vectorsOut[1]
+            dynView.matrixOrigCoords.applyToVector3Array vectorsOut[2]
+            [vectorsOut[3][0], vectorsOut[3][1], vectorsOut[3][2]] = vectorsOut[2]
+            dynView.matrixOrigCoords.applyToVector3Array vectorsOut[3]
+            [vectorsOut[4][0], vectorsOut[4][1], vectorsOut[4][2]] = vectorsOut[3]
+            dynView.matrixOrigCoords.applyToVector3Array vectorsOut[4]
+             
             updateCaption()
 
         @setVec = (vec) ->
-            [vectorIn[0], vectorIn[1], vectorIn[2]] = vec
+            [vectorsOut[0][0], vectorsOut[0][1], vectorsOut[0][2]] = vec
             computeOut()
             computePath()
 
@@ -1657,6 +1669,7 @@ dynamicsDemo = (controller, opts) ->
                 labeled.hide()
                 multElt.classList.add "hidden"
         @toggleVector params["Test vector"]
+
 
         ##################################################
         # Test path
