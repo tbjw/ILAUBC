@@ -362,15 +362,15 @@ class DynamicsView
                     source: @pointsElt
                     id:     "sizes"
 
-            @view
-                .point
-                    points: "#points"
-                    color:  "white"
-                    colors: "#colors"
-                    size:   1
-                    sizes:  "#sizes"
-                    zBias:  1
-                    zIndex: 2
+            # @view
+            #     .point
+            #         points: "#points"
+            #         color:  "white"
+            #         colors: "#colors"
+            #         size:   1
+            #         sizes:  "#sizes"
+            #         zBias:  1
+            #         zIndex: 2
 
             # Reference lines
             @linesDataElt = @view.matrix @current.linesParams()
