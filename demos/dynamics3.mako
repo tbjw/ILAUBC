@@ -131,7 +131,7 @@ dynView.setCoords v1p, v2p, v3p
 controller.addView dynView
 controller.loadDynamics type, typeOpts
 
-
+#
 ######################################################################
 # * Create demo
 
