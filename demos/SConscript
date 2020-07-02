@@ -197,6 +197,7 @@ for src in Split('''
                  compose3d
                  dynamics
                  dynamics2
+		 dynamics3
                  eigenspace
                  leastsquares
                  parametric1
