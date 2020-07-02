@@ -37,11 +37,11 @@ Free Documentation License"
           <p> The language of <term>vectors</term> is convenient for doing linear algebra. In this chapter, you should learn:
             <ol>
               <li>What vectors are, and how to do algebra and geometry with vectors;</li>
-              <li> What it means to be a <term>linear combination</term> of given vectors;</li>
-	       <li>The concept of the <term>span</term> of some vectors, i.e., the set of all linear combinations of these vectors.</li>
+              <li>What it means to be a <term>linear combination</term> of given vectors;</li>
+	      <li>The concept of the <term>span</term> of some vectors, i.e., the set of all linear combinations of these vectors.</li>
             </ol>
           </p>
-        </note>
+          </note>
 
 	 <p> Linear algebra is the study of one or more <term>linear equations</term>, that is, equations that look like
 	  <me>2x+3y+5z=1</me>.
@@ -365,7 +365,7 @@ Finally, we spend <xref ref="stochastic-matrices"/> presenting a common kind of 
       <xi:include href="./similarity.xml" />
       <xi:include href="./diagonalization.xml" />
       <xi:include href="./cplx-eigenvals.xml" />
-      <xi:include href="./stochastic.xml" />
+      <xi:include href="./DDS.xml" />
 
     </chapter>
 
