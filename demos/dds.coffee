@@ -418,11 +418,11 @@ class DynamicsView
 class Controller
     constructor: (opts) ->
         opts ?= {}
-        @numPointsRow = opts.numPointsRow ? 50
-        @numPointsCol = opts.numPointsCol ? 100
-        @numPointsDep = opts.numPointsDep ? 10
+        @numPointsRow = opts.numPointsRow ? 0
+        @numPointsCol = opts.numPointsCol ? 0
+        @numPointsDep = opts.numPointsDep ? 0
         @duration     = opts.duration     ? 3.0
-        @continuous   = opts.continuous   ? true
+        @continuous   = opts.continuous   ? false
         @is3D         = opts.is3D         ? false
         @flow         = opts.flow         ? false  # For testing distributions
 

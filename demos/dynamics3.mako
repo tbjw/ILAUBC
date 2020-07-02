@@ -131,7 +131,7 @@ dynView.setCoords v1p, v2p, v3p
 controller.addView dynView
 controller.loadDynamics type, typeOpts
 
-
+#
 ######################################################################
 # * Create demo
 
@@ -152,10 +152,10 @@ window.demo = demo = dynamicsDemo controller,
     vectorIn:     vectorIn
 
 gui = new dat.GUI autoPlace: false
-params["Multiply"] = controller.step
-gui.add(params, "Multiply")
-params["Un-multiply"] = controller.unStep
-gui.add(params, "Un-multiply")
+# params["Multiply"] = controller.step
+# gui.add(params, "Multiply")
+# params["Un-multiply"] = controller.unStep
+# gui.add(params, "Un-multiply")
 gui.add(params, "Test vector").onFinishChange demo.toggleVector
 gui.add(params, "Show path").onFinishChange demo.togglePath
 document.getElementById('gui-container').appendChild gui.domElement
