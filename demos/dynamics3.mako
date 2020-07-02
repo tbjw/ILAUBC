@@ -12,10 +12,8 @@ html, body {
     background-color: white;
     overflow-x:       hidden;
 }
-
 #mathbox {
     width:       100%;
-    
     height:      100%;
 }
 .espace-1 {
@@ -82,7 +80,6 @@ v1 = urlParams.get 'v1', 'float[]', [1,0,0]
 v2 = urlParams.get 'v2', 'float[]', [0,1,0]
 v3 = urlParams.get 'v3', 'float[]', [0,0,1]
 
-
 v1[2] ?= 0
 v2[2] ?= 0
 v3[2] ?= 0
@@ -97,6 +94,7 @@ vectorIn[2] ?= 0
 vectorIn[0] /= 10
 vectorIn[1] /= 10
 vectorIn[2] /= 10
+
 
 ######################################################################
 # * Create view and controller
@@ -120,8 +118,6 @@ controller = new dynamics.Controller
     flow: urlParams.get 'flow', 'bool', false
     duration: duration
     is3D: size == 3
-    numPointsRow: 0
-    numPointsCol: 0
 
 dynView = new dynamics.DynamicsView
     is3D: size == 3
@@ -135,11 +131,12 @@ dynView.setCoords v1p, v2p, v3p
 controller.addView dynView
 controller.loadDynamics type, typeOpts
 
+
 ######################################################################
 # * Create demo
 
 params =
-    "Multiply":    null
+    Multiply:      null
     "Un-multiply": null
     "Test vector": urlParams.get 'vec', 'bool', true
     "Show path":   urlParams.get 'path', 'bool', true
@@ -153,10 +150,8 @@ window.demo = demo = dynamicsDemo controller,
     eigenz:       eigenz
     eigenStr:     eigenStr
     vectorIn:     vectorIn
-    axes:         true
-    grid:         true
 
-gui = new dat.GUI autoPlace: true
+gui = new dat.GUI autoPlace: false
 params["Multiply"] = controller.step
 gui.add(params, "Multiply")
 params["Un-multiply"] = controller.unStep
