@@ -20,9 +20,12 @@ the license is included in gfdl.xml.
   <!-- </objectives> -->
 
   <p>
-    In this appendix we give a brief review of set notation and lists.
+    In this appendix we give a brief review of set notation and lists. Set notation is not used in the body
+    of the book, but the term <term>set</term> is. It might be helpful to know this notation later.
   </p>
-
+  
+  <paragraphs>
+    <title>Sets</title>
   <definition>
     <idx><h>Set</h></idx>
     <statement>
@@ -52,7 +55,10 @@ the license is included in gfdl.xml.
   notation has no effect. Here are three ways of writing the same set:
   <me> \{ a,b,c\} = \{c,a,b\} = \{ a,b,c,a,b,c,a\} </me>.
   </p>
+</paragraphs>
 
+<paragraphs>
+  <title>Set notations</title>
   <p>Suppose <m>S</m> and <m>T</m> are sets such that every element of <m>T</m> happens to be an element of <m>S</m> as
   well. Then we say <m>T</m> is a <term>subset</term> of <m>S</m> (and less often, <m>S</m> is a <term>superset</term>
   of <m>T</m>). We write <m>T \subset S</m>. For instance
@@ -85,18 +91,29 @@ the license is included in gfdl.xml.
 	it's not necessary. The following is always true: <m> A \setminus B = A \setminus (A \cap B) </m>. </li>
     </ul>
   </p>
+</paragraphs>
 
-  <p>In this course, a <term>list</term> consists of finitely many entries listed in an order. We will use parentheses <m>(\dots)</m>
-  to denote lists, but other notations are possible. The ordering is an
+ <paragraphs>
+    <title>Lists</title>
+  <definition>
+    <idx><h>List</h></idx>
+    <statement><p>a <term>list</term> consists of finitely many entries listed in an order. We will use parentheses <m>(\dots)</m>
+    to denote lists, but other notations are possible. </p>
+    </statement>
+  </definition>
+
+  <p>The ordering is an
   important part of a list, which is very different from the case of a list. Two lists are equal if and only if they
   contain the same number of terms, and the terms in each position are the same. For instance
   <me> (1,2,3) \neq (3,2,1)</me>
   and
   <me> (1,2,3) \neq (1,2,3,0) </me>
   and
-  <me> (1,1,2,2,3,3) \neq (1,2,3,1,2,3) </me>
-  Each list has an <term>underlying set</term>, consisting of the entries of the list, but now forgetting the order and
+  <me> (1,1,2,2,3,3) \neq (1,2,3,1,2,3) </me></p>
+
+  <p>Each list has an <term>underlying set</term>, consisting of the entries of the list, but now forgetting the order and
   not caring about multiple entries. The examples above show that two lists can be different, even if their underlying
   sets are the same.
   </p>
+  </paragraphs>
 </appendix>
