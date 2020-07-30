@@ -1549,11 +1549,12 @@ dynamicsDemo = (controller, opts) ->
     element    = opts.element    ? document.getElementById "mathbox"
     captionElt = opts.captionElt ? document.getElementById "caption"
     vecColor   = opts.vecColor   ? new Color("red")
+    numPoints  = opts.numPoints  ? 10
     dragHook   = opts.dragHook   ? () ->
 
     vectorIn  = opts.vectorIn?.slice() ? [.5, 0, 0]
-    vectorsOut=[vectorIn]
-    vectorsOut.push([0,0,0]) for i in [0..5]
+    vectorsOut = ([0,0,0] for [0..numPoints])
+    [vectorsOut[0][0], vectorsOut[0][1], vectorsOut[0][2]]=vectorIn
 
     demo = window.demo = new (if size == 3 then Demo else Demo2D) {
         mathbox:
@@ -1595,7 +1596,7 @@ dynamicsDemo = (controller, opts) ->
         katex.render str, matElt
 
         updateCaption = () =>
-            vin  = vectorIn.slice  0, size
+            vin  = vectorsOut[0].slice  0, size
             vout = vectorsOut[1].slice 0, size
             str = '\\qquad ' + matName +
                   @texVector((x*10 for x in vin), color: vecColor) +
@@ -1608,9 +1609,9 @@ dynamicsDemo = (controller, opts) ->
         viewT = dynView.view
 
         labeled = @labeledPoints view,
-            points:        [vectorsOut[0], vectorsOut[1], vectorsOut[2], vectorsOut[3], vectorsOut[4]]
-            colors:        [vecColor, vecColor.darken(-.1),  vecColor.darken(-.2), vecColor.darken(-.3), vecColor.darken(-.3)]
-            labels:        [vecName, matName + vecName, matName+"²"+vecName, matName+"³"+vecName, ""]
+            points:        vectorsOut
+            colors:        [vecColor, vecColor.darken(-.07),  vecColor.darken(-.14), vecColor.darken(-.22)].concat (vecColor.darken(-.3) for [4..numPoints]) #[vecColor, vecColor.darken(-.1),  vecColor.darken(-.2), vecColor.darken(-.3), vecColor.darken(-.3)]
+            labels:        [vecName, matName + vecName, matName+"²"+vecName, matName+"³"+vecName].concat ("" for [4..numPoints])
             live:          true
             zeroPoints:    false
             zeroThreshold: 0.3
@@ -1639,19 +1640,13 @@ dynamicsDemo = (controller, opts) ->
                 computePath()
                 dragHook vectorIn
 
+        minorIterator = (i) ->
+            [vectorsOut[i][0], vectorsOut[i][1], vectorsOut[i][2]] = vectorsOut[i-1]
+            dynView.matrixOrigCoords.applyToVector3Array vectorsOut[i]
+
         computeOut = () ->
             return unless params["Test vector"]
-
-
-            [vectorsOut[1][0], vectorsOut[1][1], vectorsOut[1][2]] = vectorsOut[0]
-            dynView.matrixOrigCoords.applyToVector3Array vectorsOut[1]
-            [vectorsOut[2][0], vectorsOut[2][1], vectorsOut[2][2]] = vectorsOut[1]
-            dynView.matrixOrigCoords.applyToVector3Array vectorsOut[2]
-            [vectorsOut[3][0], vectorsOut[3][1], vectorsOut[3][2]] = vectorsOut[2]
-            dynView.matrixOrigCoords.applyToVector3Array vectorsOut[3]
-            [vectorsOut[4][0], vectorsOut[4][1], vectorsOut[4][2]] = vectorsOut[3]
-            dynView.matrixOrigCoords.applyToVector3Array vectorsOut[4]
-             
+            minorIterator(i) for i in [1..numPoints]
             updateCaption()
 
         @setVec = (vec) ->
@@ -1676,7 +1671,7 @@ dynamicsDemo = (controller, opts) ->
         path = ([0,0,0] for [0..100])
         computePath = () =>
             return unless params["Show path"]
-            vec = vectorIn.slice()
+            vec = vectorsOut[0].slice()
             dynView.coordMatInv.applyToVector3Array vec
             controller.current.makePath vec, path
         viewT.array
@@ -1685,9 +1680,9 @@ dynamicsDemo = (controller, opts) ->
             live:     true
             data:     path
         pathElt = viewT.line
-            color:    new Color("orange").arr()
+            color:    vecColor.darken(-0.3).arr()
             width:    5
-            opacity:  1
+            opacity:  0.3
             zBias:    0
             zIndex:   4
 
