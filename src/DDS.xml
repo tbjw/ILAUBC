@@ -2,6 +2,7 @@
 
 <!--********************************************************************
 Copyright 2019 Dan Margalit and Joseph Rabinoff
+Copyright 2020 Ben Williams
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -388,12 +389,14 @@ the license is included in gfdl.xml.
 
        	 <p> There is considerable divirsity in how discrete dynamial systems specified by <m>v_{t+1} = A v_t</m> can
 	 behave, even when we restrict our attention to <m>2 \times 2</m> matrices. The following examples do not
-	 cover every possibility, but they should be enough to give you the tools to understand almost every case.
+	 cover every possibility, but they should be enough to give you the tools to understand every case.
 	 </p>
 
        
 
-	   <p>Suppose <m>A</m> is a diagonalizable<m>2 \times 2</m> matrix with two eigenvalues <m>\lambda_1, \lambda_2</m>, both of
+	   
+	 <example>
+	   <p>Suppose <m>A</m> is a diagonalizable <m>2 \times 2</m> matrix with two eigenvalues <m>\lambda_1, \lambda_2</m>, both of
 	   which satisfy <m>0 &lt; \lambda &lt;  1</m>. As before, a general <m>v_0</m> can  be written as
 	   <me> v_0 = c_1w_1 + c_2 w_2 </me>
 	   where <m>w_1, \, w_2</m> are eigenvectors of <m>A</m>. We deduce that
@@ -401,11 +404,12 @@ the license is included in gfdl.xml.
 	   which converges to the origin no matter what initial vector is chosen. We say the origin is an
 	   <term>attractor</term><idx><h>attractor</h></idx> in this case.
 	   </p>
-	   <example>
-	     <figure xml:id="figAttractor"><caption></caption><mathbox
-       source="demos/dynamics3.html?mat=0.6,0.2:0.3,0.7&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=9,7&amp;flow=false&amp;matname=A&amp;vecname=v"
-       height="600px"/></figure>
-	     <p>In this example, the eigenvalues of <m>A</m> are <m>\lambda_1 = 0.9</m> and <m>\lambda_2 = 0.4</m>. We
+	   
+	   
+	   <figure xml:id="figAttractor"><caption></caption><mathbox
+	   source="demos/dynamics3.html?mat=0.6,0.2:0.3,0.7&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=9,7&amp;flow=false&amp;matname=A&amp;vecname=v"
+	   height="600px"/></figure>
+	   <p>In this example, the eigenvalues of <m>A</m> are <m>\lambda_1 = 0.9</m> and <m>\lambda_2 = 0.4</m>. We
 	     can write down associated eigenvectors: <m>w_1 = \vec{1 1}</m> and <m>w_2 = \vec{-1 1}</m>. Both
 	     <m>\lambda_1</m> and <m>\lambda_2</m> satisfy <m> \lim_{n \to \infty} \lambda^n = 0</m>, and as a
 	     consequence, the origin is an attractor. 
@@ -413,7 +417,7 @@ the license is included in gfdl.xml.
 
 	     <p> A subtle point is that even though both eigenvalues are between <m>0</m> and <m>1</m>, nonetheless the
 	     larger of the two eigenvalues <m> \lambda_1 = 0.9</m> still influences how the system behaves in the long
-	     run more than the smaller eigenvalue <m>\lambda_2 = 0.4</m>. If we write
+	     run more than the smaller eigenvalue <m>\lambda_2 = 0.4</m> does. If we write
 	     <me>  v_0 = c_1w_1 + c_2 w_2 = c_1 \vec{1 1} + c_2\vec{-1 1} </me>
 	     then
 	     <me> v_t = c_1\vec{(0.9)^t1 (0.9)^t1}+c_2\vec{(0.4)^t(-1) (0.4)^t} = \vec{c_1(0.9)^t-c_2(0.4)^t
@@ -423,21 +427,234 @@ the license is included in gfdl.xml.
 	     To see what happens as <m>t \to \infty</m>, we can do a limit calculation
 	     <me> \lim_{t \to \infty} r_t = \lim_{t \to \infty}
 	     \frac{c_1-c_2\frac{(0.4)^t}{(0.9)^t}}{c_1+c_2\frac{(0.4)^t}{(0.9)^t}} = \frac{ c_1 - 0}{c_1 + 0} = 1</me>
-	     provided <m>c_1 \neq 0</m>. </p>
+	     provided <m>c_1 \neq 0</m>.</p>
 	     <p>This means that as <m>t</m> becomes larger and larger, the vector <m>v_t</m> gets closer and closer to
 	     the line spanned by <m>w_1= \vec{1 1}</m>, unless <m>v_0</m> started out in the <m>w_2</m>-eigenspace (in
-	     this case, <m>v_t</m> will lie in the <m>w_2</m>-eigenspace for all values of <m>t</m>.</p>
-       </example>
+	     this case, <m>v_t</m> will lie in the <m>w_2</m>-eigenspace for all values of <m>t</m>).</p>
+	   </example>
+
+	   <example>
+	     <p>The case of two eigenvalues <m> \lambda_1,\, \lambda_2 > 1</m> is similar to that of two eigenvalues <m>
+	     0 &lt; \lambda &lt; 1 </m>. The difference is that the sequence <m>v_0, v_1, \dots </m> moves away from,
+	     rather than toward, the origin. In this case, the origin is said to be a <term>repeller</term>.</p>
+	     <figure><caption></caption><mathbox
+       source="demos/dynamics3.html?mat=1.92,-0.36:0.24,1.08&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=-1.1,-4.3&amp;flow=false&amp;matname=A&amp;vecname=v"
+       height="600px"/></figure>
+	   </example>
 
      
-       
-       
-       
+	   <example>
+	     <p>Here is an example where the matrix <m>A</m> has two repeated eigenvalues and is diagonalizable</p>
+	     <figure><caption></caption><mathbox
+       source="demos/dynamics3.html?mat=1.5,0:0,1.5&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=1,-2&amp;flow=false&amp;matname=A&amp;vecname=v"
+       height="600px"/></figure>
+	     <p>In this case, the analysis of the model is particularly simple. Every nonzero vector is an eigenvector
+	     for this <m>A</m>, since it has a <m>2</m>-dimensional eigenspace. We calculate that <m>v_t= A^tv_0 =
+	     (1.5)^t v_0</m> for all <m>t</m>.</p>
+	   </example>
+
+
+	   <example>
+	     <p> In section <xref provisional="stochastic"/>, we will devote a lot of attention to matrices where
+	     (exactly) one of the eigenvalues is <m>1</m>.</p>
+
+	     <figure><caption></caption><mathbox
+	     source="demos/dynamics3.html?mat=1,0.3:0,0.8&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=4,-7&amp;flow=false&amp;matname=A&amp;vecname=v"
+       height="600px"/></figure>
+	   </example>
+	 </paragraphs>
+
+	 <paragraphs>
+	   <title>Possibly negative eigenvalues</title>
+
+	   <p>
+	       We have said nothing about cases where one or both eigenvalues of <m>A</m> are negative. A negative eigenvalue <m> \lambda_1
+	       &lt; 0</m> causes the coefficient of the corresponding eigenvector to switch signs from positive to
+	       negative or back again every time <m>A</m> is applied.
+	     </p>
+
+	     <p> With the exception that the negative eigenvalue or eigenvalues cause the vectors <m>v_0, v_1, v_2,
+	     \dots</m> to &#8220;jump&#8221; back and forth, the analysis of discrete dynamical systems with negative
+	     eigenvalues is very similar to that of positive eigenvalues.
+	     </p>
+
+	     <p>There are three main cases for a <m>2\times 2</m>-matrix <m>A</m> with two distinct real eigenvalues <m>
+	     \lambda_1, \lambda_2</m>
+	     <ul>
+	         <li>Both of <m> |\lambda_1|, |\lambda_2| </m> are  bigger than <m>0</m> but less than <m>1</m>. In this
+		 case, the origin is an attractor, which is to say the sequence <m>v_0, v_1, v_2, \dots </m> will always
+		 approach the origin.</li>
+	        <li>One of <m> |\lambda_1|, |\lambda_2| </m> is greater than <m>1</m>, and the other is less than <m>1</m>. In this case, the origin is a
+	       saddle point, which is to say the sequence <m>v_0, v_1, v_2, \dots </m> can go towards the origin for a
+		time, before heading away again (unless it approaches exactly along the eigenspace for the eigenvalue of
+		smaller magnitude).</li>
+	       <li>Both of <m> |\lambda_1|, |\lambda_2| </m> are greater than <m>1</m>. In this case, the origin is a
+	       repeller, which is to say the sequence <m>v_0, v_1, v_2, \dots </m> will always go away from the
+	       origin.</li>
+	     </ul>
+	     </p>
+
+	     <p>Of course, this discussion leaves out a great many special cases. What if <m>|\lambda_1|=1</m>, or
+	     <m>\lambda_2 = 0</m>? There are too many of these for it to be helpful for us to cover them all, but by
+	     reference to <xref provisional="fundamental formula"/> and a little calculus, you can study them all.
+	     </p>
+
+	     <example>
+	       <p>Here is a typical example with one positive and one negative eigenvalue. Note that the magnitudes
+	       <m>|\lambda_1| &lt; 1</m> and  <m>1 &lt;  |\lambda_2|</m> imply the origin is a saddle point. The sequence <m>v_0, v_1, v_2,
+	       \dots </m> goes off to <m>\infty</m> along the <m>\lambda_2</m>-eigenspace. Since <m>\lambda_1</m> is
+	       negative, the sequence keeps switching from one side of this eigenspace to the other.</p>
+	     
+	         <figure><caption><m>-1 &lt; \lambda_1 &lt; 0</m> and <m>1 &lt; \lambda_2</m></caption><mathbox
+	     source="demos/dynamics3.html?mat=1,1:1,0&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=-3,2&amp;flow=false&amp;matname=A&amp;vecname=v"
+       height="600px"/></figure>
+	   </example>
+	   
+	   <example>
+<p> Here is an example where there is a repeated eigenvalue but the matrix is not diagonalizable. Analysis of discrete
+dynamical systems is harder than in the diagonalizable case. We will not say much about it here.
+</p>
+<figure><caption></caption><mathbox
+       source="demos/dynamics3.html?mat=1.2,-0.2:0.8,0.4&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=4,-1&amp;flow=false&amp;matname=A&amp;vecname=v"
+       height="600px"/></figure>
+	   </example>
      </paragraphs>
+   </subsection>
+
+   <subsection>
+     <title>Discrete dynamical systems with complex eigenvalues</title>
+     <p>It can happen that a real matrix <m>A</m> has complex eigenvalues. The associated dynamical systems show
+     spiralling behaviour. 
+     </p>
+
+     <example>
+       <p>Suppose <me>A=\mat{1.1 -0.1; 0.1 1.1}.</me> In this case there are two complex-conjugate eigenvalues:
+       <m>\lambda_1=\frac{11}{10} + \frac{i}{10}</m> and <m>\lambda_2=\frac{11}{10} - \frac{i}{10}</m>. They have associated eigenvectors <me>w_1  =
+       \vec{ i 1}\quad \text{and} \quad >w_2 = \vec{-i 1}.</me> 
+       </p>
+
+       <figure xml:id="figComplexOutward"><caption></caption><mathbox
+       source="demos/dynamics3.html?mat=1.1,-0.1:0.1,1.1&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=-3,3&amp;flow=false&amp;matname=A&amp;vecname=v"
+       height="600px"/></figure>
+
+       <p> Even though the eigenvalues and eigenvectors are not real-valued, we can still carry out our usual
+       calculations. For any given <m>v_0</m>, we can decompose it as a linear combination of eigenvectors for
+       <m>A</m>. For instance
+       <me>v_0 = \vec{-3,3} = \frac{3 + 3i}{2} \vec{i 1}  + \frac{3-3i}{2}\vec{-i 1}.</me>
+       This allows us to write
+       <me>v_t = \left(\frac{11}{10} + \frac{i}{10}\right)^t \frac{3 + 3i}{2} \vec{i 1}  + \left(\frac{11}{10} -
+       \frac{i}{10}\right)^t\frac{3-3i}{2}\vec{-i 1}.</me>
+       You can verify that even though this calculation involves imaginary numbers, the vector <m>v_t</m> always has
+       real entries.
+       </p>
+     </example>
+
 
      
- </subsection>
- <subsection>
+     <p>Previously, we saw that magnitude of the eigenvalues, i.e., whether <m>|\lambda| &lt; 1</m> or <m>|\lambda| >
+       1 </m>, had a big effect on the long-term behaviour of the model. The case of complex eigenvalues is the same,
+       with the important modification that we use the <term>complex modulus</term> to measure the magnitude of the
+       eigenvalues. If
+       <me> z = x + i y \quad \text{ where $x$ and $y$ are in $\R$, then} \quad |z| = \sqrt{x^2 + y^2}. </me>
+       The modulus <m>|z|</m>
+       has the property that if <m>w, \, z</m> are two complex numbers, then <m>|wz| = |w|\cdot |z|</m>. It
+       also has the property that <m> |z| = |\bar z|</m>.     
+     </p>
+     <p>
+       You can see immediately that <m>|z| = 0 </m> if and only if <m>z=0</m>. We say that a sequence of complex numbers
+       <m>(z_1, z_2, \dots)</m> <term>tends to infinity</term> if the sequence <m>(|z_1|, |z_2|, \dots  )</m> of
+       positive real numbers keeps growing without bound. If <m>z</m> is a complex number, then as <m>t \to \infty</m>
+       <me> z^t \text{ tends to } \begin{cases}\text{infinity if $|z| > 1$} \\ \text{$0$ if $|z| &lt; 1$.} \end{cases}</me>
+     </p>
+     <p>If <m>A</m> is a real <m>2 \times 2</m>-matrix with non-real eigenvalues, <m> \lambda_1, \,
+     \lambda_2 =\bar \lambda_1</m>, then there are three possibilities for the long-term behaviour of the associated
+     discrete dynamical system.
+     <ul>
+       <li> If <m> |\lambda_1|=|\lambda_2| &lt; 1 </m>, then the vectors <m> v_0 , v_1, v_2, \dots</m> will spiral
+       inwards, towards the origin, which is an attractor.
+       </li>
+       <li> If <m> |\lambda_1|=|\lambda_2| = 1 </m>, then the vectors <m> v_0 , v_1, v_2, \dots</m> will move around the
+       origin in a periodic or quasi-periodic way, neither getting closer or farther away on average.
+       </li>
+       <li> If <m> |\lambda_1|=|\lambda_2| > 1 </m>, then the vectors <m> v_0 , v_1, v_2, \dots</m> will spiral
+       outwards, away from the origin, which is a repeller.
+       </li>
+     </ul>
+     </p>
+
+     <example>
+       <p>Here is an example of a discrete dynamical system where the eigenvalues are complex numbers satisfying 
+       <m>|\lambda|=1</m>. Observe the rotating behaviour.</p>
+        <figure xml:id="figComplexQuasiperiod"><caption></caption><mathbox
+	source="demos/dynamics3.html?mat=-3.06123569811873,-4.19535764538226:1.67814305815290,1.97319347633999&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=10&amp;y=-3,3&amp;flow=false&amp;matname=A&amp;vecname=v"
+       height="600px"/></figure>
+   
+     <p>This system is not exactly periodic: there is no <m>t > 0</m> such that <m>v_t = v_0</m>.</p>
+     </example>
+     <example>
+       <title>A periodic discrete dynamical system</title>
+       
+     <p>It is also possible to have a truly periodic system. In the case illustrated, the matrix <m>A</m> satisfies the
+     equation <m>A^7=I_2</m>. This means that the sequence <m>v_0, Av_0 , A^2 v_0 , \dots </m> repeats itself every <m>7</m>terms.
+     </p>
+   <figure xml:id="figComplexPeriod"><caption>A discrete dynamical system of period 7</caption><mathbox
+	source="demos/dynamics3.html?mat=-1.72200464554536,-3.90915741234015:1.56366296493606,2.9689842492628&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=10&amp;y=-3,3&amp;flow=false&amp;matname=A&amp;vecname=v"
+	height="600px"/></figure>
+     </example>
+   </subsection>
+
+   <subsection>
+     <title>Discrete dynamical systems in more than 2 dimensions</title>
+     <p>
+       The basic principles for discrete dynamical systems in more than 2 dimensions remain the same as in 2
+       dimensions. As before, we will concentrate on the case where <m>A</m> is diagonalizable.
+     </p>
+
+     <p>Even in the <m>3 \times 3</m> case, there are many possibilities for how a discrete dynamical system can
+     behave. It would not be helpful to list every possibility here.
+     </p>
+
+     <p>In general, if <m>A</m> is an <m>n \times n</m> diagonalizable matrix, then we may find a basis <m> w_1, \dots,
+     w_n</m> that consists of eigenvectors of <m>A</m>, with associated eigenvalues <m>\lambda_1, \dots, \lambda_n</m>. Any initial state vector <m>v_0</m> can be written as
+     <me> v_0 = c_1 w_1 + c_2 w_2 + \dots + c_n w_n</me>
+     and then
+     <me> v_t = A^t v_0  = \lambda_1^t c_1 w_1 + \lambda_2^t c_2 w_2 + \dots + \lambda_n^t c_n w_n.</me>
+     Questions about the long-term behaviour can then be answered by using limit arguments from calculus.
+     </p>
+
+     <example>
+       <p>Consider the matrix <m>A</m> as in the <xref ref="threeDExample"/> below. In this case, the matrix <m>A</m> has three
+       eigenvalues
+       <me> \lambda_1 = \frac{1+3i}{10}, \quad \lambda_2 = \frac{1-3i}{10}, \quad \lambda_3 = 2.</me>
+       with associated eigenvectors
+       <me> w_1 = \vec{1 -2 1-i}, \quad w_2 = \vec{1 -2 1+i}, \quad w_3 = \vec{1 0 1},</me>
+       where <m>w_1</m> and <m>w_2</m> do not have real-number entries.</p>
+
+       
+       <aside><p>We observe that for a matrix with real-number entries, non-real eigenvalues come in conjugate pairs. It is not
+       possible for a real-number <m>3 \times 3</m>-matrix to have three non-real eigenvalues.</p>
+       </aside>
+       <figure xml:id="threeDExample"><caption>A representation of a <m>3</m>-dimensional discrete dynamical system</caption>
+       <mathbox source="demos/dynamics3.html?mat=0.1,0.3:-0.3,0.1&amp;eigenz=2&amp;v1=0,0,1&amp;v2=1,-2,1&amp;v3=-1,0,1&amp;vec=false&amp;path=false" height="600px"/>
+       </figure>
+       <p>
+	 Any vector <m>v_0</m> can be written as a linear combination
+	 <me> v_0 = c_1 w_1 + c_2 w_2 + c_3 w_3</me>
+	 and so the vector <m>v_t = Av_0</m> can be written as a sum of three vectors:
+	 <me> v_t = \left( \frac{1+3i}{10} \right)^t c_1 \vec{1 -2 1-i} + \left(\frac{1-3i}{10}\right)^t c_2 \vec{1 -2
+	 1+i} + 2^t c_3 \vec{1 0 1}.</me>
+	 As <m>t \to \infty</m>, the first two terms become smaller and smaller, because
+	 <me>\left|\frac{1+3i}{10}\right| = \left|\frac{1-3i}{10}\right|= \frac{1}{\sqrt{10}}</me>
+	 while the last term takes over (provided <m>c_3 \neq 0</m>). 	 
+       </p>
+       <p> The long-term behaviour of <m>v_0, v_1, v_2, \dots</m> in this system is to spiral in towards the
+       <m>2</m>-eigenspace, the span of <m>\vec{1 0 1}</m>, and to be repelled away from the origin along this
+       eigenspace.
+       </p>
+     </example>
+   </subsection>
+   
+   <subsection>
  <title>Stochastic Matrices and the Steady State</title>
 
  <p>

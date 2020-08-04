@@ -706,7 +706,7 @@ class Circle extends Complex
 class Spiral extends Complex
     makeReference: () =>
         ret = []
-        close = 0.05
+        close = 0.1
         # How many iterations does it take to get from close to farthest?
         s = if @scale > 1 then @scale else 1/@scale
         iters = (Math.log(@extents.rad) - Math.log(close))/Math.log(s)
