@@ -52,5 +52,6 @@
   <uri resource="systems-eqns.xml" uri="../mathbook/build/pretext.rnc"/>
   <uri resource="systems-of-linear-equations.xml" uri="../mathbook/build/pretext.rnc"/>
   <uri resource="one-one-onto.xml" uri="../mathbook/build/pretext.rnc"/>
-  <uri resource="DDS.xml" uri="../mathbook/build/pretext.rnc"/>
+  <uri resource="dds.xml" uri="../mathbook/build/pretext.rnc"/>
+  <uri resource="stochastic2.xml" uri="../mathbook/build/pretext.rnc"/>
 </locatingRules>

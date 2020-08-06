@@ -365,7 +365,8 @@ Finally, we spend <xref ref="stochastic-matrices"/> presenting a common kind of 
       <xi:include href="./similarity.xml" />
       <xi:include href="./diagonalization.xml" />
       <xi:include href="./cplx-eigenvals.xml" />
-      <xi:include href="./DDS.xml" />
+      <xi:include href="./dds.xml" />
+      <xi:include href="./stochastic2.xml"/>
 
     </chapter>
 
