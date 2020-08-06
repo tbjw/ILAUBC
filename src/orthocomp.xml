@@ -19,7 +19,7 @@ the license is included in gfdl.xml.
       <li><em>Recipes:</em> shortcuts for computing the orthogonal complements of common subspaces.</li>
       <li><em>Picture:</em> orthogonal complements in <m>\R^2</m> and <m>\R^3</m>.</li>
       <li><em>Theorem:</em> row rank equals column rank.</li>
-      <li><em>Vocabulary words:</em> <term>orthogonal complement</term>, <term>row space</term>.</li>
+      <li><em>vocabulary:</em> <term>orthogonal complement</term>, <term>row space</term>.</li>
     </ol>
   </objectives>
 

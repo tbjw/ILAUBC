@@ -19,7 +19,7 @@ the license is included in gfdl.xml.
       <li><em>Recipe:</em> compute the matrix of a linear transformation.</li>
       <li><em>Theorem:</em> linear transformations and matrix transformations.</li>
       <li><em>Notation:</em> the <term>standard coordinate vectors</term> <m>e_1,e_2,\ldots</m>.</li>
-      <li><em>Vocabulary words:</em> <term>linear transformation</term>, <term>standard matrix</term>, <term>identity matrix</term>.</li>
+      <li><em>vocabulary:</em> <term>linear transformation</term>, <term>standard matrix</term>, <term>identity matrix</term>.</li>
     </ol>
   </objectives>
 

@@ -19,7 +19,7 @@ the license is included in gfdl.xml.
       <li><em>Recipe:</em> find the steady state of a positive stochastic matrix.</li>
       <li><em>Picture:</em> dynamics of a positive stochastic matrix.</li>
       <li><em>Theorem:</em> the Perron<ndash/>Frobenius theorem.</li>
-      <li><em>Vocabulary words:</em> <term>difference equation</term>, <term>(positive) stochastic matrix</term>, <term>steady state</term>, <term>importance matrix</term>, <term>Google matrix</term>.</li>
+      <li><em>vocabulary:</em> <term>difference equation</term>, <term>(positive) stochastic matrix</term>, <term>steady state</term>, <term>importance matrix</term>, <term>Google matrix</term>.</li>
     </ol>
   </objectives>
 

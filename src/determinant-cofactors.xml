@@ -16,7 +16,7 @@ the license is included in gfdl.xml.
     <ol>
       <li>Learn to recognize which methods are best suited to compute the determinant of a given matrix.</li>
       <li><em>Recipes:</em> the determinant of a <m>3\times 3</m> matrix, compute the determinant using cofactor expansions.</li>
-      <li><em>Vocabulary words:</em> <term>minor</term>, <term>cofactor</term>.</li>
+      <li><em>vocabulary:</em> <term>minor</term>, <term>cofactor</term>.</li>
     </ol>
   </objectives>
 
