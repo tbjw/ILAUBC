@@ -328,10 +328,10 @@ the license is included in gfdl.xml.
         <em>Recipes:</em> these are algorithms that are generally straightforward (if sometimes tedious), and are usually done by computer in real life.  They are nonetheless important to learn and to practice.
       </li>
       <li>
-        <em>vocabulary:</em> forming a conceptual understanding of the subject of linear algebra means being able to communicate much more precisely than in ordinary speech.  The vocabulary have precise definitions, which must be learned and used correctly.
+        <em>Vocabulary:</em> forming a conceptual understanding of the subject of linear algebra means being able to communicate much more precisely than in ordinary speech.  The vocabulary have precise definitions, which must be learned and used correctly.
       </li>
       <li>
-        <em>Essential vocabulary:</em> these vocabulary are essential in that they form the essence of the subject of linear algebra.  For instance, if you do not know the definition of an eigenvector, then by definition you cannot claim to understand linear algebra.
+        <em>Essential Vocabulary:</em> these vocabulary are essential in that they form the essence of the subject of linear algebra.  For instance, if you do not know the definition of an eigenvector, then by definition you cannot claim to understand linear algebra.
       </li>
       <li>
         <em>Theorems:</em> these describe in a precise way how the objects of interest relate to each other.  Knowing which recipe to use in a given situation generally means recognizing which vocabulary to use to describe the situation, and understanding which theorems apply to that problem.

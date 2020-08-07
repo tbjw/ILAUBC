@@ -20,7 +20,7 @@ the license is included in gfdl.xml.
       <li>Understand when a matrix is in (reduced) row echelon form.</li>
       <li>Learn which row reduced matrices come from inconsistent linear systems.</li>
       <li><em>Recipe:</em> the row reduction algorithm.</li>
-      <li><em>vocabulary:</em> <term>row operation</term>, <term>row equivalence</term>, <term>matrix</term>, <term>augmented matrix</term>, <term>pivot</term>, <term>(reduced) row echelon form</term>.</li>
+      <li><em>Vocabulary:</em> <term>row operation</term>, <term>row equivalence</term>, <term>matrix</term>, <term>augmented matrix</term>, <term>pivot</term>, <term>(reduced) row echelon form</term>.</li>
     </ol>
   </objectives>
 

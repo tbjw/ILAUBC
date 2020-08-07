@@ -5,5 +5,8 @@
 
 <xsl:param name="theme.sponsor" select="'http://www.duke.edu/'"/>
 <xsl:param name="theme.online" select="'http://https://services.math.duke.edu/~jdr/ila/'"/>
+<xsl:param name="latex.preamble.late">
+  <xsl:text>\frenchspacing</xsl:text>
+</xsl:param>
 
 </xsl:stylesheet>

@@ -16,7 +16,7 @@ the license is included in gfdl.xml.
     <ol>
       <li>Fill in</li>
       <li><em>Pictures:</em> solutions of systems of linear equations, parameterized solution sets.</li>
-      <li><em>vocabulary:</em> <term>consistent</term>, <term>inconsistent</term>, <term>solution set</term>.</li>
+      <li><em>Vocabulary:</em> <term>consistent</term>, <term>inconsistent</term>, <term>solution set</term>.</li>
     </ol>
   </objectives>
 
@@ -210,9 +210,9 @@ the license is included in gfdl.xml.
     <p>The power of using these spaces is the ability to <em>label</em> various objects of interest, such as geometric objects and solutions of systems of equations, by the points of <m>\R^n</m>.</p>
 
     <example>
-      <title>Color Space</title>
+      <title>color Space</title>
       <idx><h>Space</h><h>color space</h></idx>
-      <idx><h>Color space</h></idx>
+      <idx><h>color space</h></idx>
       <p>All colors you can see can be described by three quantities: the amount of red, green, and blue light in that color.  (Humans are <url href="https://en.wikipedia.org/wiki/Trichromacy">trichromatic</url>.)  Therefore, we can use the points of <m>\R^3</m> to <em>label</em> all colors: for instance, the point <m>(.2, .4, .9)</m> labels the color with <m>20\%</m> red, <m>40\%</m> green, and <m>90\%</m> blue intensity.
       <latex-code><![CDATA[
 \begin{tikzpicture}[x={(1cm,0cm)}, y={(-.5cm,-.3cm)}, z={(0cm,1cm)}, scale=1,

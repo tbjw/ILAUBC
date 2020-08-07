@@ -18,7 +18,7 @@ the license is included in gfdl.xml.
       <li>Find all eigenvalues of a matrix using the characteristic polynomial.</li>
       <li>Learn some strategies for finding the zeros of a polynomial.</li>
       <li><em>Recipe:</em> the characteristic polynomial of a <m>2\times 2</m> matrix.</li>
-      <li><em>vocabulary:</em> <term>characteristic polynomial</term>, <term>trace</term>.</li>
+      <li><em>Vocabulary:</em> <term>characteristic polynomial</term>, <term>trace</term>.</li>
     </ol>
   </objectives>
 
