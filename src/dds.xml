@@ -427,7 +427,7 @@ the license is included in gfdl.xml.
      
 	    <p>As a real-world matter, however, observe that moving <m>v_0</m> to the right has bad consequences for the
 	    frogs and midges. If, for example, we move <m>v_0</m> to <m>v_0 = \vec{8 5}</m>, then <me> v_0 = -0.75
-	    \vec{1 5} + 7.25\vec{1 1}</me> so that applying <xref ref="ddsRecipe"/> gives us <me>\vec{f_t
+	    \vec{1 5} + 7.25\vec{1 1}</me> so that applying the recipe gives us <me>\vec{f_t
 	    m_t}=v_t = (-0.75)(1.2)^t\vec{1 5} + (7.25)(0.8)^t\vec{1 1}.</me> As <m>t</m> becomes larger, both
 	    <m>f_t</m> and <m>m_t</m> tend to <m>-\infty</m>. This is an abstract mathematical statement, and does not
 	    make sense for the frogs and midges. In the real world, as soon as the number of midges reaches <m>0</m>,
@@ -452,7 +452,7 @@ the license is included in gfdl.xml.
 	   <p>Suppose <m>A</m> is a diagonalizable <m>2 \times 2</m> matrix with two eigenvalues <m>\lambda_1,
 	   \lambda_2</m>, both of which satisfy <m>0 &lt; \lambda &lt; 1</m>. As before, a general <m>v_0</m> can be
 	   written as <me> v_0 = c_1w_1 + c_2 w_2 </me> where <m>w_1, \, w_2</m> are eigenvectors of <m>A</m>. We deduce
-	   that <me> v_t = c_1 \lambda_1^t w_1 + c_2 \lambda_2^t w_2 </me>, by use of <xref ref="ddsRecipe"/>. The
+	   that <me> v_t = c_1 \lambda_1^t w_1 + c_2 \lambda_2^t w_2 </me>, by use of the recipe. The
 	   sequence of vectors <m>v_t</m> converges to the origin no matter what
 	   initial vector is chosen. We say the origin is an <term>attractor</term><idx><h>attractor</h></idx> in this
 	   case.
@@ -562,7 +562,8 @@ dynamical systems is harder than in the diagonalizable case. We will not say muc
 
 	     <p>Of course, this discussion leaves out a great many special cases. What if <m>|\lambda_1|=1</m>, or
 	     <m>\lambda_2 = 0</m>? There are too many of these for it to be helpful for us to cover them all, but by
-	     reference to <xref ref="ddsRecipe"/> and a little calculus, you can study them all.
+	     use of the recipe and a little calculus, you can study almost all of them. The only case you might not be
+	     equipped to handle is that of a non-diagonalizable matrix <m>A</m>.
 	     </p>
 
 	     <example>
