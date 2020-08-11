@@ -71,11 +71,11 @@ the license is included in gfdl.xml.
       </latex-code>
     </p>
 
-    <note hide-type="true">
+    <note hide-type="true"  xml:id="appAoCN">
       <title>Arithmetic of Complex Numbers</title>
       <idx><h>Complex numbers</h><h>arithmetic of</h></idx>
       <p>
-        We can perform all of the usual arithmetic operations on complex numbers: add, subtract, multiply, divide, absolute value.  There is also an important new operation called complex conjugation.
+        We can perform all of the usual arithmetic operations on complex numbers: add, subtract, multiply, divide, absolute value. There is also an important new operation called complex conjugation.
         <ul>
           <li>
             <em>Addition</em> is performed componentwise:
@@ -109,7 +109,8 @@ the license is included in gfdl.xml.
             <me>
               |a+bi| = \sqrt{a^2 + b^2}.
             </me>
-            One chacks that <m>|zw| = |z|\cdot|w|.</m>
+            One checks that <m>|zw| = |z|\cdot|w|.</m> Beware that <m>|z+w|</m> is usually less than <m>|z| + |w|,</m>
+	    in contrast to the situation for positive real numbers.
           </li>
           <li>
             <em>Division</em> by a nonzero real number proceeds componentwise:
@@ -119,7 +120,8 @@ the license is included in gfdl.xml.
             <em>Division</em> by a nonzero complex number requires multiplying the numerator and denominator by the complex conjugate of the denominator:
             <me>\frac zw = \frac{z\bar w}{w\bar w} = \frac{z\bar w}{|w|^2}.</me>
             For example,
-            <me>\frac{1+i}{1-i} = \frac{(1+i)^2}{1^2+(-1)^2} = \frac{1+2i+i^2}2 = i.</me>
+            <me>\frac{2+i}{1-i} =\frac{2+i}{1-i}\frac{1+i}{1+i} = \frac{(2+i)(1+i)}{1^2+(-1)^2} = \frac{1+3i}2= \frac 12 +
+	    \frac{3}2i.</me>
           </li>
           <li>
             <idx><h>Complex numbers</h><h>real and imaginary parts of</h></idx>
