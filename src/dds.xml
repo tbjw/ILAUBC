@@ -509,9 +509,9 @@ the license is included in gfdl.xml.
 	   </example>
 
 
-	   <example>
+	   <example xml:id="exampleEig1">
 	     <title>One eigenvalue equal to <m>1</m></title>
-	     <p> In section <xref provisional="stochastic"/>, we will devote a lot of attention to matrices where
+	     <p> In section <xref provisional="stochastic2"/>, we will devote a lot of attention to matrices where
 	     (exactly) one of the eigenvalues is <m>1</m>.</p>
 
 	     <figure><caption></caption><mathbox
@@ -591,7 +591,7 @@ dynamical systems is harder than in the diagonalizable case. We will not say muc
        <title>Complex eigenvalues</title>
        <p>Suppose <me>A=\mat{1.1 -0.1; 0.1 1.1}.</me> In this case there are two complex-conjugate eigenvalues:
        <m>\lambda_1=\frac{11}{10} + \frac{i}{10}</m> and <m>\lambda_2=\frac{11}{10} - \frac{i}{10}</m>. They have associated eigenvectors <me>w_1  =
-       \vec{ i 1}\quad \text{and} \quad >w_2 = \vec{-i 1}.</me> 
+       \vec{ i 1}\quad \text{and} \quad w_2 = \vec{-i 1}.</me> 
        </p>
 
        <figure xml:id="figComplexOutward"><caption></caption><mathbox
@@ -614,30 +614,9 @@ dynamical systems is harder than in the diagonalizable case. We will not say muc
      
      <p>Previously, we saw that magnitude of the eigenvalues, i.e., whether <m>|\lambda| &lt; 1</m> or <m>|\lambda| >
        1 </m>, had a big effect on the long-term behaviour of the model. The case of complex eigenvalues is the same,
-       with the important modification that we use the <term>complex modulus</term> to measure the magnitude of the
-     eigenvalues.</p>
-
-     <definition>
-       <title>The modulus of a complex number</title>
-       <idx><h>Modulus</h></idx><notation><usage>|z|</usage><description>Modulus of
-       <m>z</m>.</description></notation><statement>
-       <p> If  <m> z = x + i y</m> is a complex number where <m>x</m> and <m>y</m> are both real, then the
-       <term>modulus</term> of <m>z</m>, written <m>|z|</m> is the nonnegative real number <me> |z| =  \sqrt{x^2 +
-       y^2}. </me>
-       </p>
-     </statement>
-     </definition>
-
-     <p>A useful formula for the complex modulus is that for any two complex numbers <m>z,\, w</m>, there is an equality
-     <me>|zw| = |z| |w|.</me>
-     Beware that <m>|z+w|</m> is usually less than <m>|z| + |w|</m>.
-     </p>
-
-      
-     <p>
-       If <m>|z| = 0 </m>, then <m>x^2 + y^2 = 0</m>, which can only happen for real numbers <m>x,\,y</m> if they are
-       both <m>0</m>. This implies that <m>|z| = 0</m> implies <m>z=0</m>.
-     </p>
+       with the important modification that we use the <term>complex absolute value</term> to measure the magnitude of the
+     eigenvalues. This is discussed more fully in <xref ref="appAoCN"/>.</p>      
+     
      <p> We say that a sequence of complex numbers
        <m>(z_1, z_2, \dots)</m> <idx><h>tend to infinity</h></idx><term>tends to infinity</term> if the sequence <m>(|z_1|, |z_2|, \dots  )</m> of
        positive real numbers keeps growing without bound. If <m>z</m> is a complex number, then as <m>t \to \infty</m>
@@ -738,7 +717,7 @@ dynamical systems is harder than in the diagonalizable case. We will not say muc
       <!-- <example> -->
       <!-- 	<title>The rabbits revisited</title> -->
       <!-- 	<p>Near the beginning of this section, we introduced an example about some rabbits, <xref -->
-      <!-- 	ref="ddsRabbitExample"/>. In this story -->
+      <!-- 	ref="In"/>. ddsRabbitExample this story -->
       <!-- 	<me>\mat{0 6 8; \frac12 0 0; 0 \frac12 0} v_t = v_{t+1}.</me> -->
       <!-- 	Write <m>A</m> for the <m>3 \times 3</m>-matrix above. -->
       <!-- 	</p> -->
