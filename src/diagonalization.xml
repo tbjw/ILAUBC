@@ -205,12 +205,8 @@ the license is included in gfdl.xml.
         \mat{x 0 0; 0 y 0; 0 0 z}^n = \mat{x^n 0 0; 0 y^n 0; 0 0 z^n}.
       </me>
       By this <xref ref="similarity-powers"/>, if <m>A = CDC\inv</m> then <m>A^n = CD^nC\inv</m>, so it is also easy to take powers of <em>diagonalizable</em> matrices.
-<restrict-version versions="1554 default">
-This will be very important in applications to difference equations in <xref ref="stochastic-matrices"/>.
-</restrict-version>
-<restrict-version versions="1553">
-This is often very important in applications.
-</restrict-version>
+
+      This will be very important in applications to discrete dynamical systems in <xref ref="dds"/> and <xref ref="stochastic2"/>.
     </p>
 
     <bluebox xml:id="diag-powers">

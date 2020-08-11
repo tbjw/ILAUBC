@@ -61,7 +61,12 @@ Free Documentation License"
 	 keeping track of multiple numbers at once. <term>Vectors</term> provide us with this notation. In the case of
 	 vectors with  2 or
 	 3 entries, there is a strong connection between vector algebra and geometry. This can be very helpful to
-	 us as we develop an intuition for vector algebra, even when there are more than 3 entries.
+	 us as we develop an intuition for vector algebra, even when there are more than 3 entries. We introduce vectors
+	 and discuss the associated geometry in <xref ref="vectors"/>.
+	 </p>
+	 <p> In <xref ref="spans"/> we introduce the concept of the <term>span</term> of a set of vectors. This is
+	 geometric concept, at least for vectors with <m>2</m> or <m>3</m> entries, that sets the groundwork for
+	 answering the most fundamental question about a system of linear equations: does it have any solutions?
 	 </p>
       </introduction>
       <xi:include href="./vectors.xml" />
@@ -122,24 +127,28 @@ Free Documentation License"
         </note>
 
         <p>
-          In order to answer the two questions listed above, we will use geometry.  This will be analogous to how you used parabolas in order to understand the solutions to a quadratic equation in one variable.  Specifically, this chapter is devoted to the geometric study of two objects:
+          In order to answer the two questions listed above, we will use geometry. This will be analogous to how you
+          used parabolas in order to understand the solutions to a quadratic equation in one variable. Specifically,
+          this chapter is devoted to the geometric study of two objects:
           <ol>
             <li>the solution set of a matrix equation <m>Ax=b</m>, and</li>
             <li>the set of all <m>b</m> that makes a particular system consistent.</li>
           </ol>
-          The second object will be called the column space of <m>A</m>.  The two objects are related in a beautiful way by the rank theorem in <xref ref="rank-thm"/>.
+          The first object, the solution set, will be introduced in <xref ref="solution-sets"/>. The second object will be called the column space of <m>A</m>. 
         </p>
 
 	<p>
-	Instead of parabolas and hyperbolas, our geometric objects are subspaces, such as lines and planes.  Our geometric objects will be something like 13-dimensional planes in <m>\R^{27}</m>, etc.  It is amazing that we can say anything substantive about objects that we cannot directly visualize.  
+	Instead of parabolas and hyperbolas, our geometric objects are subspaces, such as lines and planes.  Our
+	geometric objects will be something like 13-dimensional planes in <m>\R^{27}</m>, etc.  It is amazing that we
+	can say anything substantive about objects that we cannot directly visualize.
 	</p>
 
         <p>
-          We will develop a large amount of vocabulary that we will use to describe the above objects: vectors (<xref ref="vectors"/>), spans (<xref ref="spans"/>), linear independence (<xref ref="linear-independence"/>), subspaces (<xref ref="subspaces"/>), dimension (<xref ref="dimension"/>),
-<restrict-version versions="1554 default">
-  coordinate systems (<xref ref="bases-as-coord-systems"/>),
-</restrict-version>
-          etc.  We will use these concepts to give a precise geometric description of the solution set of any system of equations (<xref ref="solution-sets"/>).  We will also learn how to express systems of equations more simply using matrix equations (<xref ref="matrix-equations"/>).
+          We will develop a large amount of vocabulary that we will use to describe the above objects. In addition to
+	  the concept of the <term>span</term> of a set of vectors from <xref ref="spans"/>,  we will introduce linear independence (<xref ref="linear-independence"/>),
+          subspaces (<xref ref="subspaces"/>), dimension (<xref ref="dimension"/>), and bases (<xref ref="dimension"/>
+	  and <xref ref="bases-as-coord-systems"/>). Finally, we relate the dimension of the column space of <m>A</m> and the dimension of
+	  the solution set to <m>Ax = b</m> (strictly speaking, the solution set to <m>Ax=0</m>) in <xref ref="rank-thm"/>.
         </p>
       </introduction>
       <xi:include href="./solnsets.xml" />
@@ -351,11 +360,13 @@ Free Documentation License"
         <p>
           In <xref ref="eigenvectors"/>, we will define eigenvalues and eigenvectors, and show how to compute the latter; in <xref ref="characteristic-polynomial"/> we will learn to compute the former.
 <restrict-version versions="1554 default">
-          In <xref ref="similarity"/> we introduce the notion of <em>similar</em> matrices, and demonstrate that similar matrices do indeed behave similarly.  In <xref ref="diagonalization"/> we study matrices that are similar to diagonal matrices and in <xref ref="complex-eigenvalues"/> we study matrices that are similar to rotation-scaling matrices, thus gaining a solid geometric understanding of large classes of matrices. Finally, we spend <xref ref="stochastic-matrices"/> presenting a common kind of application of eigenvalues and eigenvectors to real-world problems, including searching the Internet using Google<rsq/>s PageRank algorithm.
-</restrict-version>
-<restrict-version versions="1553">
-  In <xref ref="diagonalization"/> we will use eigenvalues and eigenvectors to determine when a matrix is <q>similar</q> to a diagonal matrix, and we will see that the algebra and geometry of such a matrix is much simpler to understand.
-Finally, we spend <xref ref="stochastic-matrices"/> presenting a common kind of application of eigenvalues and eigenvectors to real-world problems, including searching the Internet using Google<rsq/>s PageRank algorithm.
+          In <xref ref="similarity"/> we introduce the notion of <em>similar</em> matrices, and demonstrate that similar
+          matrices do indeed behave similarly. In <xref ref="diagonalization"/> we study matrices that are similar to
+          diagonal matrices and in <xref ref="complex-eigenvalues"/> we study matrices that are similar to
+          rotation-scaling matrices, thus gaining a solid geometric understanding of large classes of matrices. In
+	  <xref ref="dds"/> we present a common kind of application of eigenvalues and
+          eigenvectors to real-world problems. We refine this application to specific problems involving probabilities
+	  in <xref ref="stochastic2"/>, including searching the Internet using Google<rsq/>s PageRank algorithm
 </restrict-version>
         </p>
       </introduction>
