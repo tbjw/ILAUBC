@@ -19,7 +19,7 @@ the license is included in gfdl.xml.
       <li>Characterize matrices <m>A</m> such that <m>Ax=b</m> is consistent for all vectors <m>b</m>.</li>
       <li><em>Recipe:</em> multiply a vector by a matrix (two ways).</li>
       <li><em>Picture:</em> the set of all vectors <m>b</m> such that <m>Ax=b</m> is consistent.</li>
-      <li><em>Vocabulary word:</em> <term>matrix equation</term>.</li>
+      <li><em>Vocabulary:</em> <term>matrix equation</term>.</li>
     </ol>
   </objectives>
 

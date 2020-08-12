@@ -21,7 +21,7 @@ the license is included in gfdl.xml.
       <li><em>Recipes:</em> a <m>2\times 2</m> matrix with a complex eigenvalue is similar to a rotation-scaling matrix, the eigenvector trick for <m>2\times 2</m> matrices.</li>
       <li><em>Pictures:</em> the geometry of matrices with a complex eigenvalue.</li>
       <li><em>Theorems:</em> the rotation-scaling theorem, the block diagonalization theorem.</li>
-      <li><em>Vocabulary word:</em> <term>rotation-scaling matrix</term>.</li>
+      <li><em>Vocabulary:</em> <term>rotation-scaling matrix</term>.</li>
 </restrict-version>
     </ol>
   </objectives>

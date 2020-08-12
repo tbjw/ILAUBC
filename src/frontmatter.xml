@@ -101,13 +101,17 @@ the license is included in gfdl.xml.
     </contributors>
 
     <p>
-      Rabinoff contributed all of the figures, the demos, and the technical aspects of the project, as detailed below.
+      Rabinoff contributed almost all of the figures, the demos, and the technical aspects of the project, as detailed below.
       <ul>
         <li>
           The textbook is written in XML and compiled using a variant of Robert Beezer's <url href="https://mathbook.pugetsound.edu/">MathBook XML</url>, as heavily modified by Rabinoff.
         </li>
         <li>
-          The mathematical content of the textbook is written in LaTeX, then converted to HTML-friendly SVG format using a collection of scripts called PreTeX: this was coded by Rabinoff and depends heavily on <url href="https://inkscape.org/">Inkscape</url> for pdf decoding and <url href="https://fontforge.github.io/">FontForge</url> for font embedding.  The figures are written in <url href="https://en.wikipedia.org/wiki/PGF/TikZ">PGF/TikZ</url> and processed with PreTeX as well.
+          The mathematical content of the textbook is written in LaTeX, then converted to HTML-friendly SVG format using
+          a collection of scripts called PreTeX: this was coded by Rabinoff and depends heavily on <url
+          href="https://inkscape.org/">Inkscape</url> for pdf decoding and <url
+          href="https://fontforge.github.io/">FontForge</url> for font embedding. The figures are written in <url
+          href="https://en.wikipedia.org/wiki/PGF/TikZ">PGF/TikZ</url> and processed with PreTeX as well.
         </li>
         <li>
           The demonstrations are written in JavaScript+WebGL using Steven Wittens' brilliant framework called <url href="https://github.com/unconed/mathbox">MathBox</url>.
@@ -129,10 +133,12 @@ the license is included in gfdl.xml.
 	<li>The Georgia Tech/Duke edition was published in 2019, by Dan Margalit and Joseph Rabinoff, with contributions
 	from Larry Rolen.</li>
 	<li><p>The UBC version was published in 2020. It is a modified version of the Georgia Tech/Duke edition by Ben
-	Williams.
+	Williams. The following modifications have been made:
 	<ul>
-	  <li>The order of the first six chapters has been changed, so that vectors and vector geometry come before
+	  <li>The order of the first six sections has been changed, so that vectors and vector geometry come before
 	  systems of linear equations.</li>
+	  <li>The section on discrete dynamical systems has been added, and the section on stochastic matrices has been
+	  changed to accommodate it.</li>
 	</ul></p></li>
       </ul>
     </p>
