@@ -325,7 +325,7 @@ the license is included in gfdl.xml.
     There are a number of different categories of ideas that are contained in most sections.  They are listed at the top of the section, under <em>Objectives</em>, for easy review.  We classify them as follows.
     <ul>
       <li>
-        <em>Recipes:</em> these are algorithms that are generally straightforward (if sometimes tedious), and are usually done by computer in real life.  They are nonetheless important to learn and to practice.
+        <em>Recipes:</em> these are algorithms that are generally straightforward (if sometimes tedious), and are usually done by computer in real life.  They are nonetheless important to learn and to practise.
       </li>
       <li>
         <em>Vocabulary:</em> forming a conceptual understanding of the subject of linear algebra means being able to communicate much more precisely than in ordinary speech.  The vocabulary have precise definitions, which must be learned and used correctly.
