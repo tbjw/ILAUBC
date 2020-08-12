@@ -819,10 +819,10 @@ the license is included in gfdl.xml.
         To summarize:
         <ul>
           <li>
-            <m>B</m> rotates counterclockwise around the circle centered at the origin and passing through <m>e_1</m> and <m>e_2</m>.
+            <m>B</m> rotates counterclockwise around the circle centred at the origin and passing through <m>e_1</m> and <m>e_2</m>.
           </li>
           <li>
-            <m>A</m> rotates counterclockwise around the ellipse centered at the origin and passing through <m>v_1</m> and <m>v_2</m>.
+            <m>A</m> rotates counterclockwise around the ellipse centred at the origin and passing through <m>v_1</m> and <m>v_2</m>.
           </li>
         </ul>
         <latex-code>
@@ -912,10 +912,10 @@ the license is included in gfdl.xml.
         where <m>C</m> is assumed invertible.  Then:
         <ul>
           <li>
-            <m>B</m> rotates the plane by an angle of <m>\theta</m> around the circle centered at the origin and passing through <m>e_1</m> and <m>e_2</m>, in the direction from <m>e_1</m> to <m>e_2</m>.
+            <m>B</m> rotates the plane by an angle of <m>\theta</m> around the circle centred at the origin and passing through <m>e_1</m> and <m>e_2</m>, in the direction from <m>e_1</m> to <m>e_2</m>.
           </li>
           <li>
-            <m>A</m> rotates the plane by an angle of <m>\theta</m> around the ellipse centered at the origin and passing through <m>v_1</m> and <m>v_2</m>, in the direction from <m>v_1</m> to <m>v_2</m>.
+            <m>A</m> rotates the plane by an angle of <m>\theta</m> around the ellipse centred at the origin and passing through <m>v_1</m> and <m>v_2</m>, in the direction from <m>v_1</m> to <m>v_2</m>.
           </li>
         </ul>
         <latex-code>

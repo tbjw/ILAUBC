@@ -889,10 +889,10 @@ A-\frac{4+3i}5I_3 =
           To summarize:
           <ul>
             <li>
-              <m>B</m> rotates around the circle centered at the origin and passing through <m>e_1</m> and <m>e_2</m>, in the direction from <m>e_1</m> to <m>e_2</m>, then scales by <m>\sqrt 2</m>.
+              <m>B</m> rotates around the circle centred at the origin and passing through <m>e_1</m> and <m>e_2</m>, in the direction from <m>e_1</m> to <m>e_2</m>, then scales by <m>\sqrt 2</m>.
             </li>
             <li>
-              <m>A</m> rotates around the ellipse centered at the origin and passing through <m>\Re(v)</m> and <m>\Im(v)</m>, in the direction from <m>\Re(v)</m> to <m>\Im(v)</m>, then scales by <m>\sqrt 2</m>.
+              <m>A</m> rotates around the ellipse centred at the origin and passing through <m>\Re(v)</m> and <m>\Im(v)</m>, in the direction from <m>\Re(v)</m> to <m>\Im(v)</m>, then scales by <m>\sqrt 2</m>.
             </li>
           </ul>
           The reader might want to refer back to this <xref ref="similarity-eg-rotation"/>.
@@ -1036,10 +1036,10 @@ A-\frac{4+3i}5I_3 =
           To summarize:
           <ul>
             <li>
-              <m>B</m> rotates around the circle centered at the origin and passing through <m>e_1</m> and <m>e_2</m>, in the direction from <m>e_1</m> to <m>e_2</m>, then scales by <m>2</m>.
+              <m>B</m> rotates around the circle centred at the origin and passing through <m>e_1</m> and <m>e_2</m>, in the direction from <m>e_1</m> to <m>e_2</m>, then scales by <m>2</m>.
             </li>
             <li>
-              <m>A</m> rotates around the ellipse centered at the origin and passing through <m>\Re(v)</m> and <m>\Im(v)</m>, in the direction from <m>\Re(v)</m> to <m>\Im(v)</m>, then scales by <m>2</m>.
+              <m>A</m> rotates around the ellipse centred at the origin and passing through <m>\Re(v)</m> and <m>\Im(v)</m>, in the direction from <m>\Re(v)</m> to <m>\Im(v)</m>, then scales by <m>2</m>.
             </li>
           </ul>
           The reader might want to refer back to this <xref ref="similarity-eg-rotation"/>.
