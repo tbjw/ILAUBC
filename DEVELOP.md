@@ -15,13 +15,13 @@ Overview:
 
 First decide where you want to put all the files.  I have my files in `~/projects/`.  Change to that directory and run:
 ```
-~/projects$ git clone https://github.com/QBobWatson/ila.git
+~/projects$ git clone https://github.com/tbjw/UBCILA.git
 ~/projects$ cd ila
 ~/projects/ila$ git submodule update --init --recursive
 ```
 This will put this repository in `ila/`, and will clone the submodules `mathbook`, `mathbook-assets`, and `mathbox`, which contain support files needed to build the book.
 
-## Setup the build system
+## Set up the build system
 
 The build system has a large number of dependencies, and is sensitive to versioning.  It also requires a patched version of Inkscape.  For this reason, I've packaged everything needed to build the book into a [Vagrant](https://www.vagrantup.com/) box.  This is a prepackaged virtual machine that can be launched from any Unix, Mac, or Windows computer.  It has two prerequisites:
 * VirtualBox: the underlying virtual machine software.  [Download](https://www.virtualbox.org/wiki/Downloads).
