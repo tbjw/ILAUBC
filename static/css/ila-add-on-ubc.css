@@ -7,7 +7,7 @@ body, html body {
 }
 
 article.theorem-like, article.objectives {
-    border-left: 2px solid #0055b7;
+    border-left: 2px solid #;
 }
 article.theorem-like:after, article.objectives:after {
     border-bottom: 2px solid #0055b7;

@@ -22,7 +22,8 @@ Free Documentation License"
   <book xml:id="index">
 
     <restrict-version versions="default">
-      <title>Interactive Linear Algebra [UBC]</title>
+      <title>Interactive Linear Algebra</title>
+      <subtitle>UBC edition</subtitle>
     </restrict-version>
 
     <!-- Title Page, Preface, etc. -->
