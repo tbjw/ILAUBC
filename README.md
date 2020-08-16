@@ -1,10 +1,8 @@
 
 # Introduction to Linear Algebra
 
-This is the source code repository for the online textbook *Introduction to Linear Algebra*.
+This is the source code repository for the online textbook *Introduction to Linear Algebra: UBC Edition*.
 
-The latest version of the book can be found here: <http://textbooks.math.gatech.edu/ila/>
+The latest version of the book can be found here: <https://www.math.ubc.ca/~tbjw/ila/>
 
-You might want to submit a comment or suggestion using the Issues tab at the top of the page.
-
-Have a look at `DEVELOP.md` if you are interested in contributing.
+It is a fork of *Introduction to Linear Algebra*. The latest version of that book can be found at <http://textbooks.math.gatech.edu/ila/>
