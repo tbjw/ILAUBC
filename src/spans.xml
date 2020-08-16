@@ -159,7 +159,7 @@ the license is included in gfdl.xml.
     <essential xml:id="vectors-defn-span">
       <idx><h>Span</h><h>definition of</h></idx>
       <statement>
-        <p>Let <m>v_1,v_2,\ldots,v_k</m> be vectors in <m>\R^n</m>.  The <term>span</term> of <m>v_1,v_2,\ldots,v_k</m> is the collection of all linear combinations of <m>v_1,v_2,\ldots,v_k</m>, and is denoted <m>\Span\{v_1,v_2,\ldots,v_k\}</m>.  In symbols:
+        <p>Let <m>v_1,v_2,\ldots,v_k</m> be vectors in <m>\R^n</m>.  The <term>span</term> of <m>v_1,v_2,\ldots,v_k</m> is the collection of all linear combinations of <m>v_1,v_2,\ldots,v_k</m>, and is denoted <me>\Span\{v_1,v_2,\ldots,v_k\}.</me>  In symbols:
         <notation><usage>\Span\{v_1,v_2,\ldots,v_k\}</usage><description>Span of vectors</description></notation>
         <me>\Span\{v_1,v_2,\ldots,v_k\} =
         \bigl\{x_1v_1 + x_2v_2 + \cdots + x_kv_k \mid x_1,x_2,\ldots,x_k \text{ in }\R\bigr\}</me>

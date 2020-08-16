@@ -3,8 +3,8 @@
     xmlns:exsl="http://exslt.org/common"
     extension-element-prefixes="exsl">
 
-<xsl:param name="theme.sponsor" select="'http://www.duke.edu/'"/>
-<xsl:param name="theme.online" select="'http://https://services.math.duke.edu/~jdr/ila/'"/>
+<xsl:param name="theme.sponsor" select="'http://www.ubc.ca/'"/>
+<xsl:param name="theme.online" select="'https://www.math.ubc.ca/~tbjw/ila/'"/>
 <xsl:param name="latex.preamble.late">
   <xsl:text>\frenchspacing</xsl:text>
 </xsl:param>
