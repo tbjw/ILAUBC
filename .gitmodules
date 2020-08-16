@@ -1,6 +1,6 @@
 [submodule "mathbook-assets"]
 	path = mathbook-assets
-	url = https://github.com/QBobWatson/mathbook-assets.git
+url=https://github.com/tbjw/mathbook-assets.git
 	branch = ila
 [submodule "mathbook"]
 	path = mathbook
