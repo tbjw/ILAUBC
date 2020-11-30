@@ -19,8 +19,8 @@ the license is included in gfdl.xml.
       <li>Learn the definition of <m>\Span\{x_1,x_2,\ldots,x_k\}</m>, and how to draw pictures of spans.</li>
      <!-- <li><em>Recipe:</em> solve a vector equation using augmented matrices / decide if a vector is in a span.</li> -->
       <li><em>Pictures:</em> an inconsistent system of equations, a consistent system of equations, spans in <m>\R^2</m> and <m>\R^3</m>.</li>
-      <li><em>Vocabulary word:</em> <term>vector equation</term>.</li>
-      <li><em>Essential vocabulary word:</em> <term>span</term>.</li>
+      <li><em>Vocabulary:</em> <term>vector equation</term>.</li>
+      <li><em>Essential vocabulary:</em> <term>span</term>.</li>
     </ol>
   </objectives>
 
@@ -28,7 +28,7 @@ the license is included in gfdl.xml.
     <title>Vector Equations</title>
 
     <p>
-      An equation involving vectors with <m>n</m> coordinates is the same as <m>n</m> equations involving only numbers.  For example, the equation
+      An equation involving vectors with <m>n</m> entries is the same as <m>n</m> equations involving only numbers.  For example, the equation
     <men xml:id="vector-equation-first">x\vec{1 2 6} + y \vec{-1 -2 -1} = \vec{8 16 3}</men>
     simplifies to
     <me>\vec{ x 2x 6x} + \vec{-y -2y -y} = \vec{8 16 3}
@@ -210,7 +210,7 @@ the license is included in gfdl.xml.
 
     <example>
       <statement>
-	<p> Is <m>\vec{3 1 1}</m> in <m>\Span\left\{ \vec{1 0 0}, \vec{0 1 1} \right\}</m>?
+	<p> Is <m>\vec{3 1 1}</m> in <m>\Span\left\{ \vec{1 0 0}, \vec{1 1 1} \right\}</m>?
 	</p>
       </statement>
       <solution>
@@ -222,14 +222,14 @@ the license is included in gfdl.xml.
 	<me> \syseq{x_1+x_2=3; x_2=1; x_2=1\rlap.}</me>
 	If we set <m>x_1=2</m> and <m>x_2=1</m>, then the equations are true. Therefore we can write
 	<me> \vec{3 1 1} = 2 \vec{1 0 0} + \vec{1 1 1}.</me>
-	This shows that <m>\vec{3 1 1}</m> is in <m>\Span\left\{ \vec{1 0 0}, \vec{0 1 1} \right\}</m>.
+	This shows that <m>\vec{3 1 1}</m> is in <m>\Span\left\{ \vec{1 0 0}, \vec{1 1 1} \right\}</m>.
 	</p>
       </solution>
     </example>
 
       <example>
       <statement>
-	<p> Is <m>\vec{3 1 0}</m> in <m>\Span\left\{ \vec{1 0 0}, \vec{0 1 1} \right\}</m>?
+	<p> Is <m>\vec{3 1 0}</m> in <m>\Span\left\{ \vec{1 0 0}, \vec{1 1 1} \right\}</m>?
 	</p>
       </statement>
       <solution>
@@ -240,7 +240,7 @@ the license is included in gfdl.xml.
 	which we can rewrite this vector equation as three ordinary equations
 	<me> \syseq{x_1+x_2=3; x_2=1; x_2=0\rlap.}</me>
 	The last two equations here contradict each other. They cannot both be true at the same time. This shows that
-	 <m>\vec{3 1 0}</m> is not in <m>\Span\left\{ \vec{1 0 0}, \vec{0 1 1} \right\}</m>.
+	 <m>\vec{3 1 0}</m> is not in <m>\Span\left\{ \vec{1 0 0}, \vec{1 1 1} \right\}</m>.
 	</p>
       </solution>
     </example>

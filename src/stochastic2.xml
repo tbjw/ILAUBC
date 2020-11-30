@@ -212,7 +212,7 @@ the license is included in gfdl.xml.
  <statement>
  <p>
  Recall that a <em>steady state</em> of a difference equation <m>v_{t+1} = Av_t</m> is an eigenvector <m>w</m> with
- eigenvalue <m>1</m>. If the we are talking about stochastic matrices in particular, then we will further require that
+ eigenvalue <m>1</m>. If we are talking about stochastic matrices in particular, then we will further require that
  the entries of the steady-state vector are <term>normalized</term> so that the entries are <em>non-negative</em> and sum to <m>1</m>.
  </p>
  </statement>

@@ -422,7 +422,7 @@ the license is included in gfdl.xml.
       <idx><h>Orthogonal projection</h><h>and <m>\cB</m>-coordinates</h></idx>
       <idx><h><m>\cB</m>-coordinates</h><h>computing</h><h>with respect to an orthogonal basis</h></idx>
       <p>
-        Let <m>W</m> be a subspace of <m>\R^n</m> with orthogonal basis <m>\cB=\{v_1,v_2,\ldots,v_m\}</m> and let <m>x</m> be a vector in <m>W</m>.  Then
+        Let <m>W</m> be a subspace of <m>\R^n</m> with orthogonal basis <m>\cB=\{u_1,u_2,\ldots,u_m\}</m> and let <m>x</m> be a vector in <m>W</m>.  Then
         <me>
           [x]_\cB = \left( \frac{x\cdot u_1}{u_1\cdot u_1},\;
           \frac{x\cdot u_2}{u_2\cdot u_2},\;

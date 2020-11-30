@@ -302,7 +302,7 @@ the license is included in gfdl.xml.
 	 <me> v_1 = Av_0,\, v_2 = Av_1 = A^2v_0,\, v_3=Av_2 = AA^2v_0 = A^3v_0, \dots \, v_t = A^t v_0.</me>
        </p>
 
-       <p>The situation is simplest when <m>v_0</m> is an eigenvalue of <m>A</m>, with eigenvalue <m>\lambda</m>. In
+       <p>The situation is simplest when <m>v_0</m> is an eigenvector of <m>A</m>, with eigenvalue <m>\lambda</m>. In
        this case, the multiplication <m> A v_0 </m> has the effect of stretching <m>v_0</m> by a factor of
        <m>\lambda</m>, so that applying <m>A</m> to <m>v_0</m> repeatedly, say <m>t</m> times, results in scaling
        <m>v_0</m> by <m>\lambda \lambda \cdot \lambda = \lambda^t</m>.
@@ -342,7 +342,7 @@ the license is included in gfdl.xml.
        as diagonal entries, then the vector of coefficients is calculated as <m>D^t C^{-1}v_0</m>.
        Then to combine <m>w_1, w_2, \dots, w_n</m> with these coefficients, we take the product <m>C D^t C^{-1}
        </m>. That is to say:
-       <me> v_t = C D^t C^{-1} = \lambda_1^t c_1 w_1 + \lambda_2^tc_2w_2+\dots + \lambda_n^t c_n w_n.</me>
+       <me> v_t = C D^t C^{-1}v_0 = \lambda_1^t c_1 w_1 + \lambda_2^tc_2w_2+\dots + \lambda_n^t c_n w_n.</me>
        </p>
 
        <example>
