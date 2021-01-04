@@ -359,7 +359,7 @@ Free Documentation License"
         </specialcase>
 
         <p>
-          In <xref ref="eigenvectors"/>, we will define eigenvalues and eigenvectors, and show how to compute the latter; in <xref ref="characteristic-polynomial"/> we will learn to compute the former.
+
 <restrict-version versions="1554 default">
           In <xref ref="similarity"/> we introduce the notion of <em>similar</em> matrices, and demonstrate that similar
           matrices do indeed behave similarly. In <xref ref="diagonalization"/> we study matrices that are similar to
