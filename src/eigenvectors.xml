@@ -598,7 +598,7 @@ If someone hands you a matrix <m>A</m> and a vector <m>v</m>, it is easy to chec
         \iff\quad \amp(A - \lambda I_n)v = 0.
         \end{split}
       </me>
-      Therefore, the eigenvectors of <m>A</m> with eigenvalue <m>\lambda</m>, if any, are the nontrivial solutions of the matrix equation <m>(A-\lambda I_n)v = 0</m>, i.e., the nonzero vectors in <m>\Nul(A-\lambda I_n)</m>.  If this equation has no nontrivial solutions, then <m>\lambda</m> is not an eigenvector of <m>A</m>.
+      Therefore, the eigenvectors of <m>A</m> with eigenvalue <m>\lambda</m>, if any, are the nontrivial solutions of the matrix equation <m>(A-\lambda I_n)v = 0</m>, i.e., the nonzero vectors in <m>\Nul(A-\lambda I_n)</m>.  If this equation has no nontrivial solutions, then <m>\lambda</m> is not an eigenvalue of <m>A</m>.
     </p>
 
     <p>

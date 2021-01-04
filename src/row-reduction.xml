@@ -784,7 +784,7 @@ the matrix.</p>
   \node [blue box=(m10-1-2)] (bm10-1-2) {};
   \node [blue!50, below=1.5mm of m10-3-1, anchor=north west, xshift=-1.3cm, align=left]
     (expl8) {Last step: add $-2$ times\\
-             the third row to clear this.};
+             the second row to clear this.};
   \draw[->, blue!50, rounded corners]
     let \p1=($(expl8.north west) + (5mm,0)$) in
       (\p1) |- (bm10-1-2.west);
