@@ -723,7 +723,7 @@ If someone hands you a matrix <m>A</m> and a vector <m>v</m>, it is easy to chec
         <p>
           The number <m>2</m> is an eigenvalue of <m>A</m> if and only if <m>\Nul(A-2I_3)</m> is nonzero.  Hence, we have to solve the matrix equation <m>(A-2I_3)v = 0</m>.  We have
           <me>
-            A - 2I_3 = \mat{7/2 0 3; -3/2 2 -3; -3/2 0 1} - 2\mat{1 0 0; 0 1 0; 0 0 1}
+            A - 2I_3 = \mat{7/2 0 3; -3/2 2 -3; -3/2 0 -1} - 2\mat{1 0 0; 0 1 0; 0 0 1}
             = \mat{3/2 0 3; -3/2 0 -3; -3/2 0 -3}.
           </me>
           The reduced row echelon form of this matrix is
