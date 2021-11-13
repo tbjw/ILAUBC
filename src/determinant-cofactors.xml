@@ -867,7 +867,7 @@ the license is included in gfdl.xml.
 
     <p>
       Recall from this <xref ref="matrix-inv-22"/> that one can compute the determinant of a <m>2\times 2</m> matrix using the rule
-      <me>A = \mat{d -b; -c a} \quad\implies\quad
+      <me>A = \mat{a b; c d} \quad\implies\quad
       A\inv = \frac 1{\det(A)}\mat{d -b; -c a}.</me>
       We computed the cofactors of a <m>2\times 2</m> matrix in this <xref ref="det-cofactor-22"/>; using <m>C_{11}=d,\,C_{12}=-c,\,C_{21}=-b,\,C_{22}=a</m>, we can rewrite the above formula as
       <me>A\inv = \frac 1{\det(A)}\mat{C_{11} C_{21}; C_{12} C_{22}}.</me>
