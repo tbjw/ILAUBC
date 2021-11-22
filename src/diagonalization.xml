@@ -317,7 +317,7 @@ the license is included in gfdl.xml.
       </statement>
       <solution>
         <p>
-          This diagonal matrix is in particular upper-triangular, so its eigenvalues are the diagonal entries <m>1,2,3</m>.  The standard coordinate vectors are eigenvalues of a diagonal matrix:
+          This diagonal matrix is in particular upper-triangular, so its eigenvalues are the diagonal entries <m>1,2,3</m>.  The standard coordinate vectors are eigenvectors of a diagonal matrix:
           <me>
             \mat{1 0 0; 0 2 0; 0 0 3}\vec{1 0 0} = 1\cdot\vec{1 0 0} \qquad
             \mat{1 0 0; 0 2 0; 0 0 3}\vec{0 1 0} = 2\cdot\vec{0 1 0}
