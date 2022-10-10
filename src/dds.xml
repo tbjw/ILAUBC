@@ -11,7 +11,7 @@ the license is included in gfdl.xml.
 *********************************************************************-->
 
 <section xml:id="dds" number="6">
- <title>Discrete dynamical systems</title>
+ <title>Discrete Dynamical Systems</title>
  <objectives>
     <ol>
       <li>Understand how to convert word problems to matrix equations.</li>
@@ -248,28 +248,28 @@ the license is included in gfdl.xml.
      This allows us to write down a computable formula for <m>v_t</m>:
      <men> v_t = C D^t C^{-1} v_0.</men>
      For instance, if we continue to suppose that <m>v_0=\vec{7 9}</m>, then we calculate
-     <men xml:id="frogMidgeEqn"> \begin{split} v_t = \mat{1 1; 5 1}\mat{1.2^t 0; 0 0.8^t}\mat{-0.25 0.25; 1.25 -0.25}\vec{7 9} =\\= \mat{1 1; 5 1}\mat{1.2^t 0;
+     <men xml:id="frogMidgeEqn"> \begin{split} v_t = \vec{f_t m_t}= \mat{1 1; 5 1}\mat{1.2^t 0; 0 0.8^t}\mat{-0.25 0.25; 1.25 -0.25}\vec{7 9} =\\= \mat{1 1; 5 1}\mat{1.2^t 0;
      0 0.8^t}\vec{0.5 6.5}=\mat{1 1; 5 1}\vec{(1.2)^t(0.5) (0.8)^t(6.5)}=\\
      =\vec{1(1.2)^t(0.5)+1(0.8)^t(6.5) 5(1.2)^t(0.5)+1(0.8)^t(6.5)}.\end{split}</men>
-     In even more direct language, the model predicts that the number of frogs (in hundreds) is given by
+     Simply, the model predicts that the number of frogs (in hundreds) is given by
      <me>f_t=1(1.2)^t(0.5) + 1(0.8)^t(6.5)</me>
      and the number of midges (in hundreds of thousands) is given by
-     <me>m_t=5(1.2)^t(0.5)+1(0.8)^t(7.5).</me>
+     <me>m_t=5(1.2)^t(0.5)+1(0.8)^t(6.5).</me>
      </p>
 
      <p>
        What we asked about the system was the long-term behaviour. From this point of view, the information in 
        <xref ref="frogMidgeEqn">equation</xref>  was more than we needed. We know from calculus that as <m>t</m> grows, the quantity <m>(0.8)^t</m> tends to
        <m>0</m>, whereas <m>(1.2)^t</m> grows without bound. This is good news for our frogs and midges, since it we calculate
-       <me> \lim_{t \to \infty} f_t = \lim_{t\to \infty} 5(1.2)^t(0.5) + \lim_{t \to \infty} 1(0.8)^t(6.5) = \infty + 0
+       <me> \lim_{t \to \infty} f_t = \lim_{t\to \infty} 1(1.2)^t(0.5) + \lim_{t \to \infty} 1(0.8)^t(6.5) = \infty + 0
        </me>
        and similarly for the midges <m>\lim_{t \to \infty} m_t = \infty</m>, so the model predicts that both frogs and midges will thrive.
      </p>
 
      <p>The model can also be used to predict the ratio of frogs to midges. This is a standard kind of limit calculation 
-     <me> \lim_{t \to \infty} \frac{f_t}{m_t} = \lim_{t \to \infty} \frac{5(1.2)^t(0.5) + 1(0.8)^t(6.5)}{1(1.2)^t(0.5)+1(0.8)^t(7.5)} = \frac{5}{1}.</me>
-     This says that after several years have passed, the ratio of frogs to midges will be approximately 500 frogs for
-     each 100,000 midges, which we can simplify to 1 frog for every 200 midges.
+     <me> \lim_{t \to \infty} \frac{f_t}{m_t} = \lim_{t \to \infty} \frac{1(1.2)^t(0.5) + 1(0.8)^t(6.5)}{5(1.2)^t(0.5)+1(0.8)^t(6.5)} = \frac{1}{5}.</me>
+     This says that after several years have passed, the ratio of frogs to midges will be approximately 100 frogs for
+     each 500,000 midges, which we can simplify to 1 frog for every 5,000 midges.
      </p>
  </specialcase>
 
@@ -297,13 +297,13 @@ the license is included in gfdl.xml.
    <!-- </figure> -->
      
      <warning>
-       <p>You can choose any ordering you like for the variables at the start of a question like this. For
-       instance, you can list the midges first and the frogs second, to get the system
+       <p>You can choose either ordering for the variables at the start of a question like this. You can list the midges first and the frogs second, to get the system
        <me> v_t = \vec{m_t f_t}, \quad  A =  \mat{1.3  -0.5; 0.1 0.7}.</me>
        This describes the same model, so the formulas you would derive for <m>m_t</m> and <m>f_t</m> would be the same.
        </p>
        <p>It is extremely important to keep the same order throughout, however. Do not mix up the order by writing frogs first sometimes and midges first other times. This will lead
        to nonsense.</p>
+       <p>Similarly, in problems with more than two variables, you can choose any order for the variables when you work it out. The important thing is to be consistent throughout the problem.</p>
      </warning>
 
      <paragraphs>
@@ -474,9 +474,9 @@ the license is included in gfdl.xml.
 	     <me>  v_0 = c_1w_1 + c_2 w_2 = c_1 \vec{1 1} + c_2\vec{-1 1} </me>
 	     then
 	     <me> v_t = c_1\vec{(0.9)^t1 (0.9)^t1}+c_2\vec{(0.4)^t(-1) (0.4)^t} = \vec{c_1(0.9)^t-c_2(0.4)^t
-	     c_1(0.9)^t+(0.4)^t}.</me>
-	     The ratio between the first- and second-coordinate entry of <m>v_t</m> is (as a fraction)
-	     <me> r_t= \frac{c_1(0.9)^t-c_2(0.4)^t}{c_1(0.9)^t-c_2(0.4)^t}.</me>
+	     c_1(0.9)^t+c_2(0.4)^t}.</me>
+	     The ratio between the first- and second-coordinate entries of <m>v_t</m> is (as a fraction)
+	     <me> r_t= \frac{c_1(0.9)^t-c_2(0.4)^t}{c_1(0.9)^t+c_2(0.4)^t}.</me>
 	     To see what happens as <m>t \to \infty</m>, we can do a limit calculation
 	     <me>\lim_{t \to \infty} r_t = \lim_{t \to \infty}
 	     \frac{c_1-c_2\frac{(0.4)^t}{(0.9)^t}}{c_1+c_2\frac{(0.4)^t}{(0.9)^t}} = \frac{c_1 - 0}{c_1 + 0} = 1</me>

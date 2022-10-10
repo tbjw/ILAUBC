@@ -734,7 +734,7 @@ If someone hands you a matrix <m>A</m> and a vector <m>v</m>, it is easy to chec
             \quad\xrightarrow[\text{vector form}]{\text{parametric}}\quad
             \vec{x y z} = y\vec{0 1 0} + z\vec{-2 0 1}.
           </me>
-          The matrix <m>A-2I_3</m> has two free variables, so the null space of <m>A-2I_3</m> is nonzero, and thus <m>2</m> is an eigenvector.  A basis for the <m>2</m>-eigenspace is
+          The matrix <m>A-2I_3</m> has two free variables, so the null space of <m>A-2I_3</m> is nonzero, and thus <m>2</m> is an eigenvalue.  A basis for the <m>2</m>-eigenspace is
           <me>\left\{\vec{0 1 0},\,\vec{-2 0 1}\right\}.</me>
           This is a <em>plane</em> in <m>\R^3</m>.
         </p>

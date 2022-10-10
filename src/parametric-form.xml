@@ -203,7 +203,7 @@ Of course, since this implies <m>z=s</m>, you might think that we haven't gained
   </me>
   We could go even further, and change the parameter to <m>u=1-s</m>. Now we can write the solution set as
   <me>
-      (x,\,y,\,z) = (5u-4,\,u-3,\,1-u) \qquad \text{$u$ any real number.}
+      (x,\,y,\,z) = (5u-4,\,2u-3,\,1-u) \qquad \text{$u$ any real number.}
   </me>
   </p>
   <p> The three parameterizations above all describe

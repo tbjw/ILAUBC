@@ -755,7 +755,7 @@ A-\frac{4+3i}5I_3 =
             If the eigenvalues are complex, choose <em>one</em> of them, and call it <m>\lambda</m>.
           </li>
           <li>
-            Find a corresponding (complex) eigenvalue <m>v</m> using the <xref ref="cplx-evals-22-trick">trick</xref>.
+            Find a corresponding (complex) eigenvector <m>v</m> using the <xref ref="cplx-evals-22-trick">trick</xref>.
           </li>
           <li>
             Then <m>A=CBC\inv</m> for

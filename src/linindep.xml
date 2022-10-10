@@ -209,7 +209,7 @@ Let's explain why the vectors <m>(1,1,0)</m> and <m>(-2,0,1)</m> are linearly in
       This is true if and only if <m>A</m> has a <xref ref="defn-pivot-pos" text="title">pivot position</xref> in every column.
     </p>
     <p>
-      Solving the matrix equatiion <m>Ax=0</m> will either verify that the columns <m>v_1,v_2,\ldots,v_k</m> are linearly independent, or will produce a linear dependence relation by substituting any nonzero values for the free variables.
+      Solving the matrix equation <m>Ax=0</m> will either verify that the columns <m>v_1,v_2,\ldots,v_k</m> are linearly independent, or will produce a linear dependence relation by substituting any nonzero values for the free variables.
     </p>
     </bluebox>
 
@@ -361,7 +361,7 @@ Let's explain why the vectors <m>(1,1,0)</m> and <m>(-2,0,1)</m> are linearly in
     <title>Pictures of Linear Independence</title>
       <idx><h>Linear Independence</h><h>pictures of</h></idx>
 
-    <p>A set containg one vector <m>\{v\}</m> is linearly independent when <m>v\neq 0</m>, since <m>xv = 0</m> implies <m>x=0</m>.
+    <p>A set containing one vector <m>\{v\}</m> is linearly independent when <m>v\neq 0</m>, since <m>xv = 0</m> implies <m>x=0</m>.
     <latex-code>
           <![CDATA[
 \begin{tikzpicture}[thin border nodes, scale=1.5]
@@ -829,7 +829,14 @@ Let's explain why the vectors <m>(1,1,0)</m> and <m>(-2,0,1)</m> are linearly in
           <li>If <m>d=3</m> then <m>\Span\{v_1,v_2,\ldots,v_k\}</m> is a 3-space.</li>
           <li>Et cetera.</li>
         </ul>
-	The number <m>d</m> is called the dimension.  We discussed this notion in this <xref ref="soln-sets-dim-hom"/> and this <xref ref="soln-sets-dim-inhom"/>.  We will define this concept rigorously in <xref ref="dimension"/>.
+	The number <m>d</m> is called the dimension of the span. We have already met this notion informally in this
+	<xref ref="soln-sets-dim-hom"/> and also in this <xref ref="soln-sets-dim-inhom"/>.  We will define this concept
+	rigorously in <xref ref="dimension"/>.</p>
+
+	<p>There are multiple different spans of vectors associated to any given
+	matrix, <m>A</m>. For instance there is the span of the columns, and there is also the solution set of <m>Ax =
+	0</m>. Each of these spans has a dimension, and these dimensions can be different. Therefore we do not
+	speak about the dimension of a matrix, since it is ambiguous which dimension this is referring to.
       </p>
     </bluebox>
 

@@ -43,9 +43,9 @@ the license is included in gfdl.xml.
           <mrow>x &amp;= c_1v_1 + c_2v_2 + \cdots + c_mv_m</mrow>
           <mrow>x &amp;= c_1'v_1 + c_2'v_2 + \cdots + c_m'v_m.</mrow>
         </md>
-        Subtracting the first equation from the second yields
+        Subtracting the second equation from the first yields
         <me>0 = x-x = (c_1-c_1')v_1 + (c_2-c_2')v_2 + \cdots + (c_m-c_m')v_m.</me>
-        Since <m>\cB</m> is linearly independent, the only solution to the above equation is the trivial solution: all the coefficients must be zero.  It follows that <m>c_i-c_i'</m> for all <m>i</m>, which proves that <m>c_1=c_1',\,c_2=c_2',\ldots,\,c_m=c_m'</m>.
+        Since <m>\cB</m> is linearly independent, the only solution to the above equation is the trivial solution: all the coefficients must be zero.  It follows that <m>c_i=c_i'</m> for all <m>i</m>, which proves that <m>c_1=c_1',\,c_2=c_2',\ldots,\,c_m=c_m'</m>.
       </p>
     </proof>
   </fact>
