@@ -128,7 +128,7 @@ the license is included in gfdl.xml.
             <m>[v]_\cB = {4\choose1}.</m>
           </li>
         </ol>
-        In the following picture, we indicate the coordinate system defined by <m>\cB</m> by drawing lines parallel to the <q><m>v_1</m>-axis</q> and <q><m>v_2</m>-axis</q>.  Using this grid it is easy to see that the <m>\cB</m>-coordinates of <m>v</m> are <m>{5\choose 1}</m>, and that the <m>\cB</m>-coordinates of <m>w</m> are <m>{1\choose 2}</m>.
+        In the following picture, we indicate the coordinate system defined by <m>\cB</m> by drawing lines parallel to the <q><m>v_1</m>-axis</q> and <q><m>v_2</m>-axis</q>.  Using this grid it is easy to see that the <m>\cB</m>-coordinates of <m>v</m> are <m>{4\choose 1}</m>, and that the <m>\cB</m>-coordinates of <m>w</m> are <m>{1\choose 2}</m>.
         <latex-code>
 \begin{tikzpicture}[scale=.7, thin border nodes]
 

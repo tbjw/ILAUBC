@@ -194,7 +194,7 @@ the license is included in gfdl.xml.
 
     <proof>
       <p>
-        To justify the first equality, we need to show that a vector <m>x</m> is perpendicular to the all of the vectors in <m>W</m> if and only if it is perpendicular only to <m>v_1,v_2,\ldots,v_m</m>.  Since the <m>v_i</m> are contained in <m>W</m>, we really only have to show that if <m>x\cdot v_1 = x\cdot v_2 = \cdots = x\cdot v_m = 0</m>, then <m>x</m> is perpendicular to every vector <m>v</m> in <m>W</m>.  Indeed, any vector in <m>W</m> has the form <m>v = c_1v_1 + c_2v_2 + \cdots + c_mv_m</m> for suitable scalars <m>c_1,c_2,\ldots,c_m</m>, so
+        To justify the first equality, we need to show that a vector <m>x</m> is perpendicular to  all of the vectors in <m>W</m> if and only if it is perpendicular to <m>v_1,v_2,\ldots,v_m</m>.  Since the <m>v_i</m> are contained in <m>W</m>, we really only have to show that if <m>x\cdot v_1 = x\cdot v_2 = \cdots = x\cdot v_m = 0</m>, then <m>x</m> is perpendicular to every vector <m>v</m> in <m>W</m>.  Indeed, any vector in <m>W</m> has the form <m>v = c_1v_1 + c_2v_2 + \cdots + c_mv_m</m> for suitable scalars <m>c_1,c_2,\ldots,c_m</m>, so
         <me>
           \begin{split}
           x\cdot v \amp= x\cdot(c_1v_1 + c_2v_2 + \cdots + c_mv_m) \\

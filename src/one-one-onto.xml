@@ -210,7 +210,7 @@ the license is included in gfdl.xml.
   </example>
 
   <example xml:id="one-to-one-eg-robot">
-    <title>A real-word transformation: robotics</title>
+    <title>A real-world transformation: robotics</title>
     <p>
       Suppose you are building a robot arm with three joints that can move its hand around a plane, as in this <xref ref="matrix-trans-eg-robot"/>.
       <latex-code>
@@ -580,7 +580,7 @@ the license is included in gfdl.xml.
   </example>
 
   <example>
-    <title>A real-word transformation: robotics</title>
+    <title>A real-world transformation: robotics</title>
     <p>
       The robot arm transformation of this <xref ref="one-to-one-eg-robot"/> is not onto.  The robot cannot reach objects that are very far away.
     </p>
