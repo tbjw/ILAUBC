@@ -751,7 +751,7 @@ So, for example, if <m>x=(1,0,0)</m>, this formula tells us that <m>x_W = (2,1,-
       <title>Matrix of a projection</title>
       <statement>
         <p>
-          Let <m>L</m> be the line in <m>\R^2</m> spanned by the vector
+          Let <m>L</m> be the line in <m>\R^3</m> spanned by the vector
           <me>
             u = \vec{-1 1 1},
           </me>
