@@ -1,6 +1,8 @@
 
 # Developer's Getting Started Guide
 
+Ben W's note: This document is essentially that written by J Rabinoff. Only the name of the project and the associated directory name has been changed.
+
 The command-line arguments given in this guide assume you're using a UNIX-like system (e.g., a Mac).  Building under Windows should be similar.
 
 Overview:
@@ -13,10 +15,10 @@ Overview:
 
 ## Fetch the repositories
 
-First decide where you want to put all the files.  I have my files in `~/projects/`.  Change to that directory and run:
+First decide where you want to put all the files. Change to that directory and run:
 ```
-~/projects$ git clone https://github.com/tbjw/UBCILA.git
-~/projects$ cd ila
+~/projects$ git clone https://github.com/tbjw/ILAUBC.git
+~/projects$ cd ILAUBC
 ~/projects/ila$ git submodule update --init --recursive
 ```
 This will put this repository in `ila/`, and will clone the submodules `mathbook`, `mathbook-assets`, and `mathbox`, which contain support files needed to build the book.
