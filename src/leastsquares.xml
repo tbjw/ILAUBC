@@ -184,7 +184,7 @@ the license is included in gfdl.xml.
       <title>Recipe<restrict-version versions="1554 default"> 1</restrict-version>: Compute a least-squares solution</title>
       <idx><h>Least-squares</h><h>computation of</h><h>row reduction</h></idx>
       <p>
-        Let <m>A</m> be an <m>m\times n</m> matrix and let <m>b</m> be a vector in <m>\R^n</m>.  Here is a method for computing a least-squares solution of <m>Ax=b</m>:
+        Let <m>A</m> be an <m>m\times n</m> matrix and let <m>b</m> be a vector in <m>\R^m</m>.  Here is a method for computing a least-squares solution of <m>Ax=b</m>:
         <ol>
           <li>
             Compute the matrix <m>A^TA</m> and the vector <m>A^Tb</m>.

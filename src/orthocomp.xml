@@ -175,10 +175,57 @@ the license is included in gfdl.xml.
   <title>Computing Orthogonal Complements</title>
   <idx><h>Orthogonal complement</h><h>computation of</h></idx>
 
-  <p>
-    Since any subspace is a span, the following proposition gives a recipe for computing the orthogonal complement of any subspace.  However, below we will give several shortcuts for computing the orthogonal complements of other common kinds of subspaces<ndash/>in particular, null spaces.  To compute the orthogonal complement of a general subspace, usually it is best to rewrite the subspace as the column space or null space of a matrix, as in this <xref ref="subspace-is-col-or-nul"/>.
-  </p>
+  <p> From the definition of <m>W^\perp</m>, it would seem that to check whether a vector <m>v</m> is in <m>W^\perp</m>
+  requires us to check infinitely many equations: is <m>v \cdot w =0</m> for all the different vectors <m>w</m> in
+  <m>W</m>? In practice, we have to check only a finite number of equations.</p>
 
+  
+  <proposition xml:id="orthocomp-by-span">
+    <title>The orthogonal complement of a span</title>
+    <idx><h>Orthogonal complement</h><h>of a span</h></idx>
+    <idx><h>Span</h><h>orthogonal complement of</h></idx>
+    <statement>
+      <p>
+        Let <m>W</m> be a subspace of <m>\R^n</m> and suppose that <m>W=\Span\{w_1, \dots, w_m\}</m>.  A vector <m>v</m>
+	in <m>\R^n</m> is in <m>W^\perp</m> if and only if
+	<me>
+	  v \cdot w_1 = 0, \, v \cdot w_2= 0, \, \ldots, v \cdot w_m = 0.
+	</me>
+      </p>
+    </statement>
+     <proof>
+      <p>
+	We are making two claims. The first is that if the <m>m</m> dot products <m> v \cdot w_1</m>, <m> v \cdot w_2</m>, …, <m> v \cdot w_m</m> are 
+	all <m>0</m>, then <m>v \cdot w = 0</m> for all the (presumably infinitely many) vectors <m>w</m> in <m>W</m>. To see why this is true,
+	observe that we can write any vector from <m>W</m> in the form
+	<me>
+	  w = a_1 w_1 + a_2 w_2 + \cdots + a_m w_m
+	</me>
+	for some scalars <m>a_1, a_2, \ldots, a_m</m>, since <m>\{w_1, w_2, \ldots, w_m\}</m> is a spanning set for
+	<m>W</m>. Now take the dot product
+	<me>
+	  \begin{split}
+          v \cdot w = v \cdot (a_1 w_1 + a_2 w_2 + \cdots + a_m w_m)\\
+	  v \cdot (a_1w_1) + v \cdot (a_2 w_2) + \cdots + v \cdot (a_m w_m) \\
+	   =a_1 (v \cdot w_1) + a_2 (v \cdot w_2) + \cdots + a_m(v \cdot w_m) \\
+	   = a_1 0 + a_2 0 + \cdots + a_m 0 = 0.
+	   \end{split}
+	</me>
+	Therefore <m>v \cdot w =0</m> for all <m>w</m> in <m>W</m>, i.e., <m>v</m> is in <m>W^\perp</m>.
+      </p>
+      <p>
+	The other claim is that if <m>v</m> is a vector in <m>W^\perp</m>, then <m>v \cdot w_1</m>, <m>v \cdot w_2</m>,
+	…,<m>v \cdot w_m</m> are all <m>0</m>. Since <m>w_1, w_2, \ldots, w_m</m> are themselves vectors from <m>W</m>,
+	this follows from the definition of <m>W^\perp</m>.
+      </p>
+    </proof>
+  </proposition>
+
+  <p>The next proposition gives us a convenient way of working with and understanding the orthogonal complement of a
+  column space. Later, we will give several shortcuts for computing the orthogonal complements of subspaces presented in
+  other ways<ndash/>in particular,  as null spaces.  To compute the orthogonal complement of a general subspace, usually it is best to rewrite the subspace as the column space or null space of a matrix, as in this <xref ref="subspace-is-col-or-nul"/>.
+  </p>
+  
   <proposition xml:id="orthocomp-comp-of-span">
     <title>The orthogonal complement of a column space</title>
     <idx><h>Orthogonal complement</h><h>of a column space</h></idx>
@@ -194,47 +241,39 @@ the license is included in gfdl.xml.
 
     <proof>
       <p>
-        To justify the first equality, we need to show that a vector <m>x</m> is perpendicular to  all of the vectors in <m>W</m> if and only if it is perpendicular to <m>v_1,v_2,\ldots,v_m</m>.  Since the <m>v_i</m> are contained in <m>W</m>, we really only have to show that if <m>x\cdot v_1 = x\cdot v_2 = \cdots = x\cdot v_m = 0</m>, then <m>x</m> is perpendicular to every vector <m>v</m> in <m>W</m>.  Indeed, any vector in <m>W</m> has the form <m>v = c_1v_1 + c_2v_2 + \cdots + c_mv_m</m> for suitable scalars <m>c_1,c_2,\ldots,c_m</m>, so
+	Let <m>w_1, w_2, \ldots, w_r</m> be the columns of <m>A</m> in order, so that
         <me>
-          \begin{split}
-          x\cdot v \amp= x\cdot(c_1v_1 + c_2v_2 + \cdots + c_mv_m) \\
-          \amp= c_1(x\cdot v_1) + c_2(x\cdot v_2) + \cdots + c_m(x\cdot v_m) \\
-          \amp= c_1(0) + c_2(0) + \cdots + c_m(0) = 0.
-          \end{split}
-        </me>
-        Therefore, <m>x</m> is in <m>W^\perp.</m>
-      </p>
-      <p>
-        To prove the second equality, we let
-        <me>
-          A = \mat{
-            \matrow{v_1^T};
-            \matrow{v_2^T};
+       A^T = \mat{
+            \matrow{w_1^T};
+            \matrow{w_2^T};
             \vdots;
-            \matrow{v_m^T}}.
+            \matrow{w_r^T}}.
         </me>
         By the <xref ref="matrixeq-row-column-prod">row-column rule for matrix multiplication</xref>, for any vector <m>x</m> in <m>\R^n</m> we have
         <me>
-          Ax = \vec{v_1^Tx v_2^Tx \vdots, v_m^Tx}
-          = \vec{v_1\cdot x v_2\cdot x \vdots, v_m\cdot x}.
+          A^Tx = \vec{w_1^Tx w_2^Tx \vdots, w_r^Tx}
+          = \vec{w_1\cdot x w_2\cdot x \vdots, w_r\cdot x}.
         </me>
-        Therefore, <m>x</m> is in <m>\Nul(A)</m> if and only if <m>x</m> is perpendicular to each vector <m>v_1,v_2,\ldots,v_m</m>.
+        Therefore, <m>x</m> is in <m>\Nul(A)</m> if and only if <m>x</m> is perpendicular to each vector
+	<m>w_1,w_2,\ldots,w_r</m>. Since <m>\Span\{w_1, \dots, w_r \}= W</m>, we deduce that  <m>x</m> is in
+	<m>\Nul(A)</m> if and only if <m>x</m> is in <m>W^\perp</m> by  using the <xref ref="orthocomp-by-span">previous proposition</xref>.
       </p>
     </proof>
   </proposition>
 
+
   <p>
     <idx><h>Orthogonal complement</h><h>of a span</h></idx>
     <idx><h>Span</h><h>orthogonal complement of</h></idx>
-        Since column spaces are the same as spans, we can rephrase the proposition as follows.  Let <m>v_1,v_2,\ldots,v_m</m> be vectors in <m>\R^n</m>, and let <m>W = \Span\{v_1,v_2,\ldots,v_m\}</m>.  Then
+        Since column spaces are the same as spans, we can rephrase the proposition as follows.  Let <m>w_1,w_2,\ldots,w_m</m> be vectors in <m>\R^n</m>, and let <m>W = \Span\{w_1,w_2,\ldots,w_m\}</m>.  Then
         <me>
           W^\perp =
-          \bigl\{\text{all vectors orthogonal to each $v_1,v_2,\ldots,v_m$}\bigr\}
+          \bigl\{\text{all vectors orthogonal to each $w_1,w_2,\ldots,w_m$}\bigr\}
           = \Nul\mat{
-          \matrow{v_1^T};
-          \matrow{v_2^T};
+          \matrow{w_1^T};
+          \matrow{w_2^T};
           \vdots;
-          \matrow{v_m^T}}.
+          \matrow{w_m^T}}.
         </me>
     Again, it is important to be able to go easily back and forth between spans and column spaces.  If you are handed a span, you can apply the proposition once you have rewritten your span as a column space.
       </p>
@@ -245,11 +284,11 @@ the license is included in gfdl.xml.
     <idx><h>Orthogonal complement</h><h>system of linear equations</h></idx>    
     By the proposition, computing the orthogonal complement of a span means <em>solving a system of linear equations</em>.  For example, if
     <me>
-      v_1 = \vec{1 7 2} \qquad v_2 = \vec{-2 3 1}
+      w_1 = \vec{1 7 2} \qquad w_2 = \vec{-2 3 1}
     </me>
-    then <m>\Span\{v_1,v_2\}^\perp</m> is the solution set of the homogeneous linear system associated to the matrix
+    then <m>\Span\{w_1,w_2\}^\perp</m> is the solution set of the homogeneous linear system associated to the matrix
     <me>
-      \mat{\matrow{v_1^T}; \matrow{v_2^T}} = \mat{1 7 2; -2 3 1}.
+      \mat{\matrow{w_1^T}; \matrow{w_2^T}} = \mat{1 7 2; -2 3 1}.
     </me>
     This is the solution set of the system of equations
     <me>
