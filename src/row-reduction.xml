@@ -327,7 +327,7 @@ the matrix.</p>
 
     <p>Indeed, the whole point of doing these operations is to solve the equations using the elimination method.</p>
 
-    <definition>
+    <definition xml:id="row-equivalence">
       <idx><h>Row equivalence</h></idx>
       <statement>
         <p>Two matrices are called <term>row equivalent</term> if one can be obtained from the other by doing some number of row operations.</p>

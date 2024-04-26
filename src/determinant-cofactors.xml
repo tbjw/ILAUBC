@@ -903,7 +903,7 @@ the license is included in gfdl.xml.
                  C_{1,n-1} C_{2,n-1} \cdots, C_{n-1,n-1} C_{n,n-1};
                  C_{1n} C_{2n} \cdots, C_{n-1,n} C_{nn}}.
       </me>
-      Note that the <m>(i,j)</m> cofactor <m>C_{ij}</m> goes in the <m>(j,i)</m> entry the adjugate matrix, not the <m>(i,j)</m> entry: the adjugate matrix is the <em>transpose</em> of the cofactor matrix.
+      Note that the <m>(i,j)</m> cofactor <m>C_{ij}</m> goes in the <m>(j,i)</m> entry in the adjugate matrix, not the <m>(i,j)</m> entry: the adjugate matrix is the <em>transpose</em> of the cofactor matrix.
     </p>
 
     <remark>
