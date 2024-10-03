@@ -861,7 +861,7 @@ the license is included in gfdl.xml.
       </statement>
       <proof>
         <p>
-          First suppose that <m>A</m> is a row vector an <m>B</m> is a column vector, i.e., <m>m = p = 1</m>.  Then
+          First suppose that <m>A</m> is a row vector and <m>B</m> is a column vector, i.e., <m>m = p = 1</m>.  Then
           <me>
             \begin{split}
             AB \amp= \mat{a_1 a_2 \cdots, a_n}\vec{b_1 b_2 \vdots, b_n}
@@ -1063,7 +1063,7 @@ the license is included in gfdl.xml.
           We have to show that <m>T</m> satisfies the <xref ref="linear-trans-defn">defining properties</xref>.
           <ul>
             <li>
-              By the first <xref ref="det-defn-the-defn">defining property</xref>, scaling any row of a matrix by a number <m>c</m> scales the determinant by a factor of <m>c</m>.  This implies that <m>T</m> satisfies the second property, i.e., that
+              By the second <xref ref="det-defn-the-defn">defining property</xref>, scaling any row of a matrix by a number <m>c</m> scales the determinant by a factor of <m>c</m>.  This implies that <m>T</m> satisfies the second property, i.e., that
               <me>T(cx) = \det(cx,v_2,\ldots,v_n) = c\det(x,v_2,\ldots,v_n) = cT(x).</me>
             </li>
             <li>

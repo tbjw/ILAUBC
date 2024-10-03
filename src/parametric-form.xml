@@ -155,8 +155,8 @@ the license is included in gfdl.xml.
       <p>One should think of a system of equations as being an implicit equation for its solution set, and of the parametric form as being the parameterized equation for the same set.  The parametric form is much more explicit: it gives a concrete recipe for producing <em>all</em> solutions.
       </p>
     </note>
-
-     <paragraphs>
+  </subsection>
+<subsection>
       <title>Parametric Forms in Vector Notation</title>
 <p>While you can certainly write parametric solutions in point notation, it turns out that vector notation is ideally suited to writing down parametric
 forms of solutions.
@@ -189,19 +189,21 @@ or in vector notation
 Of course, since this implies <m>z=s</m>, you might think that we haven't gained anything by the extra complexity.
 </p>
 
-<note>
-  <p>This note describes a subtle point, which you can disregard on first reading.</p>
+
+<note  hide-type="true">
+  <title>Changing Parameters</title>
+  <idx><h>Parametric form</h><h>changing parameters</h></idx>
   <p> What we gain from the extra complexity is flexibility to change the parameter. For instance, we could start with
   <me >
     (x,\,y,\,z) = (1-5s,\,-1-2s,\,s) \qquad \text{$s$ any real number.}
   </me>
-  and decide we would prefer to parametrize using<m>t=-s</m>. Then we can write the solution set as
+  and decide we would prefer to parametrize using <m>t=-s</m>. Then we can write the solution set as
   <me>
-    (x,\,y,\,z) = (1+5t,\,-1+2t,\,-t) \qquad \text{$t$ any real number.}
+`    (x,\,y,\,z) = (1+5t,\,-1+2t,\,-t) \qquad \text{$t$ any real number.}
   </me>
   We could go even further, and change the parameter to <m>u=1-s</m>. Now we can write the solution set as
   <me>
-      (x,\,y,\,z) = (5u-4,\,u-3,\,1-u) \qquad \text{$u$ any real number.}
+      (x,\,y,\,z) = (5u-4,\,2u-3,\,1-u) \qquad \text{$u$ any real number.}
   </me>
   </p>
   <p> The three parameterizations above all describe
@@ -209,7 +211,8 @@ Of course, since this implies <m>z=s</m>, you might think that we haven't gained
   get by setting <m>t=-1</m> or <m>u=0</m>.
   </p>
 </note>
-     </paragraphs>
+
+
 
         <bluebox>
       <p>
@@ -264,6 +267,7 @@ Of course, since this implies <m>z=s</m>, you might think that we haven't gained
         <mathbox source="demos/plane.html" height="400px"/>
       </figure>
     </example>
+
   </subsection>
 
   <subsection>

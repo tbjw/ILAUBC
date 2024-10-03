@@ -26,7 +26,7 @@ the license is included in gfdl.xml.
   </p>
 
     <p>
-      The reader may have observed a relationship between the column space and the null space of a matrix.  In this <xref ref="subspaces-col-nul-1"/>, the column space and the null space of a <m>3\times 2</m> matrix are both lines, in <m>\R^2</m> and <m>\R^3</m>, respectively:
+      The reader may have observed a relationship between the column space and the null space of a matrix.  In this <xref ref="subspaces-col-nul-1"/>, the column space and the null space of a <m>3\times 2</m> matrix are both lines, in <m>\R^3</m> and <m>\R^2</m>, respectively:
           <latex-code>
 \begin{tikzpicture}[myxyz, scale=.8]
 \begin{scope}[resetxy]

@@ -50,7 +50,7 @@ the license is included in gfdl.xml.
       <p>Asking whether or not a vector equation has a solution is the same as asking if a given vector is a linear combination of some other given vectors.  
       </p>
     </bluebox>
-    <p>For example the vector equation above is asking if the vector <m>(8,16,3)</m> is a linear combination of the vectors <m>(1,2,6)</m> and <m>(-1,2,-1)</m>.</p>
+    <p>For example the vector equation above is asking if the vector <m>(8,16,3)</m> is a linear combination of the vectors <m>(1,2,6)</m> and <m>(-1,-2,-1)</m>.</p>
 
     <example xml:id="vector-equation-example-unique">
       <statement>

@@ -21,7 +21,7 @@ the license is included in gfdl.xml.
   <!-- </objectives> -->
 
   <p>
-    In this Appendix we give a brief review of the arithmetic and basic properties of the complex numbers.
+    In this appendix we give a brief review of the arithmetic and basic properties of the complex numbers.
   </p>
 
     <p>
@@ -121,7 +121,7 @@ the license is included in gfdl.xml.
             <em>Division</em> by a nonzero complex number requires multiplying the numerator and denominator by the complex conjugate of the denominator:
             <me>\frac zw = \frac{z\bar w}{w\bar w} = \frac{z\bar w}{|w|^2}.</me>
             For example,
-            <me>\frac{2+i}{1-i} =\frac{(2+i)}{(1-i)}\frac{(1+i}){(1+i)} = \frac{(2+i)(1+i)}{1^2+(-1)^2} = \frac{1+3i}2= \frac 12 +
+            <me>\frac{2+i}{1-i} =\frac{(2+i)}{(1-i)}\frac{(1+i)}{(1+i)} = \frac{(2+i)(1+i)}{1^2+(-1)^2} = \frac{1+3i}2= \frac 12 +
 	    \frac{3}2i.</me>
           </li>
           <li>

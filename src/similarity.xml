@@ -1100,7 +1100,7 @@ the license is included in gfdl.xml.
           <me>B(C\inv v) = C\inv(CBC\inv v) = C\inv(Av) = C\inv\lambda v = \lambda(C\inv v),</me>
           so that <m>C\inv v</m> is an eigenvector of <m>B</m> with eigenvalue <m>\lambda</m>.  Likewise if <m>v</m> is an eigenvector of <m>B</m> with eigenvalue <m>\lambda</m>, then <m>Bv = \lambda v</m>, and we have
           <me>A(Cv) = (CBC\inv)Cv = CBv = C(\lambda v) = \lambda(Cv),</me>
-          so that <m>Cv</m> is an eigenvalue of <m>A</m> with eigenvalue <m>\lambda</m>.
+          so that <m>Cv</m> is an eigenvector of <m>A</m> with eigenvalue <m>\lambda</m>.
         </p>
       </proof>
     </theorem>
