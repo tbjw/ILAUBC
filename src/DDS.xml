@@ -10,76 +10,44 @@ any later version published by the Free Software Foundation. A copy of
 the license is included in gfdl.xml.
 *********************************************************************-->
 
-<section xml:id="DDS" number="6">
- <title>Linear Discrete Dynamical Systems</title>
-
+<section xml:id="dds" number="6">
+ <title>Discrete dynamical systems</title>
  <objectives>
- <ol>
- <li>Learn examples of stochastic matrices and applications to difference equations.</li>
- <!-- <li>Understand Google's PageRank algorithm.</li> -->
- <li><em>Recipe:</em> find the steady state of a positive stochastic matrix.</li>
- <li><em>Picture:</em> dynamics of a positive stochastic matrix.</li>
- <li><em>Theorem:</em> the Perron<ndash/>Frobenius theorem.</li>
- <li><em>Vocabulary words:</em> <term>difference equation</term>, <term>(positive) stochastic matrix</term>, <term>steady state</term>, <term>importance matrix</term>, <term>Google matrix</term>.</li>
- </ol>
- </objectives>
+    <ol>
+      <li>Understand how to convert word problems to matrix equations.</li>
+      <li>Learn how the eigenvalues and eigenvectors of a matrix <m>A</m> can be used to describe the long-term
+      behaviour of an associated discrete dynamical system.</li>
+      <li><em>Recipe:</em>calculate the state <m>v_t</m> of a discrete dynamical system at time <m>t</m>.</li>
+      <li><em>Picture:</em> dynamics of a discrete dynamical system.</li>
+      <li><em>Vocabulary:</em> <term>difference equation</term>, <term>(linear) discrete dynamical system</term>,
+      <term>saddle point</term>, <term>attractor</term>, <term>repeller</term>.</li>
+    </ol>
+  </objectives>
 
  <introduction>
  <p>
- This section is devoted to one common kind of application of eigenvalues: to the study of linear discrete
- dynamical systems. In particular, we will examine Markov chains. We will introduce stochastic matrices, which encode this type of difference equation, and will cover in detail the most famous example of a stochastic matrix: the Google Matrix.
- </p>
- </introduction>
-
- <subsection>
- <title>Linear Discrete Dynamical Systems</title>
-
- <p>
- Suppose that we are studying a system whose state at any given time can be described by a list of numbers: for
- instance, the numbers of rabbits aged <m>0,1,</m> and <m>2</m> years, respectively, or the number of customers of
- two different phone companies in Canada. In each case, we can represent the state at time <m>t</m> by a vector
- <m>v_t</m>. We assume that <m>t</m> represents a discrete time quantity: in other words, <m>v_t</m> is the state
- <q>on day <m>t</m></q> or <q>at year <m>t</m></q>. Suppose in addition that the state at time <m>t+1</m> is
- related to the state at time <m>t</m> in a linear way: <m>v_{t+1}=Av_t</m> for some matrix <m>A</m>. This is the
- situation we will consider in this section.
- </p>
-
- <definition>
- <idx><h>Discrete dynamical system</h></idx>
- <idx><h>Linear Discrete dynamical system</h><see>Discrete dynamical system</see></idx>
- <statement>
- <p>
- A <term>(linear) discrete dynamical system</term> is an equation of the form
- <me>v_{t+1} = Av_t</me>
- for an <m>n\times n</m> matrix <m>A</m> and vectors <m>v_0,v_1,v_2,\ldots</m>.
- </p>
- </statement>
- </definition>
-
- <p>
- In other words:
- <ul>
- <li><m>v_t</m> is the <q>state at time <m>t</m>,</q></li>
- <li><m>v_{t+1}</m> is the <q>state at time <m>t+1</m>,</q> and</li>
- <li><m>v_{t+1}=Av_t</m> means that <m>A</m> is the <q>change of state matrix.</q></li>
- </ul>
- Note that
- <me>v_t = Av_{t-1} = A^2v_{t-2} = \cdots = A^tv_0,</me>
- which should hint to you that the long-term behavior of such a system is an eigenvalue problem.
+ This section and the next are devoted to one common kind of application of eigenvalues: to the study of discrete
+ dynamical systems. The discrete dynamical systems we study are <term>linear discrete dynamical systems</term>. 
  </p>
 
  <p>
- We will use the following example in this subsection and the next. Understanding this section amounts to understanding this example.
+   If <m>f: \R^n \to \R^n</m> is a transformation (not necessarily linear) and  <m> \dots, v_i, v_{i+1}, v_{i+2}, \dots
+   </m> is a sequence of vectors in <m>\R^n</m> such that <m>v_{i+1} =f(v_i)</m>, then we say that <m>f</m> and the
+   sequence <m> v_i, v_{i+1}, \dots </m> make up a <term>discrete dynamical system</term>. The difference equations we
+   study are special kinds of discrete dynamical system, the kind where <m>f</m> is a linear transformation.
  </p>
 
- <specialcase xml:id="stochastic-redbox-eg1">
+ <p>Before giving too many technical definitions, we consider an example:</p>
+
+ <specialcase xml:id="stochastic-truck-eg1">
  <idx><h></h></idx>
  <p>
-	A truck rental company has locations all over Vancouver, where you can rent moving trucks. You can return
-	them to any other location. For simplicity, pretend that there are three locations, and that every customer
-	returns their truck the next day. Let <m>v_t</m> be the vector whose entries <m>x_t,y_t,z_t</m> are the number
-	of trucks in locations <m>1,2,</m> and <m>3</m>, respectively. Let <m>A</m> be the matrix whose
-	<m>i,j</m>-entry is the probability that a customer renting a truck from kiosk <m>j</m> returns it to kiosk <m>i</m>. For example, the matrix
+	A truck rental company has locations all over Vancouver, where you can rent moving trucks. You can return them
+	to any other location. For simplicity, pretend that there are three locations, and that every customer returns
+	their truck the next day. Let <m>v_t</m> be the vector whose entries <m>x_t,y_t,z_t</m> are the number of trucks
+	in locations <m>1,2,</m> and <m>3</m>, respectively. Let <m>A</m> be the matrix whose <m>i,j</m>-entry is the
+	probability that a customer renting a truck from location <m>j</m> returns it to location <m>i</m>. For example, the
+	matrix
  <me>
  A = \mat{.3 .4 .5; .3 .4 \color{seq-red}.3; \color{seq-green}.4 .2 .2}
  </me>
@@ -104,16 +72,79 @@ the license is included in gfdl.xml.
  </me>
  Therefore, <m>Av_t</m> represents the number of trucks at each location the next day:
  <me>Av_t = v_{t+1}.</me>
-	This is a discrete dynamical system.
+	This is an example of a linear discrete dynamical system.
  </p>
  </specialcase>
+ </introduction>
+
+ <subsection>
+   <title>Discrete dynamical systems</title>
 
  <p>
- An important question to ask about a dynamical system is: what is its long-term behavior? How many trucks will be
- at each location after 100 days (assuming no intervention from the business owner)? In the next subsection, we will answer this question for a particular type of difference equation.
+ Suppose that we are studying a system whose <term>state</term> at any given time can be described by a list of numbers: for
+ instance, the numbers of rabbits aged <m>0,1,</m> and <m>2</m> years, respectively, or the number of customers of
+ two different phone companies in Canada. In each case, we can represent the state at time <m>t</m> by a vector
+ <m>v_t</m>. We assume that <m>t</m> represents a discrete time quantity: in other words, <m>v_t</m> is the state
+ <q>on day <m>t</m></q> or <q>at year <m>t</m></q>. Suppose in addition that the state at time <m>t+1</m> is
+ related to the state at time <m>t</m> in a linear way: <m>v_{t+1}=Av_t</m> for some matrix <m>A</m>. This is the
+ situation we will consider in this section.
  </p>
 
- <example>
+ <definition>
+   <idx><h>Matrix difference equation</h></idx>
+   <idx><h>Difference equation</h><see>Matrix difference equation</see></idx>
+   <statement>
+ <p>
+   A <term>(first-order homogeneous) matrix difference equation</term> is an equation of the form
+ <me>v_{t+1} = Av_t</me>
+ where <m>A</m> is an <m> n \times n</m> matrix. <idx><h>Initial condition</h></idx>An <term>initial condition</term> is
+ a vector <m>v_0</m> in <m>\R^n</m>.   <idx><h>Linear Discrete dynamical system</h></idx>
+   <idx><h>Discrete dynamical system</h><see>Linear discrete dynamical system</see></idx> Taken together, the difference equation and the initial condition determine a
+ sequence of vectors
+ <m> v_0 , v_1, v_2, \dots </m>
+ such that <m>v_{t+1} = A v_t</m> for all <m>t</m>. This is called a <term>(linear) discrete dynamical system</term>.
+ </p>
+ </statement>
+ </definition>
+
+ 
+ <p>
+ In other words:
+ <ul>
+ <li><m>v_t</m> is the <q>state at time <m>t</m>,</q></li>
+ <li><m>v_{t+1}</m> is the <q>state at time <m>t+1</m>,</q> and</li>
+ <li><m>v_{t+1}=Av_t</m> means that <m>A</m> is the <q>change of state matrix.</q></li>
+ </ul>
+ Note that
+ <me>v_t = Av_{t-1} = A^2v_{t-2} = \cdots = A^tv_0,</me>
+ which should hint to you that the long-term behavior of such a system is an eigenvalue problem.
+ </p>
+
+ 
+ <remark>
+   <p> A <term>second-order</term> matrix difference equation is one where there are two matrices <m>A</m> and <m>B</m>
+   and the equation
+   <me> v_t = Av_{t-1} + Bv_{t-2}</me>
+   holds for all <m>t</m>. An <term>inhomogeneous</term> (first order) matrix difference equation is one where there is a constant vector
+   <m>c</m> such that
+   <me> v_t = Av_{t-1} +c </me>
+   holds for all <m>t</m>. We will not consider second- or higher-order or inhomogeneous difference equations, or their
+   associated discrete dynamical systems, in this book.
+   </p>
+ </remark>
+
+ </subsection>
+ 
+
+ <subsection>
+   <title>Long-term behaviour</title>
+   <p>
+   An important question to ask about a dynamical system is: what is its long-term behavior? How many trucks will be
+   at each location after 100 days (assuming no intervention from the business owner)? How many rabbits will there be in
+   20 years (and how many of them will be adults)? In this subsection, we will address this kind of question.
+ </p>
+
+ <example xml:id="ddsRabbitExample">
  <title>Rabbit population</title>
  <p>
  In a population of rabbits,
@@ -147,20 +178,13 @@ the license is included in gfdl.xml.
  <mathbox source="demos/rabbits.html" height="300px"/>
  </figure>
  </example>
- </subsection>
 
- <subsection>
-   <title>Long-term behaviour</title>
 
-   <example hide-type="false">
+ <specialcase hide-type="false">
      <title>A Predator–Prey Model</title>
-     <statement>
      <p>
-       There is a pond with two species: frogs and midges. The frogs eat the midges. The
-       population is counted once a year.
-     </p>
-
-     <p>We measure frogs in hundreds (<m>10^2</m>), and midges in hundreds of thousands (<m>10^5</m>).</p>
+       There is a pond with two species: frogs and midges. The frogs eat the midges. The population is counted once a
+     year. We measure frogs in hundreds (<m>10^2</m>), and midges in hundreds of thousands (<m>10^5</m>).</p>
 
      <p> If it were not for the frogs, the midge population would increase by <m>30\%</m> each year. We assume
      that each frog kills <m>500</m> midges each year. Equivalently, for each <m>100</m> frogs, the number of midges that gets eaten
@@ -168,50 +192,47 @@ the license is included in gfdl.xml.
      </p>
 
      <p>
-       The growth of the frog population is constrained by the availability of midges. We assume that on average,
-       for each <m>100,000</m> midges, <m>0.1 \times 100</m> tadpoles survive to become an adult frog each year.
+       The growth of the frog population is constrained by the availability of midges. We assume that on average, for
+       each <m>100,000</m> midges, <m>10 = 0.1 \times 100</m> tadpoles survive to become adult frogs each year. Finally,
+       we need the death rate of the frog population. It is <m>30\%</m>.  That is, only <m>70\%</m> of the adult frogs
+       this year survive until next year.
      </p>
 
-     <p>Finally, we need the death rate of the frog population. It is <m>30\%</m>.  That is, only <m>70\%</m> of the
-     adult frogs this year survive until next year.
-     </p>
+     <p>We now show how this description leads directly to a difference equation</p>
 
-     <p>Set this up as a discrete dynamical system.</p>
-     </statement>
-     <solution>
        <p>
 	 Let <m>f_t</m> denote the number of frogs (in hundreds) after <m>t</m> years have passed, and let <m>m_t</m> denote the number
 	 of midges (in hundreds of thousands) after <m>t</m> years have passed. Let
 	 <me> v_t = \vec{f_t m_t}.</me>
 	 Then the text of the problem tells us that
-	 <me> m_{t+1} = 1.3 m_t - 0.5 f_t </me>
+	 <me> f_{t+1} = 0.7 f_t + 0.1 m_t</me>
 	 and
-	 <me> f_{t+1} = 0.1 m_t + 0.7 f_t.</me>
+	 <me> m_{t+1} = -0.5 f_t + 1.3m_t.</me>
 	 This can be written in matrix form:
-	 <me> v_{t+1} = \mat{1.3  -0.5;  0.1  0.7} v_t. </me>
+	 <me> v_{t+1} = \mat{0.7 0.1;  -0.5  1.3} v_t. </me>
 	 Write
-	 <me> A  = \mat{1.3  -0.5; 0.1  0.7} </me>
+	 <me> A  = \mat{0.7 0.1;-0.5  1.3} </me>
 	 for later reference.
        </p>
 
        <p>If <m>v_0</m> is the vector containing the population data for this year (midges and frogs), then <m>v_1 =
-       Av_2</m> is the vector containing the population data for next year, <m>v_2=Av_1</m> is the vector containing the
+       Av_0</m> is the vector containing the population data for next year, <m>v_2=Av_1</m> is the vector containing the
        population for the year after, and so on.
        </p>
 
-       <p>For example, if we calculate that there are <m>9\times 10^5</m>midges and <m>700</m> frogs in year 1, then we
+       <p>For example, if we calculate that there are <m>700</m> frogs and <m>9\times 10^5</m>midges in year 0, then we
        would record this as
-       <me> v_0 = \vec{9 7}.</me>
+       <me> v_0 = \vec{7 9}.</me>
        We could then calculate
-       <me>v_1 = \mat{ 1.3  -0.5; 0.1  0.7} \vec{9 7} = \vec{8.2 5.8}</me>
+       <me>v_1 =\mat{0.7 0.1;-0.5  1.3} \vec{7 9} = \vec{5.8 8.2}</me>
        and
-       <me>v_2 = \mat{1.3  -0.5; 0.1  0.7} \vec{8.2 5.8} = \vec{7.76 4.88}.</me>
-       This represents <m>776,000</m> midges and <m>488</m> frogs in year <m>3</m>.
+       <me>v_2 = \mat{0.7 0.1;-0.5  1.3} \vec{5.8 8.2} = \vec{4.88 7.76}.</me>
+       This represents  <m>488</m> frogs and <m>776,000</m> midges in year <m>2</m>.
        </p>
 
       <p>
 	There are many questions one can ask about the model we have constructed. Let us concentrate here on questions
-	about <em>long term</em> behaviour of the model. That is, what happens in our model after a large number of
+	about <em>long-term</em> behaviour of the model. That is, what happens in our model after a large number of
 	years? In mathematical notation, we want to know what <m>v_t</m> looks like as <m>t \to \infty</m>. 
      </p>
 
@@ -221,38 +242,36 @@ the license is included in gfdl.xml.
        This is to say that to get <m>v_t</m>, you apply <m>A</m> to <m>v_0</m> a total of <m>t</m> times.
      </p>
 
-     <p> We previously REFERENCE saw that <m>A^t</m> is troublesome to calculate directly when <m>t</m> is large, but it is
+     <p> In <xref ref="diagonalization"/> we saw that <m>A^t</m> is troublesome to calculate directly when <m>t</m> is large, but it is
      easier to calculate if we diagonalize: <m>A = CDC^{-1}</m>. In the case of the frogs and midges:
-     <me> \mat{1.3  -0.5; 0.1  0.7} = A = CDC^{-1} = \mat{1 5; 1 1}\mat{0.8 0; 0 1.2}\mat{-0.25 1.25; 0.25 -0.25}. </me>
+     <me> \mat{0.7 0.1;-0.5  1.3} = A = CDC^{-1} = \mat{1 1; 5 1}\mat{1.2 0; 0 0.8}\mat{-0.25 0.25; 1.25 -0.25}. </me>
      This allows us to write down a computable formula for <m>v_t</m>:
      <men> v_t = C D^t C^{-1} v_0.</men>
-     For instance, if we continue to suppose that <m>v_0=\vec{9 7}</m>, then we calculate
-     <men> v_t = \mat{1 5; 1 1}\mat{0.8^t 0; 0 1.2^t}\mat{-0.25 1.25; 0.25 -0.25}\vec{9 7} =  \mat{1 5; 1 1}\mat{0.8^t 0;
-     0 1.2^t}\vec{6.5 -0.5}=\mat{1 5; 1 1}\vec{(0.8)^t(6.5) (1.2)^t(-0.5)}=\vec{1(0.8)^t(6.5) 1(0.8)^t(7.5)} +
-     \vec{5(1.2)^t(0.5) 1(1.2)^t(0.5)}.</men>
+     For instance, if we continue to suppose that <m>v_0=\vec{7 9}</m>, then we calculate
+     <men xml:id="frogMidgeEqn"> \begin{split} v_t = \mat{1 1; 5 1}\mat{1.2^t 0; 0 0.8^t}\mat{-0.25 0.25; 1.25 -0.25}\vec{7 9} =\\= \mat{1 1; 5 1}\mat{1.2^t 0;
+     0 0.8^t}\vec{0.5 6.5}=\mat{1 1; 5 1}\vec{(1.2)^t(0.5) (0.8)^t(6.5)}=\\
+     =\vec{1(1.2)^t(0.5)+1(0.8)^t(6.5) 5(1.2)^t(0.5)+1(0.8)^t(6.5)}.\end{split}</men>
      In even more direct language, the model predicts that the number of frogs (in hundreds) is given by
-     <me>f_t = 1(0.8)^t(6.5)+5(1.2)^t(0.5)</me>
+     <me>f_t=1(1.2)^t(0.5) + 1(0.8)^t(6.5)</me>
      and the number of midges (in hundreds of thousands) is given by
-     <me>m_t =  1(0.8)^t(7.5)+1(1.2)^t(0.5).</me>
+     <me>m_t=5(1.2)^t(0.5)+1(0.8)^t(7.5).</me>
      </p>
 
      <p>
-       What we asked about the system was the long-term behaviour. From this point of view, the information in REFERENCE
-       was more than we needed. We know from calculus that as <m>t</m> grows, the quantity <m>(0.8)^t</m> tends to
+       What we asked about the system was the long-term behaviour. From this point of view, the information in 
+       <xref ref="frogMidgeEqn">equation</xref>  was more than we needed. We know from calculus that as <m>t</m> grows, the quantity <m>(0.8)^t</m> tends to
        <m>0</m>, whereas <m>(1.2)^t</m> grows without bound. This is good news for our frogs and midges, since it we calculate
-       <me> \lim_{t \to \infty} f_t = \lim_{t \to \infty} 1(0.8)^t(6.5)+ \lim_{t\to \infty} 5(1.2)^t(0.5) = 0 + \infty
+       <me> \lim_{t \to \infty} f_t = \lim_{t\to \infty} 5(1.2)^t(0.5) + \lim_{t \to \infty} 1(0.8)^t(6.5) = \infty + 0
        </me>
-       and similarly for the midges, so the model predicts that both frogs and midges will keep growing in number.
+       and similarly for the midges <m>\lim_{t \to \infty} m_t = \infty</m>, so the model predicts that both frogs and midges will thrive.
      </p>
 
      <p>The model can also be used to predict the ratio of frogs to midges. This is a standard kind of limit calculation 
-     <me> \lim_{t \to \infty} \frac{f_t}{m_t} = \lim_{t \to \infty} \frac{1(0.8)^t(6.5)+
-     5(1.2)^t(0.5)}{1(0.8)^t(7.5)+1(1.2)^t(0.5)} = \frac{5}{1}.</me>
+     <me> \lim_{t \to \infty} \frac{f_t}{m_t} = \lim_{t \to \infty} \frac{5(1.2)^t(0.5) + 1(0.8)^t(6.5)}{1(1.2)^t(0.5)+1(0.8)^t(7.5)} = \frac{5}{1}.</me>
      This says that after several years have passed, the ratio of frogs to midges will be approximately 500 frogs for
      each 100,000 midges, which we can simplify to 1 frog for every 200 midges.
      </p>
-   </solution>
- </example>
+ </specialcase>
 
    <!-- <figure><caption></caption><mathbox -->
    <!--     source="demos/dynamics3.html?mat=0,1:-1,-1&amp;vec=true&amp;size=20&amp;y=1,2,3&amp;flow=false&amp;matname=A&amp;vecname=v" -->
@@ -278,13 +297,12 @@ the license is included in gfdl.xml.
    <!-- </figure> -->
      
      <warning>
-       <p>It is important to keep a consistent ordering of the variables when you work out examples like this. For
-       instance, you can list the midges first and the frogs second, to get the matrix
+       <p>You can choose any ordering you like for the variables at the start of a question like this. For
+       instance, you can list the midges first and the frogs second, to get the system
        <me> v_t = \vec{m_t f_t}, \quad  A =  \mat{1.3  -0.5; 0.1 0.7}.</me>
-       You can also list the frogs first, and the midges second throughout. In this case, you would get <m>\mat{0.7 
-       0.1; -0.5  1.3} </m>, and the vectors you would write down would take the form <m>\vec{f_t m_t}</m>.
+       This describes the same model, so the formulas you would derive for <m>m_t</m> and <m>f_t</m> would be the same.
        </p>
-       <p>Do not mix up the order by writing frogs first sometimes and midges first other times. This will lead
+       <p>It is extremely important to keep the same order throughout, however. Do not mix up the order by writing frogs first sometimes and midges first other times. This will lead
        to nonsense.</p>
      </warning>
 
@@ -299,13 +317,14 @@ the license is included in gfdl.xml.
 	 Suppose we have a discrete dynamical system
 	 <me>v_{t+1} = A v_t</me>
 	 and an initial vector <m>v_0</m>, then we can write
-	 <me> v_1 = Av_0,\, v_2 = Av_1 = A^2v_0,\, v_3=Av_2 = AA^2v_0 = A^3v_0, \dots \, v_t = A^t v_0.</me>
+	 <me> v_1 = Av_0,\quad v_2 = Av_1 = A(Av_0) = A^2 v_0 , \quad \dots,\quad  v_t = \overbrace{A \dots
+	 A}^{\text{$t$ times}} v_0 = A^t v_0.</me>
        </p>
 
        <p>The situation is simplest when <m>v_0</m> is an eigenvector of <m>A</m>, with eigenvalue <m>\lambda</m>. In
        this case, the multiplication <m> A v_0 </m> has the effect of stretching <m>v_0</m> by a factor of
-       <m>\lambda</m>, so that applying <m>A</m> to <m>v_0</m> repeatedly, say <m>t</m> times, results in scaling
-       <m>v_0</m> by <m>\lambda \lambda \cdot \lambda = \lambda^t</m>.
+       <m>\lambda</m>, so that applying <m>A</m> <m>t</m> times to <m>v_0</m> results in scaling
+       <m>v_0</m> by <m>\overbrace{\lambda \lambda \dots \lambda}^{\text{$t$ times}}=  \lambda^t</m>.
        <me> A^t v_0 = \lambda^t v_0 </me>
        provided <m>v_0</m> is an eigenvector with eigenvalue <m>\lambda</m>.
        </p>
@@ -323,86 +342,120 @@ the license is included in gfdl.xml.
        </p>
 
        <p>From now on, we assume <m>A</m> is diagonalizable. Let
-       <me> C = \mat[c]{ | |,, | ; w_1 w_2 \dots w_n; | | ,, | }</me>
+       <me> C = \mat[c]{ | |,,| ; w_1 w_2 \dots, w_n; | |,,|}</me>
        be an invertible matrix where the columns are eigenvectors of <m>A</m>. We want to write
        <me> v_0 = c_1w_1 + \dots + c_n w_n, </me>
        which is the same as solving the system of linear equations
-       <me> v_0 = C \vec{c_1 c_2 \vdots c_n}</me>
+       <me> v_0 = C \vec{c_1 c_2 \vdots, c_n}</me>
        so that we deduce that
-       <me> C^{-1} v_0 = \vec{c_1 c_2 \vdots c_n}. </me>
-       This is step 1.
+       <me> C^{-1} v_0 = \vec{c_1 c_2 \vdots, c_n}. </me>
        </p>
 
        <p>Having written <m>v</m> as a linear combination of eigenvectors, we can calculate <m>v_t</m>:
-       <men> v_t = \lambda_1^t c_1 w_1 + \lambda_2^tc_2w_2+\dots + \lambda_n^t c_n w_n.</men>
+       <me> v_t = \lambda_1^t c_1 w_1 + \lambda_2^tc_2w_2+\dots + \lambda_n^t c_n w_n.</me>
+</p>
+<bluebox xml:id="ddsRecipe">
+  <title>Recipe: Calculating <m>v_t</m>, the state at time <m>t</m>, for a  discrete dynamical system</title>
+  <idx><h>Discrete dynamical systems</h><h>calculating state at time <m>t</m></h>
+  </idx>
+  <p>If <m>A</m> and <m>v_0</m> determine a discrete dynamical system <m>v_t = A^t v_0</m>, and if <m>A</m> is diagonalizable, then to calculate the
+  vector <m>v_t</m>
+  <ul><li>Write
+  <me>v_0 = c_1 w_1 + c_2 w_2 + \dots + c_n w_n</me>
+  where <m>w_1, w_2, \dots, w_n</m> are eigenvectors of <m>A</m> with associated eigenvalues <m>\lambda_1, \lambda_2,
+  \dots, \lambda_n</m>. </li>
+  <li> Then
+  <me> v_t = c_1 \lambda_1^t w_1 + c_2 \lambda_2^t w_2 + \dots + c_n \lambda_n^t w_n .</me></li>
+  </ul>
+  </p>
+</bluebox>
+     </paragraphs>
+<paragraphs>
+  <title>Relating this procedure to diagonalization</title>
+	<p> 
        In this case we are taking the vectors <m>w_1, w_2, \dots, w_n</m> and are forming the combination with
        coefficients
-       <men> \vec{\lambda_1^tc_1 \lambda_2^tc_2 \vdots \lambda_n^tc_n}.</men>
+       <men xml:id="ddsCoeffVector"> \vec{\lambda_1^tc_1 \lambda_2^tc_2 \vdots, \lambda_n^tc_n}.</men>
        You can check that if <m>D</m> denotes the diagonal matrix having <m>\lambda_1, \lambda_2, \dots, \lambda_n</m>
-       as diagonal entries, then the vector of coefficients is calculated as <m>D^t C^{-1}v_0</m>.
+       as diagonal entries, then the vector of coefficients <xref ref="ddsCoeffVector"/> is calculated as <m>D^t C^{-1}v_0</m>.
        Then to combine <m>w_1, w_2, \dots, w_n</m> with these coefficients, we take the product <m>C D^t C^{-1}
        </m>. That is to say:
        <me> v_t = C D^t C^{-1}v_0 = \lambda_1^t c_1 w_1 + \lambda_2^tc_2w_2+\dots + \lambda_n^t c_n w_n.</me>
        </p>
 
-       <example>
+       <specialcase>
 	 <title>Frogs and midges, revisited</title>
-	   <p>Revisit the example of frogs and midges explicitly using eigenvectors. Recall that in that case
-	   <me> v_{t+1} = A \vec v_t \quad A = \mat{1.3 -0.5; 0.1 0.7}.</me>
-	   Set <m>v_0=\vec{9 7}</m>. We know <m>A</m> has eigenvector–eigenvalue pairs
-	   <me> w_1 = \vec{1 1}, \, \lambda_1 = 0.8;\quad w_2=\vec{5 1},\, \lambda_2=1.2.</me>
+	   <p>We look at the example of frogs and midge again, this time using the eigenvectors of <m>A</m>
+	   extensively. Remember that
+	   <me>v_{t+1} = A v_t, \quad A = \mat{0.7 0.1;-0.5 1.3}.</me>
+	   Set <m>v_0=\vec{7 9}</m>. We know <m>A</m> has eigenvector–eigenvalue pairs
+	   <me>w_1 = \vec{1 5}, \, \lambda_1 = 1.2;\quad w_2=\vec{1 1},\, \lambda_2=0.8.</me>
 	   For later use, we set up a little more notation:
-	   <me> v_t = \vec{f_t v_t}, \quad C = \mat{1 5; 1 1},\quad D = \mat{0.8 0; 0 1.2}.</me></p>
+	   <me>v_t = \vec{f_t m_t}, \quad C = \mat{1 1; 5 1},\quad D = \mat{1.2 0; 0 0.8}.</me></p>
 	   <p>Write <m>v_0</m> in terms of eigenvectors of <m>A</m>:
-	   <me>\vec{9 7} = (6.5)\vec{1 1} + (0.5)\vec{5 1}.</me>
+	   <me>\vec{7 9} = (0.5)\vec{1 5} + (6.5)\vec{1 1}.</me>
 	   You can calculate these coefficients in many ways, of course, but one way is to do the multiplication
-	   <me> C^{-1} v_0 = \vec{6.5 0.5}. </me></p>
+	   <me>C^{-1} v_0 = \vec{0.5 6.5}.</me></p>
 
 	   <p>We now know that
-	   <men xml:id="frogMidge1">v_t  = (0.8)^t(6.5)\vec{1 1} + (1.2)^t (0.5) \vec{5 1},</men>
+	   <men xml:id="frogMidge1">v_t  = (1.2)^t(0.5)\vec{1 5} + (0.8)^t (6.5) \vec{1 1},</men>
 	   which is saying the same thing as
-	   <me> v_t = C D^t C^{-1}v_0</me>
+	   <me>v_t = C D^t C^{-1}v_0</me>
 	   in different notation. You can check by expanding out that <xref ref="frogMidge1"/> gives the same
-	   information as <xref provisional="previousFrogMidge"/>.
+	   information as <xref ref="frogMidgeEqn"/>.
 	   </p>
 
 	   <p>Equation <xref ref="frogMidge1"/> is particularly useful for understanding the long-term behaviour of the
 	   model. As <m>t</m> grows larger, the coefficient <m>(0.8)^t</m> tends to <m>0</m>. This means that as time
-	   goes by, the contribution of <m>(0.8)^t(6.5)\vec{1 1} </m> to <m>v_t</m> becomes less and less important, and
+	   goes by, the contribution of <m>(0.8)^t(6.5)\vec{1 1}</m> to <m>v_t</m> becomes less and less important, and
 	   the other summand, <m>(1.2)^t (0.5) \vec{5 1}</m> explains the long-term behaviour of the model. For example,
 	   we can see directly from Equation <xref ref="frogMidge1"/> that the ratio of <m>f_t</m> (100s of frogs) to
-	   <m>m_t</m> (100,000s of midges) tends to <m>5:1</m> as <m>t \to \infty</m>.
+	   <m>m_t</m> (100,000s of midges) tends to <m>1:5</m> as <m>t \to \infty</m>.
 	   </p>
 	    <figure xml:id="figFrogMidge"><caption>A plot of the number of frogs and midges in each year after year 0. The <m>x</m>-coordinate
-     denotes 100s of frogs, and the <m>y</m>-coordinate denotes 100,000s of midges.</caption><mathbox
-       source="demos/dynamics3.html?mat=1.3,-0.5:0.1,0.7&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=9,7&amp;flow=false&amp;matname=A&amp;vecname=v"
-       height="600px"/></figure>
+	    denotes 100s of frogs, and the <m>y</m>-coordinate denotes 100,000s of midges.</caption><mathbox
+	    source="demos/dynamics3.html?mat=0.7,0.1:-0.5,1.3&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=7,9&amp;flow=false&amp;matname=A&amp;vecname=v"
+	    height="600px"/></figure>
 
-     <p>By moving the initial vector around in Figure <xref ref="figFrogMidge"/>, you can see how the long-term behaviour
-     of the model depends on <m>v_0</m>. For example, if <m>v_0</m> lies in the eigenspace for <m>0.8</m>, then the
-     sequence <m>v_0, Av_0, A^2v_0, \dots</m> is attracted the origin. For any other starting position, the vector
-     <m>v_0</m> has some nonzero component in the <m>1.2</m>-eigenspace, and this component will determine the long-term
-     behaviour, so that <m>v_0, Av_0, A^2v_0, \dots</m> is eventually repelled by the origin. In a circumstance like
-     this, where the origin attracts along some directions and repels along others, the origin is said to be a
-     <term>saddle point</term><idx><h>saddle point</h></idx>.</p>
-       </example>
+	    <p>By moving the initial vector around in the figure above, you can see how the long-term behaviour of the
+	    model depends on <m>v_0</m>. For example, if <m>v_0</m> lies in the eigenspace for <m>0.8</m>, then the
+	    sequence <m>v_0, Av_0, A^2v_0, \dots</m> is attracted the origin. For any other starting position, the
+	    vector <m>v_0</m> has some nonzero component in the <m>1.2</m>-eigenspace, and this component will determine
+	    the long-term behaviour, so that <m>v_0, Av_0, A^2v_0, \dots</m> is eventually repelled by the origin. In a
+	    circumstance like this, where the origin attracts along some directions and repels along others, the origin
+	    is said to be a <term>saddle point</term><idx><h>saddle point</h></idx>.</p>
+     
+	    <p>As a real-world matter, however, observe that moving <m>v_0</m> to the right has bad consequences for the
+	    frogs and midges. If, for example, we move <m>v_0</m> to <m>v_0 = \vec{8 5}</m>, then <me> v_0 = -0.75
+	    \vec{1 5} + 7.25\vec{1 1}</me> so that applying the recipe gives us <me>\vec{f_t
+	    m_t}=v_t = (-0.75)(1.2)^t\vec{1 5} + (7.25)(0.8)^t\vec{1 1}.</me> As <m>t</m> becomes larger, both
+	    <m>f_t</m> and <m>m_t</m> tend to <m>-\infty</m>. This is an abstract mathematical statement, and does not
+	    make sense for the frogs and midges. In the real world, as soon as the number of midges reaches <m>0</m>,
+	    the ecosystem will collapse and the frogs and midges will all die.
+	    </p>
+       </specialcase>
+       
+     </paragraphs>
+     <paragraphs>
+       <title>Various kinds of long-term behaviour</title>
 
-       	 <p> There is considerable divirsity in how discrete dynamial systems specified by <m>v_{t+1} = A v_t</m> can
-	 behave, even when we restrict our attention to <m>2 \times 2</m> matrices. The following examples do not
-	 cover every possibility, but they should be enough to give you the tools to understand every case.
-	 </p>
+       <p> There is considerable diversity in how discrete dynamial systems specified by <m>v_{t+1} = A v_t</m> can
+       behave, even when we restrict our attention to <m>2 \times 2</m> matrices. The following examples do not cover
+       every possibility, but they should be enough to give you the tools to understand every case.
+       </p>
 
        
 
 	   
-	 <example>
-	   <p>Suppose <m>A</m> is a diagonalizable <m>2 \times 2</m> matrix with two eigenvalues <m>\lambda_1, \lambda_2</m>, both of
-	   which satisfy <m>0 &lt; \lambda &lt;  1</m>. As before, a general <m>v_0</m> can  be written as
-	   <me> v_0 = c_1w_1 + c_2 w_2 </me>
-	   where <m>w_1, \, w_2</m> are eigenvectors of <m>A</m>. We deduce that
-	   <me> v_t = c_1 \lambda_1^t w_1 + c_2 \lambda_2^t w_2 </me>
-	   which converges to the origin no matter what initial vector is chosen. We say the origin is an
-	   <term>attractor</term><idx><h>attractor</h></idx> in this case.
+       <example>
+	 <title>Two different eigenvalues between <m>0</m> and <m>1</m></title>
+	   <p>Suppose <m>A</m> is a diagonalizable <m>2 \times 2</m> matrix with two eigenvalues <m>\lambda_1,
+	   \lambda_2</m>, both of which satisfy <m>0 &lt; \lambda &lt; 1</m>. As before, a general <m>v_0</m> can be
+	   written as <me> v_0 = c_1w_1 + c_2 w_2 </me> where <m>w_1, \, w_2</m> are eigenvectors of <m>A</m>. We deduce
+	   that <me> v_t = c_1 \lambda_1^t w_1 + c_2 \lambda_2^t w_2 </me>, by use of the recipe. The
+	   sequence of vectors <m>v_t</m> converges to the origin no matter what
+	   initial vector is chosen. We say the origin is an <term>attractor</term><idx><h>attractor</h></idx> in this
+	   case.
 	   </p>
 	   
 	   
@@ -425,8 +478,8 @@ the license is included in gfdl.xml.
 	     The ratio between the first- and second-coordinate entry of <m>v_t</m> is (as a fraction)
 	     <me> r_t= \frac{c_1(0.9)^t-c_2(0.4)^t}{c_1(0.9)^t-c_2(0.4)^t}.</me>
 	     To see what happens as <m>t \to \infty</m>, we can do a limit calculation
-	     <me> \lim_{t \to \infty} r_t = \lim_{t \to \infty}
-	     \frac{c_1-c_2\frac{(0.4)^t}{(0.9)^t}}{c_1+c_2\frac{(0.4)^t}{(0.9)^t}} = \frac{ c_1 - 0}{c_1 + 0} = 1</me>
+	     <me>\lim_{t \to \infty} r_t = \lim_{t \to \infty}
+	     \frac{c_1-c_2\frac{(0.4)^t}{(0.9)^t}}{c_1+c_2\frac{(0.4)^t}{(0.9)^t}} = \frac{c_1 - 0}{c_1 + 0} = 1</me>
 	     provided <m>c_1 \neq 0</m>.</p>
 	     <p>This means that as <m>t</m> becomes larger and larger, the vector <m>v_t</m> gets closer and closer to
 	     the line spanned by <m>w_1= \vec{1 1}</m>, unless <m>v_0</m> started out in the <m>w_2</m>-eigenspace (in
@@ -434,6 +487,7 @@ the license is included in gfdl.xml.
 	   </example>
 
 	   <example>
+	     	 <title>Two different eigenvalues bigger than <m>1</m></title>
 	     <p>The case of two eigenvalues <m> \lambda_1,\, \lambda_2 > 1</m> is similar to that of two eigenvalues <m>
 	     0 &lt; \lambda &lt; 1 </m>. The difference is that the sequence <m>v_0, v_1, \dots </m> moves away from,
 	     rather than toward, the origin. In this case, the origin is said to be a <term>repeller</term>.</p>
@@ -444,6 +498,7 @@ the license is included in gfdl.xml.
 
      
 	   <example>
+	     <title>A repeated eigenvalue, diagonal case</title>
 	     <p>Here is an example where the matrix <m>A</m> has two repeated eigenvalues and is diagonalizable</p>
 	     <figure><caption></caption><mathbox
        source="demos/dynamics3.html?mat=1.5,0:0,1.5&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=1,-2&amp;flow=false&amp;matname=A&amp;vecname=v"
@@ -454,15 +509,26 @@ the license is included in gfdl.xml.
 	   </example>
 
 
-	   <example>
-	     <p> In section <xref provisional="stochastic"/>, we will devote a lot of attention to matrices where
+	   <example xml:id="exampleEig1">
+	     <title>One eigenvalue equal to <m>1</m></title>
+	     <p> In section <xref ref="stochastic2"/>, we will devote a lot of attention to matrices where
 	     (exactly) one of the eigenvalues is <m>1</m>.</p>
 
 	     <figure><caption></caption><mathbox
 	     source="demos/dynamics3.html?mat=1,0.3:0,0.8&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=4,-7&amp;flow=false&amp;matname=A&amp;vecname=v"
        height="600px"/></figure>
 	   </example>
-	 </paragraphs>
+
+	   <example>
+	     <title>A non-diagonalizable matrix</title>
+<p> Here is an example where there is a repeated eigenvalue but the matrix is not diagonalizable. Analysis of discrete
+dynamical systems is harder than in the diagonalizable case. We will not say much about it here.
+</p>
+<figure><caption></caption><mathbox
+       source="demos/dynamics3.html?mat=1.2,-0.2:0.8,0.4&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=4,-1&amp;flow=false&amp;matname=A&amp;vecname=v"
+       height="600px"/></figure>
+	   </example>
+     </paragraphs>
 
 	 <paragraphs>
 	   <title>Possibly negative eigenvalues</title>
@@ -496,10 +562,12 @@ the license is included in gfdl.xml.
 
 	     <p>Of course, this discussion leaves out a great many special cases. What if <m>|\lambda_1|=1</m>, or
 	     <m>\lambda_2 = 0</m>? There are too many of these for it to be helpful for us to cover them all, but by
-	     reference to <xref provisional="fundamental formula"/> and a little calculus, you can study them all.
+	     use of the recipe and a little calculus, you can study almost all of them. The only case you might not be
+	     equipped to handle is that of a non-diagonalizable matrix <m>A</m>.
 	     </p>
 
 	     <example>
+	       <title>One positive, one negative eigenvalue</title>
 	       <p>Here is a typical example with one positive and one negative eigenvalue. Note that the magnitudes
 	       <m>|\lambda_1| &lt; 1</m> and  <m>1 &lt;  |\lambda_2|</m> imply the origin is a saddle point. The sequence <m>v_0, v_1, v_2,
 	       \dots </m> goes off to <m>\infty</m> along the <m>\lambda_2</m>-eigenspace. Since <m>\lambda_1</m> is
@@ -510,16 +578,8 @@ the license is included in gfdl.xml.
        height="600px"/></figure>
 	   </example>
 	   
-	   <example>
-<p> Here is an example where there is a repeated eigenvalue but the matrix is not diagonalizable. Analysis of discrete
-dynamical systems is harder than in the diagonalizable case. We will not say much about it here.
-</p>
-<figure><caption></caption><mathbox
-       source="demos/dynamics3.html?mat=1.2,-0.2:0.8,0.4&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=20&amp;y=4,-1&amp;flow=false&amp;matname=A&amp;vecname=v"
-       height="600px"/></figure>
-	   </example>
-     </paragraphs>
-   </subsection>
+	 </paragraphs>
+ </subsection>
 
    <subsection>
      <title>Discrete dynamical systems with complex eigenvalues</title>
@@ -528,9 +588,10 @@ dynamical systems is harder than in the diagonalizable case. We will not say muc
      </p>
 
      <example>
+       <title>Complex eigenvalues</title>
        <p>Suppose <me>A=\mat{1.1 -0.1; 0.1 1.1}.</me> In this case there are two complex-conjugate eigenvalues:
        <m>\lambda_1=\frac{11}{10} + \frac{i}{10}</m> and <m>\lambda_2=\frac{11}{10} - \frac{i}{10}</m>. They have associated eigenvectors <me>w_1  =
-       \vec{ i 1}\quad \text{and} \quad >w_2 = \vec{-i 1}.</me> 
+       \vec{ i 1}\quad \text{and} \quad w_2 = \vec{-i 1}.</me> 
        </p>
 
        <figure xml:id="figComplexOutward"><caption></caption><mathbox
@@ -553,16 +614,11 @@ dynamical systems is harder than in the diagonalizable case. We will not say muc
      
      <p>Previously, we saw that magnitude of the eigenvalues, i.e., whether <m>|\lambda| &lt; 1</m> or <m>|\lambda| >
        1 </m>, had a big effect on the long-term behaviour of the model. The case of complex eigenvalues is the same,
-       with the important modification that we use the <term>complex modulus</term> to measure the magnitude of the
-       eigenvalues. If
-       <me> z = x + i y \quad \text{ where $x$ and $y$ are in $\R$, then} \quad |z| = \sqrt{x^2 + y^2}. </me>
-       The modulus <m>|z|</m>
-       has the property that if <m>w, \, z</m> are two complex numbers, then <m>|wz| = |w|\cdot |z|</m>. It
-       also has the property that <m> |z| = |\bar z|</m>.     
-     </p>
-     <p>
-       You can see immediately that <m>|z| = 0 </m> if and only if <m>z=0</m>. We say that a sequence of complex numbers
-       <m>(z_1, z_2, \dots)</m> <term>tends to infinity</term> if the sequence <m>(|z_1|, |z_2|, \dots  )</m> of
+       with the important modification that we use the <term>complex absolute value</term> to measure the magnitude of the
+     eigenvalues. This is discussed more fully in <xref ref="appAoCN"/>.</p>      
+     
+     <p> We say that a sequence of complex numbers
+       <m>(z_1, z_2, \dots)</m> <idx><h>tend to infinity</h></idx><term>tends to infinity</term> if the sequence <m>(|z_1|, |z_2|, \dots  )</m> of
        positive real numbers keeps growing without bound. If <m>z</m> is a complex number, then as <m>t \to \infty</m>
        <me> z^t \text{ tends to } \begin{cases}\text{infinity if $|z| > 1$} \\ \text{$0$ if $|z| &lt; 1$.} \end{cases}</me>
      </p>
@@ -583,6 +639,7 @@ dynamical systems is harder than in the diagonalizable case. We will not say muc
      </p>
 
      <example>
+       <title>Complex eigenvalues of modulus <m>1</m></title>
        <p>Here is an example of a discrete dynamical system where the eigenvalues are complex numbers satisfying 
        <m>|\lambda|=1</m>. Observe the rotating behaviour.</p>
         <figure xml:id="figComplexQuasiperiod"><caption></caption><mathbox
@@ -595,7 +652,8 @@ dynamical systems is harder than in the diagonalizable case. We will not say muc
        <title>A periodic discrete dynamical system</title>
        
      <p>It is also possible to have a truly periodic system. In the case illustrated, the matrix <m>A</m> satisfies the
-     equation <m>A^7=I_2</m>. This means that the sequence <m>v_0, Av_0 , A^2 v_0 , \dots </m> repeats itself every <m>7</m>terms.
+     equation <m>A^7=I_2</m>. This means that the sequence <m>v_0, Av_0 , A^2 v_0 , \dots </m> repeats itself every
+     <m>7</m> terms.
      </p>
    <figure xml:id="figComplexPeriod"><caption>A discrete dynamical system of period 7</caption><mathbox
 	source="demos/dynamics3.html?mat=-1.72200464554536,-3.90915741234015:1.56366296493606,2.9689842492628&amp;v1=1,0&amp;v2=0,1&amp;vec=true&amp;size=10&amp;y=-3,3&amp;flow=false&amp;matname=A&amp;vecname=v"
@@ -622,7 +680,12 @@ dynamical systems is harder than in the diagonalizable case. We will not say muc
      Questions about the long-term behaviour can then be answered by using limit arguments from calculus.
      </p>
 
-     <example>
+      <note><p>We observe that for a matrix with real-number entries, non-real eigenvalues come in conjugate pairs. It is not
+       possible for a real-number <m>3 \times 3</m>-matrix to have three non-real eigenvalues.</p>
+      </note>
+
+      <example>
+	<title>A <m>3</m>-dimensional example</title>
        <p>Consider the matrix <m>A</m> as in the <xref ref="threeDExample"/> below. In this case, the matrix <m>A</m> has three
        eigenvalues
        <me> \lambda_1 = \frac{1+3i}{10}, \quad \lambda_2 = \frac{1-3i}{10}, \quad \lambda_3 = 2.</me>
@@ -631,11 +694,9 @@ dynamical systems is harder than in the diagonalizable case. We will not say muc
        where <m>w_1</m> and <m>w_2</m> do not have real-number entries.</p>
 
        
-       <aside><p>We observe that for a matrix with real-number entries, non-real eigenvalues come in conjugate pairs. It is not
-       possible for a real-number <m>3 \times 3</m>-matrix to have three non-real eigenvalues.</p>
-       </aside>
+      
        <figure xml:id="threeDExample"><caption>A representation of a <m>3</m>-dimensional discrete dynamical system</caption>
-       <mathbox source="demos/dynamics3.html?mat=0.1,0.3:-0.3,0.1&amp;eigenz=2&amp;v1=0,0,1&amp;v2=1,-2,1&amp;v3=-1,0,1&amp;vec=false&amp;path=false" height="600px"/>
+       <mathbox source="demos/dynamics.html?mat=0.1,0.3:-0.3,0.1&amp;eigenz=2&amp;v1=0,0,1&amp;v2=1,-2,1&amp;v3=-1,0,1&amp;vec=false&amp;path=false" height="600px"/>
        </figure>
        <p>
 	 Any vector <m>v_0</m> can be written as a linear combination
@@ -651,760 +712,16 @@ dynamical systems is harder than in the diagonalizable case. We will not say muc
        <m>2</m>-eigenspace, the span of <m>\vec{1 0 1}</m>, and to be repelled away from the origin along this
        eigenspace.
        </p>
-     </example>
+      </example>
+
+      <!-- <example> -->
+      <!-- 	<title>The rabbits revisited</title> -->
+      <!-- 	<p>Near the beginning of this section, we introduced an example about some rabbits, <xref -->
+      <!-- 	ref="In"/>. ddsRabbitExample this story -->
+      <!-- 	<me>\mat{0 6 8; \frac12 0 0; 0 \frac12 0} v_t = v_{t+1}.</me> -->
+      <!-- 	Write <m>A</m> for the <m>3 \times 3</m>-matrix above. -->
+      <!-- 	</p> -->
+	
+      <!-- </example> -->
    </subsection>
-   
-   <subsection>
- <title>Stochastic Matrices and the Steady State</title>
-
- <p>
- In this subsection, we discuss difference equations representing <em>probabilities</em>, like the <xref ref="stochastic-redbox-eg1">Red Box example</xref>. Such systems are called <em>Markov chains</em>. The most important result in this section is the Perron<ndash/>Frobenius theorem, which describes the long-term behavior of a Markov chain.
- </p>
-
- <definition>
- <idx><h>Stochastic matrix</h><h>definition of</h></idx>
- <idx><h>Matrix</h><h>stochastic</h><see>Stochastic matrix</see></idx>
- <statement>
- <p>
- A square matrix <m>A</m> is <term>stochastic</term> if all of its entries are nonnegative, and the entries of each column sum to <m>1</m>.
- </p>
- <p>
- A matrix is <em>positive</em> if all of its entries are positive numbers.
- </p>
- </statement>
- </definition>
-
- <bluebox>
- <p>
- A positive stochastic matrix is a stochastic matrix whose entries are all positive numbers. In particular, no entry is equal to zero. For instance, the first matrix below is a positive stochastic matrix, and the second is not:
- <me>
- \mat{.3 .4 .5; .3 .4 .3; .4 .2 .2}
- \qquad
- \mat{1 0 0; 0 1 0; 0 0 1}.
- </me>
- </p>
- </bluebox>
-
- <remark>
- <p>
- More generally, a <term>regular</term> stochastic matrix is a stochastic matrix <m>A</m> such that <m>A^n</m> is positive for some <m>n \geq 1</m>. The Perron<ndash/>Frobenius theorem below also applies to regular stochastic matrices.
- </p>
- </remark>
-
- <specialcase xml:id="stochastic-redbox-eg2">
- <idx><h>Red Box</h></idx>
- <p>
- Continuing with the <xref ref="stochastic-redbox-eg1">Red Box example</xref>, the matrix
- <me>
- A = \mat{.3 .4 .5; .3 .4 .3; .4 .2 .2}
- </me>
- is a positive stochastic matrix. The fact that the columns sum to <m>1</m> says that all of the movies rented from a particular kiosk must be returned to <em>some</em> other kiosk (remember that every customer returns their movie the next day). For instance, the first column says:
- </p>
- <blockquote>
- <p>
- Of the movies rented from kiosk <m>1</m>,
- <me>
- \begin{split}
- 30\% \amp\text{ will be returned to kiosk } 1 \\
- 30\% \amp\text{ will be returned to kiosk } 2 \\
- 40\% \amp\text{ will be returned to kiosk } 3. \\
- \end{split}
- </me>
- The sum is <m>100\%</m>, as all of the movies are returned to one of the three kiosks.
- </p>
- </blockquote>
- <p>
- The matrix <m>A</m> represents the change of state from one day to the next:
- <me>
- \vec{x_{t+1} y_{t+1} z_{t+1}} = A\vec{x_t y_t z_t} = \vec{.3x_t+.4y_t+.5z_t .3x_t+.4y_t+.3z_t .4x_t+.2y_t+.2z_t}.
- </me>
- If we sum the entries of <m>v_{t+1}</m>, we obtain
- <me>
- \begin{split}
- \amp(.3x_t+.4y_t+.5z_t)+ (.3x_t+.4y_t+.3z_t)+ (.4x_t+.2y_t+.2z_t) \\
- \amp\qquad=(.3+.3+.4)x_t + (.4+.4+.2)y_t + (.5+.3+.2)z_t \\
- \amp\qquad= x_t + y_t + z_t.
- \end{split}
- </me>
- This says that the <em>total</em> number of copies of Prognosis Negative in the three kiosks does not change from day to day, as we expect.
- </p>
- </specialcase>
-
- <p>
- The fact that the entries of the vectors <m>v_t</m> and <m>v_{t+1}</m> sum to the same number is a consequence of the fact that the columns of a stochastic matrix sum to <m>1</m>.
- </p>
-
- <bluebox>
- <idx><h>Stochastic matrix</h><h>sum of entries of vector</h></idx>
- <p>
- Let <m>A</m> be a stochastic matrix, let <m>v_t</m> be a vector, and let <m>v_{t+1} = Av_t</m>. Then the sum of the entries of <m>v_t</m> equals the sum of the entries of <m>v_{t+1}</m>.
- </p>
- </bluebox>
-
- <p>
- Computing the long-term behavior of a difference equation turns out to be an eigenvalue problem. The eigenvalues of stochastic matrices have very special properties.
- </p>
-
- <fact>
- <idx><h>Stochastic matrix</h><h>eigenvalues of</h></idx>
- <idx><h>Eigenvalue</h><h>and stochastic matrices</h></idx>
- <statement>
- <p>
- Let <m>A</m> be a stochastic matrix. Then:
- <ol>
- <li><m>1</m> is an eigenvalue of <m>A.</m></li>
- <li>If <m>\lambda</m> is a (real or complex) eigenvalue of <m>A</m>, then <m>|\lambda|\leq 1.</m></li>
- </ol>
- </p>
- </statement>
- <proof>
- <p>
- If <m>A</m> is stochastic, then the <em>rows</em> of <m>A^T</m> sum to <m>1</m>. But multiplying a matrix by the vector <m>(1,1,\ldots,1)</m> sums the rows:
- <me>
- \mat{.3 .3 .4; .4 .4 .2; .5 .3 .2}\vec{1 1 1}
- = \vec{.3+.3+.4 .4+.4+.2 .5+.3+.2}
- = \vec{1 1 1}.
- </me>
- Therefore, <m>1</m> is an eigenvalue of <m>A^T</m>. But <m>A</m> and <m>A^T</m> have the same characteristic polynomial:
- <me>
- \det(A-\lambda I_n) = \det\bigl((A-\lambda I_n)^T\bigr)
- = \det(A^T - \lambda I_n).
- </me>
- Therefore, <m>1</m> is an eigenvalue of <m>A</m>.
- </p>
- <p>
- Now let <m>\lambda</m> be any eigenvalue of <m>A</m>, so it is also an eigenvalue of <m>A^T</m>. Let <m>x = (x_1,x_2,\ldots,x_n)</m> be an eigenvector of <m>A^T</m> with eigenvalue <m>\lambda</m>, so <m>\lambda x = A^Tx</m>. The <m>j</m>th entry of this vector equation is
- <me>
- \lambda x_j = \sum_{i=1}^n a_{ij} x_i.
- </me>
- Choose <m>x_j</m> with the largest absolute value, so <m>|x_i|\leq|x_j|</m> for all <m>i</m>. Then
- <me>
- |\lambda|\cdot|x_j| = \left\vert \sum_{i=1}^n a_{ij} x_i \right\vert
- \leq \sum_{i=1}^n a_{ij}\cdot |x_i|
- \leq \sum_{i=1}^n a_{ij}\cdot |x_j|
- = 1\cdot|x_j|,
- </me>
- where the last equality holds because <m>\sum_{i=1}^n a_{ij}=1</m>. This implies <m>|\lambda|\leq 1.</m>
- </p>
- </proof>
- </fact>
-
- <p>
- In fact, for a <em>positive</em> stochastic matrix <m>A</m>, one can show that if <m>\lambda\neq 1</m> is a (real or complex) eigenvalue of <m>A</m>, then <m>|\lambda|\lt 1.</m> The <m>1</m>-eigenspace of a stochastic matrix is very important.
- </p>
-
- <definition>
- <idx><h>Stochastic matrix</h><h>steady state of</h></idx>
- <idx><h>Steady state</h><see>Stochastic matrix</see></idx>
- <idx><h>Eigenvector</h><h>and stochastic matrices</h></idx>
- <statement>
- <p>
- A <em>steady state</em> of a stochastic matrix <m>A</m> is an eigenvector <m>w</m> with eigenvalue <m>1</m>, such that the entries are <em>positive</em> and sum to <m>1</m>.
- </p>
- </statement>
- </definition>
-
- <p>
- The Perron<ndash/>Frobenius theorem describes the long-term behavior of a difference equation represented by a stochastic matrix. Its proof is beyond the scope of this text.
- </p>
-
- <theorem hide-type="true">
- <title>Perron<ndash/>Frobenius Theorem</title>
- <idx><h>Stochastic matrix</h><h>long-term behavior of</h></idx>
- <idx><h>Perron<ndash/>Frobenius theorem</h></idx>
- <statement>
- <p>
- Let <m>A</m> be a positive stochastic matrix. Then <m>A</m> admits a unique steady state vector <m>w</m>, which spans the <m>1</m>-eigenspace.
- </p>
- <p>
- Moreover, for any vector <m>v_0</m> with entries summing to some number <m>c</m>, the iterates
- <me>v_1 = Av_0,\; v_2 = Av_1,\; \ldots,\; v_t = Av_{t-1},\; \ldots</me>
- approach <m>cw</m> as <m>t</m> gets large.
- </p>
- </statement>
- </theorem>
-
- <p>
- <em>Translation:</em> The Perron<ndash/>Frobenius theorem makes the following assertions:
- <ul>
- <li>
- The <m>1</m>-eigenspace of a positive stochastic matrix is a line.
- </li>
- <li>
- The <m>1</m>-eigenspace contains a vector with positive entries.
- </li>
- <li>
- All vectors approach the <m>1</m>-eigenspace upon repeated multiplication by <m>A</m>.
- </li>
- </ul>
- One should think of a steady state vector <m>w</m> as a vector of <em>percentages.</em> For example, if the movies are distributed according to these percentages today, then they will be have the same distribution tomorrow, since <m>Aw=w</m>. And no matter the starting distribution of movies, the long-term distribution will always be the steady state vector.
- </p>
- <p>
- The sum <m>c</m> of the entries of <m>v_0</m> is the <em>total number</em> of things in the system being modeled. The total number does not change, so the long-term state of the system must approach <m>cw</m>: it is a multiple of <m>w</m> because it is contained in the <m>1</m>-eigenspace, and the entries of <m>cw</m> sum to <m>c</m>.
- </p>
-
- <bluebox>
- <title>Recipe 1: Compute the steady state vector</title>
- <idx><h>Stochastic matrix</h><h>steady state of</h><h>computing</h></idx>
- <p>
- Let <m>A</m> be a positive stochastic matrix. Here is how to compute the steady-state vector of <m>A.</m>
- <ol>
- <li>
- Find any eigenvector <m>v</m> of <m>A</m> with eigenvalue <m>1</m> by solving <m>(A-I_n)v = 0</m>.
- </li>
- <li>
- Divide <m>v</m> by the sum of the entries of <m>v</m> to obtain a vector <m>w</m> whose entries sum to <m>1.</m>
- </li>
- <li>
- This vector automatically has positive entries. It is the unique steady-state vector.
- </li>
- </ol>
- </p>
- </bluebox>
-
- <p>
- The above recipe is suitable for calculations by hand, but it does not take advantage of the fact that <m>A</m> is a stochastic matrix. In practice, it is generally faster to compute a steady state vector by computer as follows:
- </p>
-
- <bluebox>
- <title>Recipe 2: Approximate the steady state vector by computer</title>
- <idx><h>Stochastic matrix</h><h>steady state of</h><h>computing</h></idx>
- <p>
- Let <m>A</m> be a positive stochastic matrix. Here is how to approximate the steady-state vector of <m>A</m> with a computer.
- <ol>
- <li>
- Choose any vector <m>v_0</m> whose entries sum to <m>1</m> (e.g., a standard coordinate vector).
- </li>
- <li>
- Compute <m>v_1 = Av_0,\,v_2 = Av_1,\,v_3=Av_2,\,</m> etc.
- </li>
- <li>
- These converge to the steady state vector <m>w</m>.
- </li>
- </ol>
- </p>
- </bluebox>
-
- <example>
- <title>A <m>2\times 2</m> stochastic matrix</title>
- <p>
- Consider the positive stochastic matrix
- <me>A = \mat{3/4 1/4; 1/4 3/4}.</me>
- This matrix has characteristic polynomial
- <me>
- f(\lambda) = \lambda^2 - \Tr(A)\lambda + \det(\lambda)
- = \lambda^2 - \frac32\lambda + \frac12 \\
- = (\lambda - 1)(\lambda-1/2).
- </me>
- Notice that <m>1</m> is strictly greater than the other eigenvalue, and that it has algebraic (hence, geometric) multiplicity <m>1</m>. We compute eigenvectors for the eigenvalues <m>1,1/2</m> to be, respectively,
- <me>u_1 = \vec{1 1} \qquad u_2 = \vec{1 -1}.</me>
- The eigenvector <m>u_1</m> necessarily has positive entries; the steady-state vector is
- <me>
- w = \frac 1{1+1}\vec{1 1} = \frac 12\vec{1 1} = \vec{50\% 50\%}.
- </me>
- The Perron<ndash/>Frobenius theorem asserts that, for any vector <m>v_0</m>, the vectors <m>v_1 = Av_0,\,v_2=Av_1,\,\ldots</m> approach a vector whose entries are the same: <m>50\%</m> of the sum will be in the first entry, and <m>50\%</m> will be in the second.
- </p>
- <p>
- We can see this explicitly, as follows. The eigenvectors <m>u_1,u_2</m> form a basis <m>\cB</m> for <m>\R^2</m>; for any vector <m>x = a_1u_1 + a_2u_2</m> in <m>\R^2</m>, we have
- <me>
- Ax = A(a_1u_1+a_2u_2) = a_1Au_1 + a_2Au_2 = a_1u_1 + \frac{a_2}2u_2.
- </me>
- Iterating multiplication by <m>A</m> in this way, we have
- <me>
- A^tx = a_1u_1 + \frac{a_2}{2^t}u_2 \;\To\; a_1u_1
- </me>
- as <m>t\to\infty</m>. This shows that <m>A^tx</m> approaches
- <me>
- a_1u_1 = \vec{a_1 a_1}.
- </me>
- Note that the sum of the entries of <m>a_1u_1</m> is equal to the sum of the entries of <m>a_1u_1+a_2u_2</m>, since the entries of <m>u_2</m> sum to <m>0</m>.
- </p>
- <p>
- To illustrate the theorem with numbers, let us choose a particular value for <m>u_0</m>, say <m>u_0={1\choose 0}</m>. We compute the values for <m>u_t = {x_t\choose y_t}</m> in this table:
- <me>
-\begin{array}{c|c|c|c}
- t &amp; x_t &amp; y_t \\\hline
- 0 &amp; 1.000 &amp; 0.000 \\
- 1 &amp; 0.750 &amp; 0.250 \\
- 2 &amp; 0.625 &amp; 0.375 \\
- 3 &amp; 0.563 &amp; 0.438 \\
- 4 &amp; 0.531 &amp; 0.469 \\
- 5 &amp; 0.516 &amp; 0.484 \\
- 6 &amp; 0.508 &amp; 0.492 \\
- 7 &amp; 0.504 &amp; 0.496 \\
- 8 &amp; 0.502 &amp; 0.498 \\
- 9 &amp; 0.501 &amp; 0.499 \\
- 10&amp; 0.500 &amp; 0.500 \\
-\end{array}
- </me>
- We see that <m>u_t</m> does indeed approach <m>{0.5\choose0.5}</m>.
- </p>
- <p>
- Now we turn to visualizing the dynamics of (i.e., repeated multiplication by) the matrix <m>A</m>. This matrix is diagonalizable; we have <m>A=CDC\inv</m> for
- <me>
- C = \mat{1 1; 1 -1} \qquad D = \mat{1 0 ; 0 1/2}.
- </me>
- The matrix <m>D</m> leaves the <m>x</m>-coordinate unchanged and scales the <m>y</m>-coordinate by <m>1/2</m>. Repeated multiplication by <m>D</m> makes the <m>y</m>-coordinate very small, so it <q>sucks all vectors into the <m>x</m>-axis.</q>
- </p>
- <p>
- The matrix <m>A</m> does the same thing as <m>D</m>, but with respect to the coordinate system defined by the columns <m>u_1,u_2</m> of <m>C</m>. This means that <m>A</m> <q>sucks all vectors into the <m>1</m>-eigenspace</q>, without changing the sum of the entries of the vectors.
- </p>
- <figure>
- <caption>Dynamics of the stochastic matrix <m>A</m>. Click <q>multiply</q> to multiply the colored points by <m>D</m> on the left and <m>A</m> on the right. Note that on both sides, all vectors are <q>sucked into the <m>1</m>-eigenspace</q> (the red line).</caption>
- <idx><h>Stochastic matrix</h><h>picture of</h></idx>
- <mathbox source="demos/dynamics2.html?mat=1,0:0,1/2&amp;v1=1,1&amp;v2=1,-1&amp;vec=false&amp;path=false" height="600px"/>
- </figure>
- </example>
-
- <specialcase xml:id="stochastic-redbox-eg3">
- <idx><h>Red Box</h></idx>
- <p>
- Continuing with the <xref ref="stochastic-redbox-eg2">Red Box example</xref>, we can illustrate the Perron<ndash/>Frobenius theorem explicitly. The matrix
- <me>
- A = \mat{.3 .4 .5; .3 .4 .3; .4 .2 .2}
- </me>
- has characteristic polynomial
- <me>
- f(\lambda) = -\lambda^3 + 0.12\lambda - 0.02 =
- -(\lambda-1)(\lambda+0.2)(\lambda-0.1).
- </me>
- Notice that <m>1</m> is strictly greater in absolute value than the other eigenvalues, and that it has algebraic (hence, geometric) multiplicity <m>1</m>. We compute eigenvectors for the eigenvalues <m>1,-0.2,0.1</m> to be, respectively,
- <me>
- u_1 = \vec{7 6 5} \qquad u_2 = \vec{-1 0 1} \qquad u_3 = \vec{1 -3 2}.
- </me>
- The eigenvector <m>u_1</m> necessarily has positive entries; the steady-state vector is
- <me>
- w = \frac 1{7+6+5}u_1 = \frac 1{18}\vec{7 6 5}.
- </me>
- The eigenvectors <m>u_1,u_2,u_3</m> form a basis <m>\cB</m> for <m>\R^3</m>; for any vector <m>x = a_1u_1+a_2u_2+a_3u_3</m> in <m>\R^3</m>, we have
- <me>
- \begin{split}
- Ax \amp= A(a_1u_1+a_2u_2+a_3u_3) \\
- \amp= a_1Au_1 + a_2Au_2 + a_3Au_3 \\
- \amp= a_1u_1 - 0.2a_2u_2 + 0.1a_3u_3.
- \end{split}
- </me>
- Iterating multiplication by <m>A</m> in this way, we have
- <me>
- A^tx = a_1u_1 - (0.2)^ta_2u_2 + (0.1)^ta_3u_3 \;\To\; a_1u_1
- </me>
- as <m>t\to\infty</m>. This shows that <m>A^tx</m> approaches <m>a_1u_1</m>, which is an <em>eigenvector with eigenvalue <m>1</m></em>, as guaranteed by the Perron<ndash/>Frobenius theorem.
- </p>
- <p>
- What do the above calculations say about the number of copies of Prognosis Negative in the Atlanta Red Box kiosks? Suppose that the kiosks start with 100 copies of the movie, with <m>30</m> copies at kiosk 1, <m>50</m> copies at kiosk <m>2</m>, and <m>20</m> copies at kiosk <m>3</m>. Let <m>v_0 = (30,50,20)</m> be the vector describing this state. Then there will be <m>v_1 = Av_0</m> movies in the kiosks the next day, <m>v_2 = Av_1</m> the day after that, and so on. We let <m>v_t = (x_t,y_t,z_t).</m>
- <me>
-\begin{array}{c|c|c|c}
- t &amp; x_t &amp; y_t &amp; z_t \\\hline
- 0 &amp; 30.000000 &amp; 50.000000 &amp; 20.000000 \\
- 1 &amp; 39.000000 &amp; 35.000000 &amp; 26.000000 \\
- 2 &amp; 38.700000 &amp; 33.500000 &amp; 27.800000 \\
- 3 &amp; 38.910000 &amp; 33.350000 &amp; 27.740000 \\
- 4 &amp; 38.883000 &amp; 33.335000 &amp; 27.782000 \\
- 5 &amp; 38.889900 &amp; 33.333500 &amp; 27.776600 \\
- 6 &amp; 38.888670 &amp; 33.333350 &amp; 27.777980 \\
- 7 &amp; 38.888931 &amp; 33.333335 &amp; 27.777734 \\
- 8 &amp; 38.888880 &amp; 33.333333 &amp; 27.777786 \\
- 9 &amp; 38.888891 &amp; 33.333333 &amp; 27.777776 \\
- 10&amp; 38.888889 &amp; 33.333333 &amp; 27.777778 \\
-\end{array}
- </me>
- (Of course it does not make sense to have a fractional number of movies; the decimals are included here to illustrate the convergence.) The steady-state vector says that eventually, the movies will be distributed in the kiosks according to the percentages
- <me>
- w = \frac 1{18}\vec{7 6 5} = \vec{38.888888\% 33.333333\% 27.777778\%},
- </me>
- which agrees with the above table. Moreover, this distribution is <em>independent</em> of the beginning distribution of movies in the kiosks.
- </p>
- <p>
- Now we turn to visualizing the dynamics of (i.e., repeated multiplication by) the matrix <m>A</m>. This matrix is diagonalizable; we have <m>A=CDC\inv</m> for
- <me>
- C = \mat{7 -1 1; 6 0 -3; 5 1 2} \qquad D = \mat{1 0 0 ; 0 -.2 0; 0 0 .1}.
- </me>
- The matrix <m>D</m> leaves the <m>x</m>-coordinate unchanged, scales the <m>y</m>-coordinate by <m>-1/5</m>, and scales the <m>z</m>-coordinate by <m>1/10</m>. Repeated multiplication by <m>D</m> makes the <m>y</m>- and <m>z</m>-coordinates very small, so it <q>sucks all vectors into the <m>x</m>-axis.</q>
- </p>
- <p>
- The matrix <m>A</m> does the same thing as <m>D</m>, but with respect to the coordinate system defined by the columns <m>u_1,u_2,u_3</m> of <m>C</m>. This means that <m>A</m> <q>sucks all vectors into the <m>1</m>-eigenspace</q>, without changing the sum of the entries of the vectors.
- </p>
- <figure>
- <caption>Dynamics of the stochastic matrix <m>A</m>. Click <q>multiply</q> to multiply the colored points by <m>D</m> on the left and <m>A</m> on the right. Note that on both sides, all vectors are <q>sucked into the <m>1</m>-eigenspace</q> (the green line). (We have scaled <m>C</m> by <m>1/4</m> so that vectors have roughly the same size on the right and the left. The <q>jump</q> that happens when you press <q>multiply</q> is a negation of the <m>-.2</m>-eigenspace, which is not animated.)</caption>
- <idx><h>Stochastic matrix</h><h>picture of</h></idx>
- <mathbox source="demos/dynamics2.html?mat=1,0:0,-1/5&amp;eigenz=1/10&amp;v1=7/4,6/4,5/4&amp;v2=-1/4,0,1/4&amp;v3=1/4,-3/4,2/4&amp;vec=false&amp;path=false" height="600px"/>
- </figure>
- </specialcase>
-
- <p>
- The picture of a positive stochastic matrix is always the same, whether or not it is diagonalizable: <em>all vectors are <q>sucked into the <m>1</m>-eigenspace,</q></em> which is a line, without changing the sum of the entries of the vectors. This is the geometric content of the Perron<ndash/>Frobenius theorem.
- </p>
-
- </subsection>
-
- <subsection>
- <title>Google<rsq/>s PageRank Algorithm</title>
-
- <p>
- Internet searching in the 1990s was very inefficient. Yahoo or AltaVista would scan pages for your search text, and simply list the results with the most occurrences of those words. Not surprisingly, the more unsavory websites soon learned that by putting the words <q>Alanis Morissette</q> a million times in their pages, they could show up first every time an angsty teenager tried to find <em>Jagged Little Pill</em> on Napster.
- </p>
-
- <p>
- Larry Page and Sergey Brin invented a way to rank pages by <em>importance</em>. They founded Google based on their algorithm. Here is roughly how it works.
- </p>
-
- <p>
- Each web page has an associated importance, or <term>rank</term>. This is a positive number. This rank is determined by the following rule.
- </p>
-
- <definition hide-type="true">
- <title>The Importance Rule</title>
- <idx><h>Google PageRank</h><h>importance rule</h></idx>
- <statement>
- <p>
- If a page <m>P</m> links to <m>n</m> other pages <m>Q_1,Q_2,\ldots,Q_n</m>, then each page <m>Q_i</m> inherits <m>\frac 1n</m> of <m>P</m><rsq/>s importance.
- </p>
- </statement>
- </definition>
-
- <p>
- In practice, this means:
- <ul>
- <li>
- If a very important page links to your page (and not to a zillion other ones as well), then your page is considered important.
- </li>
- <li>
- If a zillion unimportant pages link to your page, then your page is still important.
- </li>
- <li>
- If only one unknown page links to yours, your page is not important.
- </li>
- </ul>
- Alternatively, there is the <em>random surfer interpretation.</em> A <q>random surfer</q> just sits at his computer all day, randomly clicking on links. The pages he spends the most time on should be the most important. So, the important (high-ranked) pages are those where a random surfer will end up most often. This measure turns out to be equivalent to the rank.
- </p>
-
- <definition hide-type="true">
- <title>The Importance Matrix</title>
- <idx><h>Google PageRank</h><h>importance matrix</h></idx>
- <statement>
- <p>
- Consider an internet with <m>n</m> pages. The <term>importance matrix</term> is the <m>n\times n</m> matrix <m>A</m> whose <m>i,j</m>-entry is the importance that page <m>j</m> passes to page <m>i.</m>
- </p>
- </statement>
- </definition>
-
- <p>
- Observe that the importance matrix is a stochastic matrix, assuming every page contains a link: if page <m>i</m> has <m>m</m> links, then the <m>i</m>th column contains the number <m>1/m</m>, <m>m</m> times, and the number zero in the other entries.
- </p>
-
- <specialcase>
- <p>
- Consider the following internet with only four pages. Links are indicated by arrows.
- <latex-code><![CDATA[
-\begin{tikzpicture}
- \matrix[matrix of nodes,
- nodes={draw, circle, thick, anchor=center, font=\large},
- row sep={3cm,between origins}, column sep={5cm,between origins}]
- (pages)
- {
- |[seq1] (A)| A \& |[seq2] (B)| B \\
- |[seq3] (C)| C \& |[seq4] (D)| D \\
- };
- \begin{scope}[->, shorten=2pt,
- every node/.style={midway, auto, thin border},
- every to/.style={bend left=10}]
- \draw[seq1] (A) to node {${\frac 13}$} (B);
- \draw[seq1] (A) to node {${\frac 13}$} (C);
- \draw[seq1] (A) to node[near start] {${\frac 13}$} (D);
- \draw[seq2] (B) to node[near end] {${\frac 12}$} (C);
- \draw[seq2] (B) to node {${\frac 12}$} (D);
- \draw[seq3] (C) to node {${1}$} (A);
- \draw[seq4] (D) to node[near end] {${\frac 12}$} (A);
- \draw[seq4] (D) to node {${\frac 12}$} (C);
- \end{scope}
-\end{tikzpicture}
- ]]></latex-code>
- The importance rule says:
- <ul>
- <li>
- Page <m>\color{seq1}A</m> has <m>3</m> links, so it passes <m>\frac 13</m> of its importance to pages
-<m>B,C,D</m>.
- </li>
- <li>
- Page <m>\color{seq2}B</m> has <m>2</m> links, so it passes <m>\frac 12</m> of its importance to pages <m>C,D</m>.
- </li>
- <li>
-Page <m>\color{seq3}C</m> has one link, so it passes all of its importance to page <m>A</m>.
- </li>
- <li>
-Page <m>\color{seq4}D</m> has <m>2</m> links, so it passes <m>\frac 12</m> of its importance to pages <m>A,C</m>.
- </li>
- </ul>
- In terms of matrices, if <m>v = (a,b,c,d)</m> is the vector containing the ranks <m>a,b,c,d</m> of the pages <m>A,B,C,D</m>, then
- <me>
-\def\r{\color{seq1}}\def\b{\color{seq2}}\def\g{\color{seq3}}\def\p{\color{seq4}}
- \mat{
- \r0 \b0 \g1 \p\frac 12;
- \r\frac 13 \b0 \g0 \p0;
- \r\frac 13 \b\frac 12 \g0 \p\frac 12;
- \r\frac 13 \b\frac 12 \g0 \p0}
-\vec{a b c d}
-= \spalignsysdelims()\syseq{
-\. \+ \. \+ c + \frac 12d;
-\frac 13a;
-\frac 13a + \frac 12b \+ \. + \frac 12d;
-\frac 13a + \frac 12b}
-= \vec{a b c d}.
- </me>
- The matrix on the left is the <term>importance matrix</term>, and the final equality expresses the importance rule.
- </p>
- </specialcase>
-
- <p>
- The above example illustrates the key observation.
- </p>
-
- <bluebox>
- <title>Key Observation</title>
- <idx><h>Google PageRank</h><h>importance matrix</h><h>eigenvector of</h></idx>
- <p>
- The rank vector is an eigenvector of the importance matrix with eigenvalue <m>1</m>.
- </p>
- </bluebox>
-
- <p>
- In light of the key observation, we would like to use the Perron<ndash/>Frobenius theorem to find the rank vector. Unfortunately, the importance matrix is not always a <em>positive</em> stochastic matrix.
- </p>
-
- <example>
- <title>A page with no links</title>
- <p>
- Consider the following internet with three pages:
- <latex-code><![CDATA[
-\begin{tikzpicture}
- \matrix[matrix of nodes,
- nodes={draw, circle, thick, anchor=center, font=\large},
- row sep={1.5cm,between origins}, column sep={5cm,between origins}]
- {
- |[seq1] (A)| A \\ \& |[seq3] (C)| C \\
- |[seq2] (B)| B \\
- };
- \begin{scope}[->, shorten=2pt,
- every node/.style={midway, auto, thin border}]
- \draw[seq1] (A) to node {$1$} (C);
- \draw[seq2] (B) to[swap] node {$1$} (C);
- \end{scope}
-\end{tikzpicture}
- ]]></latex-code>
- The importance matrix is
- <me>
- \def\r{\color{seq1}}\def\b{\color{seq2}}\def\g{\color{seq3}}
- \mat{\r0 \b0 \g0; \r0 \b0 \g0; \r1 \b1 \g0}.
- </me>
- This has characteristic polynomial
- <me>f(\lambda) = \det\mat{-\lambda, 0 0; 0 -\lambda, 0; 1 1 -\lambda}
- = -\lambda^3.</me>
- So <m>1</m> is not an eigenvalue at all: there is no rank vector! The importance matrix is not stochastic because the page <m>C</m> has no links.
- </p>
- </example>
-
- <example>
- <title>Disconnected Internet</title>
- <p>
- Consider the following internet:
- <latex-code><![CDATA[
-\begin{tikzpicture}
- \matrix[matrix of nodes,
- nodes={draw, circle, thick, anchor=center, font=\large},
- row sep={1.5cm,between origins}, column sep={3cm,between origins}]
- {
- \& \& \& |[seq4] (D)| D \\
- |[seq1] (A)| A \& |[seq2] (B)| B \& |[seq3] (C)| C \\
- \& \& \& |[seq5] (E)| E \\
- };
- \begin{scope}[->, shorten=2pt,
- every node/.style={midway, auto, thin border},
- every to/.style={bend left=10}]
- \draw[seq1] (A) to node {$1$} (B);
- \draw[seq2] (B) to node {$1$} (A);
- \draw[seq3] (C) to node {$\frac 12$} (D);
- \draw[seq4] (D) to node[pos=.3] {$\frac 12$} (C);
- \draw[seq3] (C) to node[pos=.5] {$\frac 12$} (E);
- \draw[seq5] (E) to node {$\frac 12$} (C);
- \draw[seq4] (D) to node {$\frac 12$} (E);
- \draw[seq5] (E) to node {$\frac 12$} (D);
- \end{scope}
-\end{tikzpicture}
-]]></latex-code>
- The importance matrix is
- <me>
-\def\r{\color{seq1}}\def\b{\color{seq2}}\def\g{\color{seq3}}
-\def\p{\color{seq4}}\def\o{\color{seq5}}
-\mat{\r0 \b1 0 0 0; \r1 \b0 0 0 0;
- 0 0 \g0 \p\frac 12 \o\frac 12;
- 0 0 \g\frac 12 \p0 \o\frac 12;
- 0 0 \g\frac 12 \p\frac 12 \o0}.
- </me>
- This has linearly independent eigenvectors
- <me>
- \vec{1 1 0 0 0} \sptxt{and}
- \vec{0 0 1 1 1},
- </me>
- both with eigenvalue <m>1</m>. So there is more than one rank vector in this case. Here the importance matrix is stochastic, but not positive.
- </p>
- </example>
-
- <p>
- Here is Page and Brin<rsq/>s solution. First we fix the importance matrix by replacing each zero column with a column of <m>1/n</m>s, where <m>n</m> is the number of pages:
- <me>
- A = \mat{0 0 0; 0 0 0; 1 1 0}
- \sptxt{becomes}
- A' = \mat{0 0 1/3; 0 0 1/3; 1 1 1/3}.
- </me>
- The <term>modified importance matrix</term> <m>A'</m> is always stochastic.
- </p>
-
- <p>
- Now we choose a number <m>p</m> in <m>(0,1)</m>, called the <term>damping factor</term>. (A typical value is <m>p=0.15</m>.)
- </p>
-
- <definition hide-type="true">
- <title>The Google Matrix</title>
- <idx><h>Google PageRank</h><h>Google Matrix</h></idx>
- <statement>
- <p>
- Let <m>A</m> be the importance matrix for an internet with <m>n</m> pages, and let <m>A'</m> be the modified importance matrix. The <term>Google Matrix</term> is the matrix
- <me>
- M = (1-p)\cdot A' + p\cdot B
- \sptxt{where}
- B = \frac 1n\mat{1 1 \cdots, 1; 1 1 \cdots, 1;
- \vdots, \vdots, \ddots, \vdots; 1 1 \cdots, 1}.
- </me>
- </p>
- </statement>
- </definition>
-
- <p>
- In the random surfer interpretation, this matrix <m>M</m> says: with probability <m>p</m>, our surfer will surf to a completely random page; otherwise, he'll click a random link on the current page, unless the current page has no links, in which case he'll surf to a completely random page in either case.
- </p>
-
- <p>
- The reader can verify the following important fact.
- </p>
-
- <fact>
- <p>
- The Google Matrix is a positive stochastic matrix.
- </p>
- </fact>
-
- <p>
- If we declare that the ranks of all of the pages must sum to <m>1</m>, then we find:
- </p>
-
- <bluebox>
- <title>The 25 Billion Dollar Eigenvector</title>
- <idx><h>Google PageRank</h><h>Google Matrix</h><h>eigenvector of</h></idx>
- <p>
- The PageRank vector is the steady state of the Google Matrix.
- </p>
- </bluebox>
-
- <p>
- This exists and has positive entries by the Perron<ndash/>Frobenius theorem. The hard part is calculating it: in real life, the Google Matrix has zillions of rows.
- </p>
-
- <example>
- <statement>
- <p>
- What is the PageRank vector for the following internet? (Use the damping factor <m>p = 0.15</m>.)
- <latex-code><![CDATA[
-\begin{tikzpicture}
- \matrix[matrix of nodes,
- nodes={draw, circle, thick, anchor=center, font=\large},
- row sep={3cm,between origins}, column sep={5cm,between origins}]
- (pages)
- {
- |[seq1] (A)| A \& |[seq2] (B)| B \\
- |[seq3] (C)| C \& |[seq4] (D)| D \\
- };
- \begin{scope}[->, shorten=2pt,
- every node/.style={midway, auto, thin border},
- every to/.style={bend left=10}]
- \draw[seq1] (A) to node {${\frac 13}$} (B);
- \draw[seq1] (A) to[bend right=10] node {${\frac 13}$} (C);
- \draw[seq1] (A) to node[near start] {${\frac 13}$} (D);
- \draw[seq2] (B) to node[near end] {${\frac 12}$} (C);
- \draw[seq2] (B) to node {${\frac 12}$} (D);
- \draw[seq4] (D) to node[near end] {${\frac 12}$} (A);
- \draw[seq4] (D) to node {${\frac 12}$} (C);
- \end{scope}
-\end{tikzpicture}
-]]></latex-code>
- Which page is the most important? Which is the least important?
- </p>
- </statement>
- <solution>
- <p>
- First we compute the modified importance matrix:
- <me>
-\def\r{\color{seq1}}\def\b{\color{seq2}}\def\g{\color{seq3}}\def\p{\color{seq4}}
- A = \mat{
- \r0 \b0 \g0 \p\frac 12;
- \r\frac 13 \b0 \g0 \p0;
- \r\frac 13 \b\frac 12 \g0 \p\frac 12;
- \r\frac 13 \b\frac 12 \g0 \p0}
-\quad\xrightarrow{\text{modify}}\quad
- A' = \mat{
- \r0 \b0 \g\frac14 \p\frac 12;
- \r\frac 13 \b0 \g\frac14 \p0;
- \r\frac 13 \b\frac 12 \g\frac14 \p\frac 12;
- \r\frac 13 \b\frac 12 \g\frac14 \p0}
- </me>
- Choosing the damping factor <m>p=0.15</m>, the Google Matrix is
- <me>
-\def\r{\color{seq1}}\def\b{\color{seq2}}\def\g{\color{seq3}}\def\p{\color{seq4}}
-\begin{split}
- M = \amp0.85\cdot\mat{
- \r0 \b0 \g\frac14 \p\frac 12;
- \r\frac 13 \b0 \g\frac14 \p0;
- \r\frac 13 \b\frac 12 \g\frac14 \p\frac 12;
- \r\frac 13 \b\frac 12 \g\frac14 \p0}
- + 0.15\cdot\mat{1/4 1/4 1/4 1/4; 1/4 1/4 1/4 1/4; 1/4 1/4 1/4 1/4; 1/4 1/4 1/4 1/4} \\
- \amp\qquad\approx \mat{0.0375 0.0375 0.2500 0.4625;
- 0.3208 0.0375 0.2500 0.0375;
- 0.3208 0.4625 0.2500 0.4625;
- 0.3208 0.4625 0.2500 0.0375}.
-\end{split}
- </me>
- The PageRank vector is the steady state:
- <me>
- w \approx \vec{0.2192, 0.1752 0.3558 0.2498}
- </me>
- This is the PageRank:
- <latex-code><![CDATA[
-\begin{tikzpicture}
- \matrix[matrix of nodes,
- nodes={draw, circle, thick, anchor=center, font=\large},
- row sep={3cm,between origins}, column sep={5cm,between origins}]
- (pages)
- {
- |[seq1] (A)| .22 \& |[seq2] (B)| .18 \\
- |[seq3] (C)| .35 \& |[seq4] (D)| .25 \\
- };
- \begin{scope}[->, shorten=2pt,
- every node/.style={midway, auto, thin border},
- every to/.style={bend left=10}]
- \draw[seq1] (A) to node {${\frac 13}$} (B);
- \draw[seq1] (A) to[bend right=10] node {${\frac 13}$} (C);
- \draw[seq1] (A) to node[near start] {${\frac 13}$} (D);
- \draw[seq2] (B) to node[near end] {${\frac 12}$} (C);
- \draw[seq2] (B) to node {${\frac 12}$} (D);
- \draw[seq4] (D) to node[near end] {${\frac 12}$} (A);
- \draw[seq4] (D) to node {${\frac 12}$} (C);
- \end{scope}
-\end{tikzpicture}
- ]]></latex-code>
- Page <m>C</m> is the most important, with a rank of <m>0.558</m>, and page <m>B</m> is the least important, with a rank of <m>0.1752.</m>
- </p>
- </solution>
- </example>
-
- </subsection>
-
-</section>
+   </section>

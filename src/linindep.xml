@@ -282,7 +282,7 @@ Let's explain why the vectors <m>(1,1,0)</m> and <m>(-2,0,1)</m> are linearly in
         <p>
           Suppose, for instance, that <m>v_3</m> is in <m>\Span\{v_1,v_2,v_4\}</m>, so we have an equation like
           <me>v_3 = 2v_1 - \frac 12v_2 + 6v_4.</me>
-          We can subract <m>v_3</m> from both sides of the equation to get
+          We can subtract <m>v_3</m> from both sides of the equation to get
           <me>0 = 2v_1 - \frac 12v_2 - v_3 + 6v_4.</me>
           This is a linear dependence relation.
         </p>

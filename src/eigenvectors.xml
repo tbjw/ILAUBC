@@ -654,7 +654,7 @@ If someone hands you a matrix <m>A</m> and a vector <m>v</m>, it is easy to chec
       <title>Computing eigenspaces</title>
       <statement>
         <p>
-          For each of the numbers <m>\lambda = -2, 1, 3</m>, decide if <m>\lambda</m> is an eigenvalue of the matrix
+          For each of the numbers <m>\lambda = -2, 1, 3</m>, decide whether <m>\lambda</m> is an eigenvalue of the matrix
           <me>A = \mat{2 -4; -1 -1},</me>
           and if so, compute a basis for the <m>\lambda</m>-eigenspace.
         </p>
@@ -714,7 +714,7 @@ If someone hands you a matrix <m>A</m> and a vector <m>v</m>, it is easy to chec
       <title>Computing eigenspaces</title>
       <statement>
         <p>
-          For each of the numbers <m>\lambda=0, \frac 12, 2</m>, decide if <m>\lambda</m> is an eigenvector of the matrix
+          For each of the numbers <m>\lambda=0, \frac 12, 2</m>, decide whether <m>\lambda</m> is an eigenvalue of the matrix
           <me>A = \mat{7/2 0 3; -3/2 2 -3; -3/2 0 -1},</me>
           and if so, compute a basis for the <m>\lambda</m>-eigenspace.
         </p>
