@@ -762,7 +762,7 @@ the license is included in gfdl.xml.
       and define <m>T\colon\R^3\to\R^2</m> by <m>T(x) = Ax</m>.  This transformation is neither one-to-one nor onto, as we saw in this <xref ref="one-to-one-eg-neither1"/> and this <xref ref="one-to-one-eg-neither2"/>.
     </p>
     <figure>
-      <caption>A picture of the matrix transformation <m>T</m>.  The violet plane is the solution set of <m>T(x)=0</m>.  If you drag <m>x</m> along the violet plane, the output <m>T(x) = Ax</m> does not change.  This demonstrates that <m>T(x)=0</m> has more than one solution, so <m>T</m> is not one-to-one.   The range of <m>T</m> is the violet line on the right; this is smaller than the codomain <m>\R^2</m>.  If you drag <m>b</m> off of the violet line, then the equation <m>Ax=b</m> becomes inconsistent; this means <m>T(x)=b</m> has no solution.</caption>
+      <caption>A picture of the matrix transformation <m>T</m>.  The violet plane is the solution set of <m>T(x)=b</m>, for the values of <m>b</m> that make this equation consistent.  If you drag <m>x</m> along the violet plane, the output <m>T(x) = Ax</m> does not change.  This demonstrates that for some vectors <m>b</m>, the equation <m>T(x)=b</m> has more than one solution so <m>T</m> is not one-to-one.   The range of <m>T</m> is the violet line on the right; this is smaller than the codomain <m>\R^2</m>.  If you drag <m>b</m> off of the violet line, then the equation <m>Ax=b</m> becomes inconsistent; this means <m>T(x)=b</m> has no solution.</caption>
       <mathbox source="demos/Axequalsb.html?show=true&amp;closed=true" height="500px"/>
     </figure>
   </example>
@@ -788,7 +788,7 @@ the license is included in gfdl.xml.
       and define <m>T\colon\R^3\to\R^2</m> by <m>T(x) = Ax</m>.  This transformation is onto but not one-to-one, as we saw in this <xref ref="one-to-one-not11-onto2"/> and this <xref ref="one-to-one-not11-onto2"/>.
     </p>
     <figure>
-      <caption>A picture of the matrix transformation <m>T</m>.  Every vector on the right side is the output of <m>T</m> for a suitable input.  If you drag <m>b</m>, the demo will find an input vector <m>x</m> with output <m>b</m>.  The violet line is the null space of <m>A</m>, i.e., solution set of <m>T(x)=0</m>.  If you drag <m>x</m> along the violet line, the output <m>T(x) = Ax</m> does not change.  This demonstrates that <m>T(x)=0</m> has more than one solution, so <m>T</m> is not one-to-one.</caption>
+      <caption>A picture of the matrix transformation <m>T</m>.  Every vector on the right side is the output of <m>T</m> for a suitable input.  If you drag <m>b</m>, the demo will find an input vector <m>x</m> with output <m>b</m>.  The violet line is the solution set of <m>T(x)=b</m>.  If you drag <m>x</m> along the violet line, the output <m>T(x) = Ax</m> does not change.  This demonstrates that <m>T(x)=b</m> has more than one solution, so <m>T</m> is not one-to-one.</caption>
       <mathbox source="demos/Axequalsb.html?mat=1,1,0:0,1,1&amp;range2=5&amp;closed=true&amp;show=true&amp;x=1,2,.5" height="500px"/>
     </figure>
   </example>
