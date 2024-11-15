@@ -199,7 +199,7 @@ Of course, since this implies <m>z=s</m>, you might think that we haven't gained
   </me>
   and decide we would prefer to parametrize using <m>t=-s</m>. Then we can write the solution set as
   <me>
-`    (x,\,y,\,z) = (1+5t,\,-1+2t,\,-t) \qquad \text{$t$ any real number.}
+    (x,\,y,\,z) = (1+5t,\,-1+2t,\,-t) \qquad \text{$t$ any real number.}
   </me>
   We could go even further, and change the parameter to <m>u=1-s</m>. Now we can write the solution set as
   <me>
