@@ -96,7 +96,7 @@ the license is included in gfdl.xml.
             <em>Distributivity with addition:</em> <m>(x + y)\cdot z = x\cdot z+y\cdot z</m>.
           </li>
           <li>
-            <em>Distributivity with scalar multiplication:</em> <m>(cx)\cdot y = c(x\cdot y)</m>.
+            <em>Compatibility with scalar multiplication:</em> <m>(cx)\cdot y = c(x\cdot y)</m>.
           </li>
         </ol>
       </p>
