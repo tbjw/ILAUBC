@@ -135,7 +135,7 @@ the license is included in gfdl.xml.
         <p>
           We compute the characteristic polynomial by expanding cofactors along the third row:
           <me>
-            f(\lambda) = \det\mat{4/5-\lambda, -3/5 0; 3/5 4-5-\lambda, 0; 1 2 2-\lambda}
+            f(\lambda) = \det\mat{4/5-\lambda, -3/5 0; 3/5 4/5-\lambda, 0; 1 2 2-\lambda}
             = (2-\lambda)\left(\lambda^2-\frac 85\lambda+1\right).
           </me>
           This polynomial has one real root at <m>2</m>, and two complex roots at
