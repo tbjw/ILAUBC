@@ -137,7 +137,7 @@ the license is included in gfdl.xml.
     <specialcase>
       <idx><h>Diagonalizability</h><h>diagonal matrices</h></idx>
       <p>
-        Any diagonal matrix is <m>D</m> is diagonalizable because it is
+        Any diagonal matrix <m>D</m> is diagonalizable because it is
         <restrict-version versions="1554 default">
           <xref ref="similarity-eq-reln" text="title">similar to itself</xref>.
         </restrict-version>
@@ -955,7 +955,7 @@ The eigenvectors <m>v_1,v_2,v_3</m> are linearly independent: <m>v_1,v_2</m> for
           </me>
           The parametric form of this equation is <m>x = 2/3y</m>, so one eigenvector is <m>v_1 = {2/3\choose 1}</m>.  For the <m>1/2</m>-eigenspace, we have:
           <me>
-\left(A-\frac 12I_3\right)v = 0 \iff
+\left(A-\frac 12I_2\right)v = 0 \iff
 \frac 1{10}\mat{6 6; 9 9}v = 0
   \;\xrightarrow{\text{RREF}}\;
 \mat{1 1; 0 0}v = 0.
