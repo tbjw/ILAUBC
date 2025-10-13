@@ -795,7 +795,7 @@ the license is included in gfdl.xml.
     <p>
       Let
       <me>
-        A = \mat{1 -1 2; -2 2 4},
+        A = \mat{1 -1 2; -2 2 -4},
       </me>
       and define <m>T(x) = Ax</m>.  The domain of <m>T</m> is <m>\R^3</m>, and the codomain is <m>\R^2</m>.  The range of <m>T</m> is the column space; since all three columns are collinear, the range is a line in <m>\R^2</m>.
     </p>
